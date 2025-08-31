@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dashboard Light Theme with Snow White Background */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 142 71% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom Dashboard Colors - Light Theme */
+    --dashboard-bg: 0 0% 100%;
+    --dashboard-card: 0 0% 100%;
+    --dashboard-card-hover: 0 0% 97%;
+    --dashboard-border: 214 32% 91%;
+    --dashboard-text-primary: 222 47% 11%;
+    --dashboard-text-secondary: 215 16% 47%;
+    --dashboard-text-muted: 215 14% 60%;
+    --dashboard-accent-green: 142 71% 45%;
+    --dashboard-accent-blue: 217 91% 60%;
+    --dashboard-success: 142 76% 36%;
+    --dashboard-warning: 48 96% 53%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--dashboard-accent-green)), hsl(142 71% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
+  }
+
+  .dark {
+    --background: 220 27% 8%;
+    --foreground: 210 40% 98%;
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 142 71% 45%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground m-0 p-0;
+  }
+}
+
+/* Liquid Glass Effects */
+@layer components {
+  .liquid-glass {
+    @apply relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .liquid-glass-light {
+    @apply relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .liquid-glass-strong {
+    @apply relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .liquid-glass-gradient {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(15px) saturate(120%);
+    -webkit-backdrop-filter: blur(15px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .liquid-glass-sky-blue {
+    @apply relative overflow-hidden;
+    background: 
+      radial-gradient(ellipse at center, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(255, 255, 255, 1) 30%, 
+        rgba(255, 255, 255, 0.95) 50%, 
+        rgba(224, 247, 250, 0.7) 70%, 
+        rgba(173, 216, 230, 0.5) 85%,
+        rgba(135, 206, 250, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(135, 206, 250, 0.6);
+    box-shadow: 
+      inset 0 0 50px rgba(135, 206, 250, 0.15),
+      inset 0 0 100px rgba(173, 216, 230, 0.1),
+      0 8px 32px 0 rgba(135, 206, 235, 0.15);
+    position: relative;
+  }
+
+  .liquid-glass-sky-blue::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, 
+      transparent 0%, 
+      transparent 60%, 
+      rgba(135, 206, 250, 0.08) 80%, 
+      rgba(135, 206, 250, 0.15) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
