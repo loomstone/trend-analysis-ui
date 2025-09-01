@@ -1,92 +1,93 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from "recharts";
 import { motion } from "framer-motion";
 import { RedLamp } from "@/components/ui/red-lamp";
+import type { Creative } from "@/components/CreativeCardsGrid";
 
-// Mock data for different metrics
-const generateData = () => {
-  const baseData = [
-    { date: 'Jun 13', value: 1.2 },
-    { date: 'Jun 14', value: 1.8 },
-    { date: 'Jun 15', value: 2.1 },
-    { date: 'Jun 16', value: 1.9 },
-    { date: 'Jun 17', value: 1.3 },
-    { date: 'Jun 18', value: 2.0 },
-    { date: 'Jun 19', value: 3.1 },
-    { date: 'Jun 20', value: 2.9 },
-    { date: 'Jun 21', value: 5.2 },
-    { date: 'Jun 22', value: 3.4 },
-    { date: 'Jun 23', value: 3.2 },
-    { date: 'Jun 24', value: 4.1 },
-    { date: 'Jun 25', value: 2.3 },
+// Generate data based on selected creative
+const generateData = (creative?: Creative | null) => {
+  // Default data if no creative selected
+  const defaultDates = [
+    'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19',
+    'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25'
   ];
+  
+  // Trend Videos data (in thousands, not millions)
+  const trendVideos = [1.2, 1.8, 2.1, 1.9, 1.3, 2.0, 3.1, 2.9, 5.2, 3.4, 3.2, 4.1, 2.3];
+  
+  // All Videos data (higher than trend videos)
+  const allVideos = [2.5, 3.2, 3.8, 3.5, 2.8, 3.9, 5.2, 4.9, 7.8, 5.9, 5.6, 6.5, 4.1];
 
-  return {
-    videos: baseData,
-    engagement: baseData.map(d => ({ ...d, value: d.value * 1.5 + Math.random() * 0.5 })),
-    creators: baseData.map(d => ({ ...d, value: d.value * 0.8 + Math.random() * 0.3 })),
-    shares: baseData.map(d => ({ ...d, value: d.value * 0.6 + Math.random() * 0.4 })),
-  };
+  // Use creative's Spotify data if available
+  if (creative?.spotifyData && creative.spotifyData.length > 0) {
+    return creative.spotifyData.map((item, i) => ({
+      date: item.date,
+      trendVideos: trendVideos[i] || 0,
+      spotifyStreams: item.streams * 1000, // Convert to thousands
+      allVideos: allVideos[i] || 0,
+    }));
+  }
+
+  // Default Spotify data (in thousands)
+  const spotifyStreams = [850, 1100, 1400, 1200, 900, 1500, 2300, 2100, 3800, 2500, 2400, 3000, 1700];
+
+  const combinedData = defaultDates.map((date, i) => ({
+    date,
+    trendVideos: trendVideos[i],
+    spotifyStreams: spotifyStreams[i],
+    allVideos: allVideos[i],
+  }));
+
+  return combinedData;
 };
-
-const data = generateData();
 
 interface SimpleTrendGraphProps {
   selectedTrendId: string;
+  selectedCreative?: Creative | null;
 }
 
-const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
+const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGraphProps) => {
   const [activeMetrics, setActiveMetrics] = useState({
-    videos: true,
-    engagement: false,
-    creators: false,
-    shares: false,
+    trendVideos: true,
+    spotifyStreams: false,
+    allVideos: false,
   });
+
+  // Generate data based on selected creative
+  const data = generateData(selectedCreative);
 
   const toggleMetric = (metric: string) => {
     setActiveMetrics(prev => ({ ...prev, [metric]: !prev[metric] }));
   };
 
   const metricConfig = {
-    videos: { color: '#1e40af', label: 'Videos' }, // Deep blue
-    engagement: { color: '#0ea5e9', label: 'Engagement' }, // Sky blue
-    creators: { color: '#6366f1', label: 'Creators' }, // Indigo
-    shares: { color: '#06b6d4', label: 'Shares' }, // Cyan
+    trendVideos: { color: '#1e40af', label: 'Trend Videos' }, // Deep blue
+    spotifyStreams: { color: '#10b981', label: 'Spotify Streams' }, // Green
+    allVideos: { color: '#8b5cf6', label: 'All Videos' }, // Purple
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="bg-gradient-to-br from-sky-400/20 via-blue-400/15 to-cyan-400/10 backdrop-blur-md rounded-2xl p-8 border border-sky-200/30 shadow-lg shadow-sky-200/20 h-full flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <div className="relative">
             <motion.h2 
-              className="text-5xl font-bold text-white drop-shadow-md tracking-tight"
+              className="text-4xl font-bold text-white drop-shadow-md tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              Lip Sync
+              Growth
             </motion.h2>
-            <div className="flex items-center gap-3 mt-8">
-              <motion.span 
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold border border-white/30"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.8 }}
-              >
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                Exploding
-              </motion.span>
-              <motion.span 
-                className="text-sm text-white/70"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.9 }}
-              >
-                Started Last week
-              </motion.span>
-            </div>
+            <motion.span 
+              className="text-sm text-white/70 mt-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.8 }}
+            >
+              Started Last week
+            </motion.span>
           </div>
         </div>
         
@@ -96,7 +97,7 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
             <motion.button
               key={key}
               onClick={() => toggleMetric(key)}
-              className={`relative px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeMetrics[key as keyof typeof activeMetrics]
                   ? 'bg-white/30 backdrop-blur-md text-white shadow-lg border border-white/40'
                   : 'bg-white/10 backdrop-blur-sm text-white/70 hover:bg-white/20 border border-white/20'
@@ -104,7 +105,7 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="flex items-center gap-2.5">
+              <span className="flex items-center gap-2">
                 <motion.span 
                   className="w-2.5 h-2.5 rounded-full"
                   style={{ backgroundColor: config.color }}
@@ -133,11 +134,11 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
       </div>
 
       {/* Graph */}
-      <div className="flex-1 relative bg-white/20 dark:bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
+      <div className="flex-1 relative bg-white/10 backdrop-blur-sm rounded-xl p-4">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart 
-            data={data.videos}
-            margin={{ top: 10, right: 10, left: -10, bottom: 10 }}
+            data={data}
+            margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
           >
             <CartesianGrid 
               strokeDasharray="0" 
@@ -148,18 +149,31 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
             />
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
               stroke="transparent"
               axisLine={false}
               tickLine={false}
             />
             <YAxis 
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}
+              yAxisId="videos"
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
               stroke="transparent"
               axisLine={false}
               tickLine={false}
-              domain={[0, 8]}
-              ticks={[0, 2, 4, 6, 8]}
+              domain={[0, 'dataMax']}
+              tickFormatter={(value) => `${value}K`}
+              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 12 } }}
+            />
+            <YAxis 
+              yAxisId="streams"
+              orientation="right"
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
+              stroke="transparent"
+              axisLine={false}
+              tickLine={false}
+              domain={[0, 'dataMax']}
+              tickFormatter={(value) => `${value}K`}
+              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 12 } }}
             />
             <Tooltip 
               contentStyle={{ 
@@ -171,20 +185,32 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
                 backdropFilter: 'blur(16px)'
               }}
               labelStyle={{ color: 'rgba(255, 255, 255, 0.9)', fontWeight: 600 }}
-              formatter={(value: number, name: string) => [
-                <span style={{ color: 'rgba(255, 255, 255, 1)', fontWeight: 700, fontSize: '14px' }}>
-                  {value.toFixed(1)}M
-                </span>,
-                <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '12px' }}>videos</span>
-              ]}
+              formatter={(value: number, name: string) => {
+                const metricLabels: { [key: string]: string } = {
+                  trendVideos: 'Trend Videos',
+                  spotifyStreams: 'Spotify Streams',
+                  allVideos: 'All Videos'
+                };
+                const formattedValue = name === 'spotifyStreams' 
+                  ? `${value.toFixed(0)}K`
+                  : `${value.toFixed(1)}K`;
+                return [
+                  <span style={{ color: 'rgba(255, 255, 255, 1)', fontWeight: 700, fontSize: '14px' }}>
+                    {formattedValue}
+                  </span>,
+                  <span style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '12px' }}>
+                    {metricLabels[name] || name}
+                  </span>
+                ];
+              }}
             />
             
-            {activeMetrics.videos && (
+            {activeMetrics.trendVideos && (
               <Line 
+                yAxisId="videos"
                 type="natural" 
-                dataKey="value" 
-                data={data.videos}
-                stroke={metricConfig.videos.color}
+                dataKey="trendVideos" 
+                stroke={metricConfig.trendVideos.color}
                 strokeWidth={3}
                 dot={false}
                 animationDuration={800}
@@ -192,42 +218,29 @@ const SimpleTrendGraph = ({ selectedTrendId }: SimpleTrendGraphProps) => {
               />
             )}
             
-            {activeMetrics.engagement && (
+            {activeMetrics.spotifyStreams && (
               <Line 
+                yAxisId="streams"
                 type="natural" 
-                dataKey="value" 
-                data={data.engagement}
-                stroke={metricConfig.engagement.color}
+                dataKey="spotifyStreams" 
+                stroke={metricConfig.spotifyStreams.color}
                 strokeWidth={3}
                 dot={false}
                 animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(14, 165, 233, 0.5))"
+                filter="drop-shadow(0 0 6px rgba(16, 185, 129, 0.5))"
               />
             )}
             
-            {activeMetrics.creators && (
+            {activeMetrics.allVideos && (
               <Line 
+                yAxisId="videos"
                 type="natural" 
-                dataKey="value" 
-                data={data.creators}
-                stroke={metricConfig.creators.color}
+                dataKey="allVideos" 
+                stroke={metricConfig.allVideos.color}
                 strokeWidth={3}
                 dot={false}
                 animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(99, 102, 241, 0.5))"
-              />
-            )}
-            
-            {activeMetrics.shares && (
-              <Line 
-                type="natural" 
-                dataKey="value" 
-                data={data.shares}
-                stroke={metricConfig.shares.color}
-                strokeWidth={3}
-                dot={false}
-                animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(6, 182, 212, 0.5))"
+                filter="drop-shadow(0 0 6px rgba(139, 92, 246, 0.5))"
               />
             )}
           </LineChart>

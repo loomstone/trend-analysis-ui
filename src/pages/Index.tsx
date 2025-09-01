@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SimpleTrendGraph from "@/components/SimpleTrendGraph";
-import TrendVideosCard from "@/components/TrendVideosCard";
+import CreativeDetailsCard from "@/components/CreativeDetailsCard";
+import CreativeCardsGrid from "@/components/CreativeCardsGrid";
 import { motion } from "framer-motion";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
 import {
@@ -12,10 +13,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import type { Creative } from "@/components/CreativeCardsGrid";
 
 const IndexContent = () => {
   const [selectedTrendId, setSelectedTrendId] = useState<string>("1");
   const [selectedButton, setSelectedButton] = useState<string>("");
+  const [selectedCreative, setSelectedCreative] = useState<Creative | null>(null);
   
   return (
     <div className="min-h-screen m-0 p-0 w-full flex relative overflow-hidden">
@@ -112,71 +115,48 @@ const IndexContent = () => {
 
         {/* Dashboard Content */}
         <div className="flex-1 flex flex-col p-6 space-y-6">
-          {/* Top Half - Enhanced Analytics Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="h-1/2 min-h-[500px] bg-white/20 dark:bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/30 shadow-2xl"
-          >
-            <SimpleTrendGraph selectedTrendId={selectedTrendId} />
-          </motion.div>
+          {/* Top Section - Graph and Creative Details */}
+          <div className="flex gap-6">
+            {/* Left - Trend Graph */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex-[1.5] min-h-[500px]"
+            >
+              <SimpleTrendGraph 
+                selectedTrendId={selectedCreative?.id?.toString() || selectedTrendId} 
+                selectedCreative={selectedCreative}
+              />
+            </motion.div>
 
-          {/* Tabs Section */}
+            {/* Right - Creative Details Card */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex-1 min-w-[400px] max-w-[550px]"
+            >
+              <CreativeDetailsCard selectedCreative={selectedCreative} />
+            </motion.div>
+          </div>
+
+          {/* Bottom Section - Trending Creative Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-            className="mb-6"
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            className="flex-1"
           >
-            <Tabs defaultValue="videos" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-white/10 backdrop-blur-md border-b border-white/20 rounded-t-2xl p-1 h-auto">
-                <TabsTrigger 
-                  value="videos" 
-                  className="rounded-xl border-2 border-transparent data-[state=active]:border-white/30 data-[state=active]:bg-white/20 data-[state=active]:backdrop-blur-lg pb-3 pt-2 font-semibold text-white/70 data-[state=active]:text-white transition-all"
-                >
-                  Videos
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="creatives" 
-                  className="rounded-xl border-2 border-transparent data-[state=active]:border-white/30 data-[state=active]:bg-white/20 data-[state=active]:backdrop-blur-lg pb-3 pt-2 font-semibold text-white/70 data-[state=active]:text-white transition-all"
-                >
-                  Creatives
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="analysis" 
-                  className="rounded-xl border-2 border-transparent data-[state=active]:border-white/30 data-[state=active]:bg-white/20 data-[state=active]:backdrop-blur-lg pb-3 pt-2 font-semibold text-white/70 data-[state=active]:text-white transition-all"
-                >
-                  Analysis
-                </TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="videos" className="mt-0">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                  className="flex-1"
-                >
-                  <TrendVideosCard selectedTrendId={selectedTrendId} selectedButton={selectedButton} />
-                </motion.div>
-              </TabsContent>
-              
-              <TabsContent value="creatives" className="mt-6">
-                <div className="flex items-center justify-center h-96 text-white/70">
-                  <p className="text-lg drop-shadow-sm">Creatives content coming soon...</p>
-                </div>
-              </TabsContent>
-              
-              <TabsContent value="analysis" className="mt-6">
-                <div className="flex items-center justify-center h-96 text-white/70">
-                  <p className="text-lg drop-shadow-sm">Analysis content coming soon...</p>
-                </div>
-              </TabsContent>
-            </Tabs>
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-white drop-shadow-lg">Trending Creatives</h2>
+              <span className="text-sky-400 font-semibold drop-shadow-md">• Click any card to analyze</span>
+            </div>
+            <CreativeCardsGrid 
+              onCreativeSelect={setSelectedCreative}
+              selectedCreativeId={selectedCreative?.id}
+            />
           </motion.div>
-
-
         </div>
       </div>
     </div>
