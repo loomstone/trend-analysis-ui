@@ -79,7 +79,26 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 h-full flex flex-col">
+    <div className="relative rounded-3xl p-6 h-full flex flex-col overflow-hidden">
+      {/* Gradient Mesh Background */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-tl from-emerald-900/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 via-transparent to-gray-900/50" />
+      </div>
+      
+      {/* Subtle mesh pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: `radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 70%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%)`
+        }}
+      />
+      
+      {/* Content Container with relative positioning */}
+      <div className="relative z-10 h-full flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
@@ -167,38 +186,38 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
           >
             <CartesianGrid 
               strokeDasharray="0" 
-              stroke="rgba(255, 255, 255, 0.05)" 
+              stroke="rgba(255, 255, 255, 0.08)" 
               opacity={1}
               vertical={false}
               horizontal={true}
             />
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
-              stroke="rgba(255, 255, 255, 0.1)"
-              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.15)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
               tickLine={false}
             />
             <YAxis 
               yAxisId="videos"
-              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
-              stroke="rgba(255, 255, 255, 0.1)"
-              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.15)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.6)', fontSize: 14 } }}
+              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 14 } }}
             />
             <YAxis 
               yAxisId="streams"
               orientation="right"
-              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
-              stroke="rgba(255, 255, 255, 0.1)"
-              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.7)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.15)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.15)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.6)', fontSize: 14 } }}
+              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 14 } }}
             />
             <Tooltip 
               contentStyle={{ 
@@ -271,6 +290,7 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
           </LineChart>
         </ResponsiveContainer>
       </div>
+      </div>{/* End Content Container */}
     </div>
   );
 };
