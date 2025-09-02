@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Creative } from "./CreativeCardsGrid";
+import ScaleModal from "./ScaleModal";
 
 interface CreativeDetailsCardProps {
   selectedCreative: Creative | null;
@@ -59,6 +60,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
   const [isFlashing, setIsFlashing] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [demographicsTimeFilter, setDemographicsTimeFilter] = useState('1 Week');
+  const [isScaleModalOpen, setIsScaleModalOpen] = useState(false);
   const displayCreative = selectedCreative || recommendedCreative;
 
   useEffect(() => {
@@ -203,6 +205,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             <p className="text-gray-400">{displayCreative.description}</p>
           </div>
           <Button 
+            onClick={() => setIsScaleModalOpen(true)}
             className="flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 backdrop-blur-md shadow-lg rounded-full px-6"
           >
             <Rocket className="w-4 h-4" />
@@ -822,6 +825,13 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
           </TabsContent>
         </Tabs>
       </CardContent>
+      
+      {/* Scale Modal */}
+      <ScaleModal 
+        isOpen={isScaleModalOpen}
+        onClose={() => setIsScaleModalOpen(false)}
+        creativeName={displayCreative.name}
+      />
     </Card>
   );
 };
