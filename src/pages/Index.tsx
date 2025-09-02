@@ -2,7 +2,7 @@ import { useState } from "react";
 import SimpleTrendGraph from "@/components/SimpleTrendGraph";
 import CreativeDetailsCard from "@/components/CreativeDetailsCard";
 import CreativeCardsGrid from "@/components/CreativeCardsGrid";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ThemeSwitch } from "@/components/ThemeSwitch";
 import {
   Breadcrumb,
@@ -19,17 +19,23 @@ const IndexContent = () => {
   const [selectedTrendId, setSelectedTrendId] = useState<string>("1");
   const [selectedButton, setSelectedButton] = useState<string>("");
   const [selectedCreative, setSelectedCreative] = useState<Creative | null>(null);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
+  
+  const handleCreativeSelect = (creative: Creative) => {
+    setSelectedCreative(creative);
+    setShowDetails(true);
+  };
+  
+  const handleBackToGrid = () => {
+    setShowDetails(false);
+  };
   
   return (
     <div className="min-h-screen m-0 p-0 w-full flex relative overflow-hidden">
-      {/* Liquid Glass Background with Sky Blue Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-300 via-sky-400 to-blue-500 dark:from-sky-600 dark:via-sky-700 dark:to-blue-800" />
+      {/* White Background */}
+      <div className="absolute inset-0 bg-white" />
       
-      {/* Blur Effect Overlay */}
-      <div className="absolute inset-0 backdrop-blur-[2px]" />
-      
-      {/* Dark gradient overlay for better text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent pointer-events-none" />
+
       
       {/* Edge Blur Effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -63,25 +69,25 @@ const IndexContent = () => {
             <Breadcrumb className="mb-6">
               <BreadcrumbList className="text-sm">
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/" className="text-white/90 hover:text-white transition-colors font-medium drop-shadow-lg">
+                  <BreadcrumbLink href="/" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                     Home
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-white/70 drop-shadow-md" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/artists/fuerza-regida" className="text-white/90 hover:text-white transition-colors font-medium drop-shadow-lg">
+                  <BreadcrumbLink href="/artists/fuerza-regida" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                     Fuerza Regida
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-white/70 drop-shadow-md" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/songs/me-jalo" className="text-white/90 hover:text-white transition-colors font-medium drop-shadow-lg">
+                  <BreadcrumbLink href="/songs/me-jalo" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                     Me Jalo
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-white/70 drop-shadow-md" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-white font-semibold drop-shadow-lg">
+                  <BreadcrumbPage className="text-gray-900 font-semibold">
                     Trend Analysis
                   </BreadcrumbPage>
                 </BreadcrumbItem>
@@ -97,9 +103,9 @@ const IndexContent = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex items-baseline gap-3"
             >
-              <h1 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg">Fuerza Regida</h1>
-              <span className="text-white/70 drop-shadow-md">•</span>
-              <p className="text-2xl text-white font-medium drop-shadow-lg">"Me Jalo"</p>
+              <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Fuerza Regida</h1>
+              <span className="text-gray-500">•</span>
+              <p className="text-2xl text-gray-700 font-medium">"Me Jalo"</p>
             </motion.div>
 
             {/* Theme Toggler */}
@@ -115,48 +121,66 @@ const IndexContent = () => {
 
         {/* Dashboard Content */}
         <div className="flex-1 flex flex-col p-6 space-y-6">
-          {/* Top Section - Graph and Creative Details */}
-          <div className="flex gap-6">
-            {/* Left - Trend Graph */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex-[1.5] min-h-[500px]"
-            >
-              <SimpleTrendGraph 
-                selectedTrendId={selectedCreative?.id?.toString() || selectedTrendId} 
-                selectedCreative={selectedCreative}
-              />
-            </motion.div>
-
-            {/* Right - Creative Details Card */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex-1 min-w-[400px] max-w-[550px]"
-            >
-              <CreativeDetailsCard selectedCreative={selectedCreative} />
-            </motion.div>
-          </div>
-
-          {/* Bottom Section - Trending Creative Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          {/* Top Panel - Full Width Graph */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-            className="flex-1"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="h-[550px]"
           >
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white drop-shadow-lg">Trending Creatives</h2>
-              <span className="text-sky-400 font-semibold drop-shadow-md">• Click any card to analyze</span>
-            </div>
-            <CreativeCardsGrid 
-              onCreativeSelect={setSelectedCreative}
-              selectedCreativeId={selectedCreative?.id}
+            <SimpleTrendGraph 
+              selectedTrendId={selectedCreative?.id?.toString() || selectedTrendId} 
+              selectedCreative={selectedCreative}
             />
           </motion.div>
+
+          {/* Middle/Bottom Section - Cards or Details */}
+          <AnimatePresence mode="wait">
+            {!showDetails ? (
+              // Grid View - Trending Creative Cards
+              <motion.div
+                key="grid"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex-1"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-gray-800">Trending Creatives</h2>
+                  <span className="text-sky-600 font-semibold">• Click any card to analyze</span>
+                </div>
+                <CreativeCardsGrid 
+                  onCreativeSelect={handleCreativeSelect}
+                  selectedCreativeId={selectedCreative?.id}
+                />
+              </motion.div>
+            ) : (
+              // Detail View - Selected Creative Details
+              <motion.div
+                key="details"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex-1"
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <button
+                    onClick={handleBackToGrid}
+                    className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to All Creatives
+                  </button>
+                  <h2 className="text-2xl font-bold text-gray-800">Creative Insights</h2>
+                </div>
+                <CreativeDetailsCard selectedCreative={selectedCreative} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>

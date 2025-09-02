@@ -1,6 +1,7 @@
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Play, Music, Dance, Palette, User, Hash, Sparkles, Video, Gamepad2, Heart, Camera, Eye, Flame, TrendingUp, Zap, TrendingDown } from "lucide-react";
+import { Play, Music, Palette, User, Hash, Sparkles, Video, Gamepad2, Heart, Camera, Eye, Flame, TrendingUp, Zap, TrendingDown } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -367,17 +368,17 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
             key={creative.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ y: -8 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            whileHover={{ y: -4 }}
             onClick={() => onCreativeSelect(creative)}
-            className="cursor-pointer"
+            className="cursor-pointer transform-gpu"
           >
             <Card 
               className={`
                 relative overflow-hidden transition-all duration-300
                 ${isSelected 
-                  ? 'bg-gradient-to-br from-sky-500/30 via-blue-500/25 to-cyan-500/20 border-2 border-sky-400/50 shadow-2xl shadow-sky-400/40 scale-[1.05]' 
-                  : 'bg-gradient-to-br from-sky-400/20 via-blue-400/15 to-cyan-400/10 backdrop-blur-md border border-sky-200/30 shadow-lg shadow-sky-200/20 hover:shadow-xl hover:shadow-sky-300/30'
+                  ? 'bg-gray-50 border-2 border-blue-500 shadow-lg scale-[1.02]' 
+                  : 'bg-gray-50 border border-gray-200 shadow-md hover:shadow-lg'
                 }
               `}
             >
@@ -395,26 +396,26 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                   {/* Trend Status Tag */}
                   <div className="flex items-center gap-2">
                     {creative.momentum === "rising" && (
-                      <span className="px-3 py-1.5 bg-white/30 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/40 flex items-center gap-1.5">
-                        <Flame className="w-3.5 h-3.5" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-medium rounded-full border border-orange-200 flex items-center gap-1.5">
+                        <Flame className="w-3.5 h-3.5 text-orange-600" />
                         Hot
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore >= 8 && (
-                      <span className="px-3 py-1.5 bg-white/30 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/40 flex items-center gap-1.5">
-                        <TrendingUp className="w-3.5 h-3.5" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-sm font-medium rounded-full border border-green-200 flex items-center gap-1.5">
+                        <TrendingUp className="w-3.5 h-3.5 text-green-600" />
                         Rising
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore < 8 && (
-                      <span className="px-3 py-1.5 bg-white/30 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/40 flex items-center gap-1.5">
-                        <Zap className="w-3.5 h-3.5" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 text-sm font-medium rounded-full border border-blue-200 flex items-center gap-1.5">
+                        <Zap className="w-3.5 h-3.5 text-blue-600" />
                         Emerging
                       </span>
                     )}
                     {creative.momentum === "declining" && (
-                      <span className="px-3 py-1.5 bg-white/30 backdrop-blur-sm text-white text-sm font-medium rounded-full border border-white/40 flex items-center gap-1.5">
-                        <TrendingDown className="w-3.5 h-3.5" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm font-medium rounded-full border border-gray-300 flex items-center gap-1.5">
+                        <TrendingDown className="w-3.5 h-3.5 text-gray-600" />
                         Dying
                       </span>
                     )}
@@ -498,4 +499,4 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
   );
 };
 
-export default CreativeCardsGrid;
+export default React.memo(CreativeCardsGrid);

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from "recharts";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { RedLamp } from "@/components/ui/red-lamp";
 import type { Creative } from "@/components/CreativeCardsGrid";
 
@@ -48,32 +48,44 @@ interface SimpleTrendGraphProps {
 
 const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGraphProps) => {
   const [activeMetrics, setActiveMetrics] = useState({
-    trendVideos: true,
-    spotifyStreams: false,
-    allVideos: false,
+    trendVideos: false,
+    spotifyStreams: true,
+    allVideos: true,
   });
 
   // Generate data based on selected creative
-  const data = generateData(selectedCreative);
+  const data = useMemo(() => generateData(selectedCreative), [selectedCreative]);
+
+  // Auto-enable trend videos when a creative is selected
+  useEffect(() => {
+    if (selectedCreative) {
+      setActiveMetrics(prev => ({ ...prev, trendVideos: true }));
+    } else {
+      setActiveMetrics(prev => ({ ...prev, trendVideos: false }));
+    }
+  }, [selectedCreative]);
 
   const toggleMetric = (metric: string) => {
     setActiveMetrics(prev => ({ ...prev, [metric]: !prev[metric] }));
   };
 
   const metricConfig = {
-    trendVideos: { color: '#1e40af', label: 'Trend Videos' }, // Deep blue
+    trendVideos: { 
+      color: '#0ea5e9', 
+      label: selectedCreative ? selectedCreative.name : 'Trend Videos' 
+    }, // Bright blue
     spotifyStreams: { color: '#10b981', label: 'Spotify Streams' }, // Green
-    allVideos: { color: '#8b5cf6', label: 'All Videos' }, // Purple
+    allVideos: { color: '#a855f7', label: 'All Videos' }, // Bright purple
   };
 
   return (
-    <div className="bg-gradient-to-br from-sky-400/20 via-blue-400/15 to-cyan-400/10 backdrop-blur-md rounded-2xl p-8 border border-sky-200/30 shadow-lg shadow-sky-200/20 h-full flex flex-col">
+    <div className="bg-gray-50 rounded-3xl p-6 shadow-lg border border-gray-100 h-full flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <div className="relative">
             <motion.h2 
-              className="text-4xl font-bold text-white drop-shadow-md tracking-tight"
+              className="text-4xl font-bold text-gray-800 tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -81,7 +93,7 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
               Growth
             </motion.h2>
             <motion.span 
-              className="text-sm text-white/70 mt-3"
+              className="text-sm text-gray-600 mt-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.8 }}
@@ -93,87 +105,100 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
         
         {/* Metric Toggle Buttons */}
         <div className="flex gap-3">
-          {Object.entries(metricConfig).map(([key, config]) => (
-            <motion.button
-              key={key}
-              onClick={() => toggleMetric(key)}
-              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeMetrics[key as keyof typeof activeMetrics]
-                  ? 'bg-white/30 backdrop-blur-md text-white shadow-lg border border-white/40'
-                  : 'bg-white/10 backdrop-blur-sm text-white/70 hover:bg-white/20 border border-white/20'
-              }`}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="flex items-center gap-2">
-                <motion.span 
-                  className="w-2.5 h-2.5 rounded-full"
-                  style={{ backgroundColor: config.color }}
-                  animate={{
-                    scale: activeMetrics[key as keyof typeof activeMetrics] ? [1, 1.2, 1] : 1,
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                {config.label}
-              </span>
-              {activeMetrics[key as keyof typeof activeMetrics] && (
-                <motion.div
-                  className="absolute inset-0 rounded-full"
-                  style={{ 
-                    background: `radial-gradient(circle at center, ${config.color}20, transparent)`,
-                  }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </motion.button>
-          ))}
+          <AnimatePresence>
+            {Object.entries(metricConfig).map(([key, config]) => {
+              // Only show Trend Videos button when a creative is selected
+              if (key === 'trendVideos' && !selectedCreative) {
+                return null;
+              }
+              
+              return (
+                <motion.button
+                key={key}
+                onClick={() => toggleMetric(key)}
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeMetrics[key as keyof typeof activeMetrics]
+                    ? 'bg-sky-500 text-white shadow-lg'
+                    : 'bg-sky-100 text-sky-700 hover:bg-sky-200'
+                }`}
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.99 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <span className="flex items-center gap-2">
+                  <motion.span 
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: config.color }}
+                    animate={{
+                      scale: activeMetrics[key as keyof typeof activeMetrics] ? [1, 1.2, 1] : 1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  {config.label}
+                </span>
+                {activeMetrics[key as keyof typeof activeMetrics] && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full"
+                    style={{ 
+                      background: `radial-gradient(circle at center, ${config.color}20, transparent)`,
+                    }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+              </motion.button>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
 
       {/* Graph */}
-      <div className="flex-1 relative bg-white/10 backdrop-blur-sm rounded-xl p-4">
+      <div className="flex-1 relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-100">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart 
             data={data}
             margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
           >
             <CartesianGrid 
-              strokeDasharray="0" 
-              stroke="rgba(255, 255, 255, 0.2)" 
-              opacity={0.5}
+              strokeDasharray="3 3" 
+              stroke="#d1d5db" 
+              opacity={0.7}
               vertical={false}
               horizontal={true}
             />
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
-              stroke="transparent"
-              axisLine={false}
+              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
+              stroke="#e5e7eb"
+              axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
             />
             <YAxis 
               yAxisId="videos"
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
-              stroke="transparent"
-              axisLine={false}
+              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
+              stroke="#e5e7eb"
+              axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 12 } }}
+              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: '#6b7280', fontSize: 12 } }}
             />
             <YAxis 
               yAxisId="streams"
               orientation="right"
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.8)', fontWeight: 500 }}
-              stroke="transparent"
-              axisLine={false}
+              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
+              stroke="#e5e7eb"
+              axisLine={{ stroke: '#e5e7eb' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.7)', fontSize: 12 } }}
+              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: '#6b7280', fontSize: 12 } }}
             />
             <Tooltip 
               contentStyle={{ 
@@ -211,10 +236,10 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
                 type="natural" 
                 dataKey="trendVideos" 
                 stroke={metricConfig.trendVideos.color}
-                strokeWidth={3}
+                strokeWidth={4}
                 dot={false}
                 animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(30, 64, 175, 0.5))"
+                filter="drop-shadow(0 2px 8px rgba(14, 165, 233, 0.4))"
               />
             )}
             
@@ -224,10 +249,10 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
                 type="natural" 
                 dataKey="spotifyStreams" 
                 stroke={metricConfig.spotifyStreams.color}
-                strokeWidth={3}
+                strokeWidth={4}
                 dot={false}
                 animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(16, 185, 129, 0.5))"
+                filter="drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4))"
               />
             )}
             
@@ -237,10 +262,10 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
                 type="natural" 
                 dataKey="allVideos" 
                 stroke={metricConfig.allVideos.color}
-                strokeWidth={3}
+                strokeWidth={4}
                 dot={false}
                 animationDuration={800}
-                filter="drop-shadow(0 0 6px rgba(139, 92, 246, 0.5))"
+                filter="drop-shadow(0 2px 8px rgba(168, 85, 247, 0.4))"
               />
             )}
           </LineChart>
@@ -250,4 +275,4 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
   );
 };
 
-export default SimpleTrendGraph;
+export default React.memo(SimpleTrendGraph);
