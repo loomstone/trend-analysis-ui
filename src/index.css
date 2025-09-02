@@ -163,4 +163,13 @@ All colors MUST be HSL.
     pointer-events: none;
     z-index: 1;
   }
+
+  /* Glow Text Effect */
+  [data-state="active"] .text-shadow-glow {
+    text-shadow: 
+      0 0 10px rgba(168, 85, 247, 0.8),
+      0 0 20px rgba(168, 85, 247, 0.6),
+      0 0 30px rgba(168, 85, 247, 0.4),
+      0 0 40px rgba(236, 72, 153, 0.3);
+  }
 }

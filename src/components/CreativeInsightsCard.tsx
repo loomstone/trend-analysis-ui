@@ -207,9 +207,9 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
                   variant="ghost"
                   className="p-0 h-auto font-normal hover:bg-transparent group"
                 >
-                  <CardTitle className="text-lg flex items-center gap-2 group-hover:text-purple-600 transition-colors cursor-pointer">
+                  <CardTitle className="text-lg flex items-center gap-2 group-hover:text-purple-400 transition-colors cursor-pointer">
                     {selectedTrend}
-                    <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors" />
+                    <ChevronDown className="w-4 h-4 text-gray-500 group-hover:text-purple-400 transition-colors" />
                   </CardTitle>
                 </Button>
               </DropdownMenuTrigger>
@@ -253,17 +253,17 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
           
           {/* Region Selector - Using Combobox */}
           <div className="flex items-center gap-2">
-            <Label className="text-xs text-gray-500">Country:</Label>
+            <Label className="text-xs text-gray-400">Country:</Label>
             <Popover open={regionOpen} onOpenChange={setRegionOpen}>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   role="combobox"
                   aria-expanded={regionOpen}
-                  className="h-7 w-[150px] justify-between text-xs px-2 bg-gray-50 border-gray-200 hover:bg-gray-100"
+                  className="h-7 w-[150px] justify-between text-xs px-2 bg-white/10 border-white/20 hover:bg-white/20 text-white backdrop-blur-md"
                 >
                   <div className="flex items-center gap-1.5">
-                    <Globe className="w-3 h-3 text-gray-500" />
+                    <Globe className="w-3 h-3 text-gray-400" />
                     {selectedRegion
                       ? countries.find((country) => country.value === selectedRegion)?.label
                       : "Select country..."}
@@ -307,12 +307,12 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
           <div className="flex-1 space-y-3">
             {/* Creative Analysis */}
             <div className="space-y-2">
-            <h4 className="text-sm font-semibold flex items-center gap-2">
-              <Music className="w-4 h-4 text-purple-500" />
+            <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
+              <Music className="w-4 h-4 text-purple-400" />
               Creative Analysis
             </h4>
-            <div className="bg-purple-50 rounded-xl p-3 border border-purple-200/50">
-              <p className="text-sm leading-relaxed">
+            <div className="bg-white/5 backdrop-blur-md rounded-xl p-3 border border-white/10">
+              <p className="text-sm leading-relaxed text-gray-300">
                 {currentData.creativeAnalysis}
               </p>
             </div>
@@ -320,29 +320,29 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
 
           {/* Demographics */}
           <div className="space-y-2">
-            <h4 className="text-sm font-semibold flex items-center gap-2">
-              <Target className="w-4 h-4 text-purple-500" />
+            <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
+              <Target className="w-4 h-4 text-purple-400" />
               Demographics
             </h4>
-            <div className="bg-pink-50 rounded-xl p-3 space-y-2 border border-pink-200/50">
+            <div className="bg-white/5 backdrop-blur-md rounded-xl p-3 space-y-2 border border-white/10">
               {/* Gender Split */}
               <div className="space-y-1">
-                <span className="text-xs text-gray-600">Gender Split</span>
+                <span className="text-xs text-gray-400">Gender Split</span>
                 <div className="flex gap-2 text-sm">
-                  <span className="font-medium">Male: {currentData.demographics.gender.male}%</span>
-                  <span className="text-gray-400">•</span>
-                  <span className="font-medium">Female: {currentData.demographics.gender.female}%</span>
+                  <span className="font-medium text-white">Male: {currentData.demographics.gender.male}%</span>
+                  <span className="text-gray-500">•</span>
+                  <span className="font-medium text-white">Female: {currentData.demographics.gender.female}%</span>
                 </div>
               </div>
 
               {/* Age Groups */}
               <div className="space-y-1">
-                <span className="text-xs text-gray-600">Top Age Groups</span>
+                <span className="text-xs text-gray-400">Top Age Groups</span>
                 <div className="flex flex-wrap gap-2">
                   {currentData.demographics.ageGroups.map((group, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-blue-100 rounded-lg text-xs font-medium border border-blue-200"
+                      className="px-2 py-1 bg-blue-500/20 rounded-lg text-xs font-medium border border-blue-400/30 text-blue-300"
                     >
                       {group.range}: {group.percentage}%
                     </span>
@@ -352,12 +352,12 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
 
               {/* Archetypes */}
               <div className="space-y-1">
-                <span className="text-xs text-gray-600">Audience Archetypes</span>
+                <span className="text-xs text-gray-400">Audience Archetypes</span>
                 <div className="flex flex-wrap gap-2">
                   {currentData.demographics.archetypes.map((archetype, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-xs font-medium border border-purple-300"
+                      className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-xs font-medium border border-purple-400/30 text-purple-300"
                     >
                       {archetype}
                     </span>

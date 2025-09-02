@@ -79,13 +79,13 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
   };
 
   return (
-    <div className="bg-gray-50 rounded-3xl p-6 shadow-lg border border-gray-100 h-full flex flex-col">
+    <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-6 border border-white/10 h-full flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <div className="relative">
             <motion.h2 
-              className="text-4xl font-bold text-gray-800 tracking-tight"
+              className="text-4xl font-bold text-white tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -93,7 +93,7 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
               Growth
             </motion.h2>
             <motion.span 
-              className="text-sm text-gray-600 mt-3"
+              className="text-sm text-gray-400 mt-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.8 }}
@@ -116,10 +116,10 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
                 <motion.button
                 key={key}
                 onClick={() => toggleMetric(key)}
-                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md border ${
                   activeMetrics[key as keyof typeof activeMetrics]
-                    ? 'bg-sky-500 text-white shadow-lg'
-                    : 'bg-sky-100 text-sky-700 hover:bg-sky-200'
+                    ? 'bg-white/20 text-white border-white/30'
+                    : 'bg-gray-500/10 text-gray-400 hover:bg-gray-400/20 border-gray-600/20'
                 }`}
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.99 }}
@@ -158,54 +158,54 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
         </div>
       </div>
 
-      {/* Graph */}
-      <div className="flex-1 relative bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-100">
+      {/* Graph - Minimal Glass Design */}
+      <div className="flex-1 relative bg-transparent rounded-xl p-6">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart 
             data={data}
             margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
           >
             <CartesianGrid 
-              strokeDasharray="3 3" 
-              stroke="#d1d5db" 
-              opacity={0.7}
+              strokeDasharray="0" 
+              stroke="rgba(255, 255, 255, 0.05)" 
+              opacity={1}
               vertical={false}
               horizontal={true}
             />
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
-              stroke="#e5e7eb"
-              axisLine={{ stroke: '#e5e7eb' }}
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.1)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
             />
             <YAxis 
               yAxisId="videos"
-              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
-              stroke="#e5e7eb"
-              axisLine={{ stroke: '#e5e7eb' }}
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.1)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: '#6b7280', fontSize: 12 } }}
+              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.5)', fontSize: 12 } }}
             />
             <YAxis 
               yAxisId="streams"
               orientation="right"
-              tick={{ fontSize: 11, fill: '#6b7280', fontWeight: 500 }}
-              stroke="#e5e7eb"
-              axisLine={{ stroke: '#e5e7eb' }}
+              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              stroke="rgba(255, 255, 255, 0.1)"
+              axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: '#6b7280', fontSize: 12 } }}
+              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.5)', fontSize: 12 } }}
             />
             <Tooltip 
               contentStyle={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.15)', 
-                border: '1px solid rgba(255, 255, 255, 0.3)',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)', 
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
                 padding: '12px 16px',
                 backdropFilter: 'blur(16px)'
               }}

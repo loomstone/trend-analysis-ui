@@ -358,9 +358,12 @@ const creatives: Creative[] = [
 ];
 
 const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect, selectedCreativeId }) => {
+  // Show only first 4 creatives for a cleaner 2x2 layout
+  const displayedCreatives = creatives.slice(0, 4);
+  
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-      {creatives.map((creative, index) => {
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {displayedCreatives.map((creative, index) => {
         const isSelected = creative.id === selectedCreativeId;
         
         return (
@@ -375,69 +378,69 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
           >
             <Card 
               className={`
-                relative overflow-hidden transition-all duration-300
+                relative overflow-hidden transition-all duration-300 backdrop-blur-xl
                 ${isSelected 
-                  ? 'bg-gray-50 border-2 border-blue-500 shadow-lg scale-[1.02]' 
-                  : 'bg-gray-50 border border-gray-200 shadow-md hover:shadow-lg'
+                  ? 'bg-white/10 border border-purple-500/40' 
+                  : 'bg-white/5 border border-white/10 hover:bg-white/8 hover:border-white/20'
                 }
               `}
             >
               <CardContent className="p-6">
                 <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 rounded-lg bg-sky-500/20 backdrop-blur-sm">
-                      <Music className="w-5 h-5 text-sky-600" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
+                      <Music className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-gray-900">{creative.name}</h3>
-                      <p className="text-sm text-gray-600">{creative.description}</p>
+                      <h3 className="font-semibold text-lg text-white">{creative.name}</h3>
+                      <p className="text-sm text-gray-400 mt-1">{creative.description}</p>
                     </div>
                   </div>
                   {/* Trend Status Tag */}
                   <div className="flex items-center gap-2">
                     {creative.momentum === "rising" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 text-sm font-medium rounded-full border border-orange-200 flex items-center gap-1.5">
-                        <Flame className="w-3.5 h-3.5 text-orange-600" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400 text-sm font-medium rounded-full border border-orange-500/30 flex items-center gap-1.5">
+                        <Flame className="w-4 h-4 text-orange-400" />
                         Hot
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore >= 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-sm font-medium rounded-full border border-green-200 flex items-center gap-1.5">
-                        <TrendingUp className="w-3.5 h-3.5 text-green-600" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 text-sm font-medium rounded-full border border-green-500/30 flex items-center gap-1.5">
+                        <TrendingUp className="w-4 h-4 text-green-400" />
                         Rising
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore < 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 text-sm font-medium rounded-full border border-blue-200 flex items-center gap-1.5">
-                        <Zap className="w-3.5 h-3.5 text-blue-600" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 text-sm font-medium rounded-full border border-blue-500/30 flex items-center gap-1.5">
+                        <Zap className="w-4 h-4 text-blue-400" />
                         Emerging
                       </span>
                     )}
                     {creative.momentum === "declining" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm font-medium rounded-full border border-gray-300 flex items-center gap-1.5">
-                        <TrendingDown className="w-3.5 h-3.5 text-gray-600" />
+                      <span className="px-3 py-1.5 bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-400 text-sm font-medium rounded-full border border-gray-500/30 flex items-center gap-1.5">
+                        <TrendingDown className="w-4 h-4 text-gray-400" />
                         Dying
                       </span>
                     )}
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-400">
                       {creative.views} views • {creative.totalTrendVideos} videos
                     </span>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+                  <div className="flex items-center justify-between text-sm text-gray-400 mb-3">
                     <span>Active Period</span>
-                    <span className="font-medium">{creative.datesActive}</span>
+                    <span className="font-medium text-gray-300">{creative.datesActive}</span>
                   </div>
                 </div>
 
                 <Carousel className="w-full">
-                  <CarouselContent className="-ml-2">
+                  <CarouselContent className="-ml-3">
                     {creative.videos.map((video, idx) => (
-                      <CarouselItem key={idx} className="pl-2 basis-1/2">
-                        <div className="bg-white/20 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
-                          <div className="aspect-[3/4] rounded-t-lg overflow-hidden bg-gray-100 relative group">
+                      <CarouselItem key={idx} className="pl-3 basis-1/2">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
+                          <div className="aspect-[9/16] rounded-t-lg overflow-hidden bg-gray-900 relative group">
                             <img 
                               src={video.thumbnail} 
                               alt={`Video ${idx + 1}`}
@@ -445,20 +448,20 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                             />
                             {/* Tags at the top */}
                             <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1.5">
-                              <span className={`px-3 py-1.5 text-xs font-medium rounded-full backdrop-blur-sm border ${
+                              <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
                                 video.gender === "Female" || (idx % 2 === 0) 
-                                  ? "bg-white/50 text-pink-700 border-white/60" 
-                                  : "bg-white/50 text-blue-700 border-white/60"
+                                  ? "bg-pink-500/30 text-pink-300 border-pink-400/40" 
+                                  : "bg-blue-500/30 text-blue-300 border-blue-400/40"
                               }`}>
                                 {video.gender || (idx % 2 === 0 ? "Female" : "Male")}
                               </span>
-                              <span className="px-3 py-1.5 bg-white/50 backdrop-blur-sm text-gray-700 text-xs font-medium rounded-full border border-white/60">
+                              <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-gray-300 text-xs font-medium rounded-full border border-white/30">
                                 {video.archetype || ["Gen Z", "Millennial", "Creator", "Influencer"][idx]}
                               </span>
-                              <span className={`px-3 py-1.5 text-xs font-medium rounded-full backdrop-blur-sm border ${
+                              <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
                                 ["USA", "UK"].includes(video.region || ["USA", "MEX", "BRA", "UK"][idx])
-                                  ? "bg-white/50 text-blue-700 border-white/60"
-                                  : "bg-white/50 text-green-700 border-white/60"
+                                  ? "bg-blue-500/30 text-blue-300 border-blue-400/40"
+                                  : "bg-green-500/30 text-green-300 border-green-400/40"
                               }`}>
                                 {video.region || ["USA", "MEX", "BRA", "UK"][idx]}
                               </span>
@@ -467,9 +470,9 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                               <Play className="w-6 h-6 text-white" />
                             </div>
                           </div>
-                          <div className="p-2">
-                            <div className="flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                              <Eye className="w-3.5 h-3.5" />
+                          <div className="p-2.5 bg-black/50">
+                            <div className="flex items-center gap-1.5 text-sm font-medium text-white">
+                              <Eye className="w-4 h-4" />
                               <span>{video.views}</span>
                             </div>
                           </div>
@@ -477,8 +480,8 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="left-0 bg-white/70 backdrop-blur-sm border-white/30 hover:bg-white/90" />
-                  <CarouselNext className="right-0 bg-white/70 backdrop-blur-sm border-white/30 hover:bg-white/90" />
+                  <CarouselPrevious className="left-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
+                  <CarouselNext className="right-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
                 </Carousel>
 
                 {isSelected && (
