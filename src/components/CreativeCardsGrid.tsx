@@ -1,19 +1,21 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Play, Music, Palette, User, Hash, Sparkles, Video, Gamepad2, Heart, Camera, Eye, Flame, TrendingUp, Zap, TrendingDown } from "lucide-react";
+import { Play, Video, Eye, TrendingUp, Zap, TrendingDown, Sparkles, ArrowUpRight, Clock, Info, Star } from "lucide-react";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export interface Creative {
   id: number;
   name: string;
   description: string;
+  summary: string;
+  score: number;
+  trendTag: "recommended" | "dying" | "rising" | "stagnant" | "up and coming";
   datesActive: string;
   videos: Array<{
     thumbnail: string;
@@ -51,13 +53,14 @@ const creatives: Creative[] = [
   {
     id: 1,
     name: "Lip Sync with TOS",
-    description: "Viral lip sync trend featuring dramatic emotional performances",
+    description: "Creators are lip-syncing to emotional audio clips with exaggerated facial expressions. Often includes dramatic hand gestures and storytelling through body language.",
+    summary: "Explosive growth with Gen Z audience. Perfect timing for emotional content creators.",
+    score: 9.2,
+    trendTag: "recommended",
     datesActive: "Dec 20 - Jan 10",
     videos: [
       { thumbnail: "/placeholder.svg", views: "2.3M", creator: "@creator1", gender: "Female", archetype: "Gen Z", region: "USA" },
       { thumbnail: "/placeholder.svg", views: "1.8M", creator: "@creator2", gender: "Male", archetype: "Millennial", region: "MEX" },
-      { thumbnail: "/placeholder.svg", views: "3.1M", creator: "@creator3", gender: "Female", archetype: "Creator", region: "BRA" },
-      { thumbnail: "/placeholder.svg", views: "1.5M", creator: "@creator4", gender: "Male", archetype: "Influencer", region: "UK" },
     ],
     views: "287M",
     totalTrendVideos: "15.2K",
@@ -103,13 +106,14 @@ const creatives: Creative[] = [
   {
     id: 2,
     name: "Dance Challenge",
-    description: "High-energy choreography with synchronized movements",
+    description: "Creators perform a specific 15-second dance routine with arm swings and hip movements. Many add their own style variations to the original choreography.",
+    summary: "Strong engagement in India and USA. Tutorial format drives participation.",
+    score: 8.7,
+    trendTag: "rising",
     datesActive: "Jan 5 - Jan 25",
     videos: [
       { thumbnail: "/placeholder.svg", views: "4.2M", creator: "@dancer1" },
       { thumbnail: "/placeholder.svg", views: "3.7M", creator: "@dancer2" },
-      { thumbnail: "/placeholder.svg", views: "2.9M", creator: "@dancer3" },
-      { thumbnail: "/placeholder.svg", views: "3.3M", creator: "@dancer4" },
     ],
     views: "412M",
     totalTrendVideos: "23.8K",
@@ -154,13 +158,14 @@ const creatives: Creative[] = [
   {
     id: 3,
     name: "Transition Effect",
-    description: "Creative transitions with visual effects and timing",
+    description: "Creators use quick hand movements or jumps to transition between outfits or scenes. Popular variations include beat-synced transformations and color changes.",
+    summary: "Technical complexity attracts creators. Growing rapidly in Asian markets.",
+    score: 7.9,
+    trendTag: "up and coming",
     datesActive: "Jan 8 - Jan 28",
     videos: [
       { thumbnail: "/placeholder.svg", views: "1.9M", creator: "@effects1" },
       { thumbnail: "/placeholder.svg", views: "2.4M", creator: "@effects2" },
-      { thumbnail: "/placeholder.svg", views: "1.7M", creator: "@effects3" },
-      { thumbnail: "/placeholder.svg", views: "2.1M", creator: "@effects4" },
     ],
     views: "178M",
     totalTrendVideos: "8.7K",
@@ -205,13 +210,14 @@ const creatives: Creative[] = [
   {
     id: 4,
     name: "Comedy Skit",
-    description: "Relatable humor with quick punchlines and reactions",
+    description: "Creators act out relatable scenarios with exaggerated reactions and timing. Most use POV format or play multiple characters in the same video.",
+    summary: "Highest shareability factor. Comments drive massive algorithm boost.",
+    score: 9.5,
+    trendTag: "rising",
     datesActive: "Jan 10 - Jan 30",
     videos: [
       { thumbnail: "/placeholder.svg", views: "5.1M", creator: "@comedian1" },
       { thumbnail: "/placeholder.svg", views: "3.8M", creator: "@comedian2" },
-      { thumbnail: "/placeholder.svg", views: "4.3M", creator: "@comedian3" },
-      { thumbnail: "/placeholder.svg", views: "2.7M", creator: "@comedian4" },
     ],
     views: "523M",
     totalTrendVideos: "31.2K",
@@ -252,117 +258,14 @@ const creatives: Creative[] = [
       { date: "Jan 28", streams: 4.8 },
       { date: "Jan 30", streams: 4.5 }
     ]
-  },
-  {
-    id: 5,
-    name: "Gaming Moments",
-    description: "Epic gameplay highlights and funny gaming reactions",
-    datesActive: "Jan 12 - Feb 1",
-    videos: [
-      { thumbnail: "/placeholder.svg", views: "3.4M", creator: "@gamer1" },
-      { thumbnail: "/placeholder.svg", views: "2.8M", creator: "@gamer2" },
-      { thumbnail: "/placeholder.svg", views: "4.1M", creator: "@gamer3" },
-      { thumbnail: "/placeholder.svg", views: "2.2M", creator: "@gamer4" },
-    ],
-    views: "289M",
-    totalTrendVideos: "17.5K",
-    growth: "+112%",
-    viralScore: 8.3,
-    momentum: "stable",
-    demographics: {
-      ageRanges: [
-        { range: "13-17", percentage: 48 },
-        { range: "18-24", percentage: 36 },
-        { range: "25-34", percentage: 12 },
-        { range: "35+", percentage: 4 }
-      ],
-      genderSplit: { male: 72, female: 28 },
-      topCountries: [
-        { country: "USA", percentage: 29 },
-        { country: "Germany", percentage: 16 },
-        { country: "Brazil", percentage: 14 },
-        { country: "France", percentage: 11 }
-      ]
-    },
-    keyTakeaways: [
-      "Rage moments get 2x more engagement",
-      "Cross-game content broadens audience",
-      "Live reaction overlays boost retention",
-      "Clips under 30 seconds perform best"
-    ],
-    spotifyData: [
-      { date: "Jan 12", streams: 1.8 },
-      { date: "Jan 14", streams: 2.2 },
-      { date: "Jan 16", streams: 2.6 },
-      { date: "Jan 18", streams: 3.0 },
-      { date: "Jan 20", streams: 3.3 },
-      { date: "Jan 22", streams: 3.5 },
-      { date: "Jan 24", streams: 3.4 },
-      { date: "Jan 26", streams: 3.2 },
-      { date: "Jan 28", streams: 2.9 },
-      { date: "Jan 30", streams: 2.7 },
-      { date: "Feb 1", streams: 2.5 }
-    ]
-  },
-  {
-    id: 6,
-    name: "Fashion Showcase",
-    description: "Outfit transformations and style inspiration content",
-    datesActive: "Jan 15 - Feb 5",
-    videos: [
-      { thumbnail: "/placeholder.svg", views: "2.6M", creator: "@fashion1" },
-      { thumbnail: "/placeholder.svg", views: "3.2M", creator: "@fashion2" },
-      { thumbnail: "/placeholder.svg", views: "2.1M", creator: "@fashion3" },
-      { thumbnail: "/placeholder.svg", views: "2.9M", creator: "@fashion4" },
-    ],
-    views: "198M",
-    totalTrendVideos: "11.3K",
-    growth: "+145%",
-    viralScore: 8.1,
-    momentum: "rising",
-    demographics: {
-      ageRanges: [
-        { range: "13-17", percentage: 31 },
-        { range: "18-24", percentage: 46 },
-        { range: "25-34", percentage: 18 },
-        { range: "35+", percentage: 5 }
-      ],
-      genderSplit: { male: 25, female: 75 },
-      topCountries: [
-        { country: "USA", percentage: 26 },
-        { country: "Italy", percentage: 19 },
-        { country: "France", percentage: 17 },
-        { country: "Spain", percentage: 13 }
-      ]
-    },
-    keyTakeaways: [
-      "Before/after format drives saves",
-      "Affordable alternatives increase shares",
-      "Seasonal content sees 3x engagement",
-      "Styling tips in captions boost interaction"
-    ],
-    spotifyData: [
-      { date: "Jan 15", streams: 1.4 },
-      { date: "Jan 17", streams: 1.7 },
-      { date: "Jan 19", streams: 2.0 },
-      { date: "Jan 21", streams: 2.3 },
-      { date: "Jan 23", streams: 2.6 },
-      { date: "Jan 25", streams: 2.8 },
-      { date: "Jan 27", streams: 2.9 },
-      { date: "Jan 29", streams: 2.7 },
-      { date: "Jan 31", streams: 2.5 },
-      { date: "Feb 2", streams: 2.3 },
-      { date: "Feb 5", streams: 2.1 }
-    ]
   }
 ];
 
 const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect, selectedCreativeId }) => {
-  // Show only first 4 creatives for a cleaner 2x2 layout
   const displayedCreatives = creatives.slice(0, 4);
   
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
       {displayedCreatives.map((creative, index) => {
         const isSelected = creative.id === selectedCreativeId;
         
@@ -372,125 +275,147 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            whileHover={{ y: -4 }}
+            whileHover={{ y: -2, transition: { duration: 0.2 } }}
             onClick={() => onCreativeSelect(creative)}
-            className="cursor-pointer transform-gpu"
+            className="cursor-pointer"
           >
             <Card 
               className={`
-                relative overflow-hidden transition-all duration-300 backdrop-blur-xl
+                relative overflow-hidden transition-all duration-300 backdrop-blur-xl h-[500px]
                 ${isSelected 
                   ? 'bg-white/10 border border-purple-500/40' 
                   : 'bg-white/5 border border-white/10 hover:bg-white/8 hover:border-white/20'
                 }
               `}
             >
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
-                      <Music className="w-5 h-5 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-white">{creative.name}</h3>
-                      <p className="text-sm text-gray-400 mt-1">{creative.description}</p>
-                    </div>
-                  </div>
-                  {/* Trend Status Tag */}
-                  <div className="flex items-center gap-2">
-                    {creative.momentum === "rising" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400 text-sm font-medium rounded-full border border-orange-500/30 flex items-center gap-1.5">
-                        <Flame className="w-4 h-4 text-orange-400" />
-                        Hot
-                      </span>
-                    )}
-                    {creative.momentum === "stable" && creative.viralScore >= 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 text-sm font-medium rounded-full border border-green-500/30 flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4 text-green-400" />
-                        Rising
-                      </span>
-                    )}
-                    {creative.momentum === "stable" && creative.viralScore < 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 text-sm font-medium rounded-full border border-blue-500/30 flex items-center gap-1.5">
-                        <Zap className="w-4 h-4 text-blue-400" />
-                        Emerging
-                      </span>
-                    )}
-                    {creative.momentum === "declining" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-400 text-sm font-medium rounded-full border border-gray-500/30 flex items-center gap-1.5">
-                        <TrendingDown className="w-4 h-4 text-gray-400" />
-                        Dying
-                      </span>
-                    )}
-                    <span className="text-sm text-gray-400">
-                      {creative.views} views • {creative.totalTrendVideos} videos
+              <CardContent className="p-6 h-full flex flex-col">
+                {/* Header with Title and Tag */}
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-semibold text-xl text-white leading-tight">
+                    {creative.name}
+                  </h3>
+                  
+                  {creative.trendTag === "recommended" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 text-xs font-semibold rounded-full border border-purple-400/30">
+                      <Sparkles className="w-3 h-3" />
+                      Recommended
                     </span>
-                  </div>
+                  )}
+                  {creative.trendTag === "rising" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 text-xs font-semibold rounded-full border border-green-400/30">
+                      <TrendingUp className="w-3 h-3" />
+                      Rising
+                    </span>
+                  )}
+                  {creative.trendTag === "up and coming" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 text-xs font-semibold rounded-full border border-blue-400/30">
+                      <ArrowUpRight className="w-3 h-3" />
+                      Up & Coming
+                    </span>
+                  )}
+                  {creative.trendTag === "stagnant" && (
+                    <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-400 text-xs font-semibold rounded-full border border-yellow-400/30">
+                      Stagnant
+                    </span>
+                  )}
+                  {creative.trendTag === "dying" && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-400 text-xs font-semibold rounded-full border border-gray-400/30">
+                      <TrendingDown className="w-3 h-3" />
+                      Dying
+                    </span>
+                  )}
+                </div>
+                
+                {/* Creative Description */}
+                <p className="text-xs text-gray-500 leading-relaxed mb-2">
+                  {creative.description}
+                </p>
+                
+                {/* Summary */}
+                <p className="text-sm text-gray-400 leading-relaxed mb-3">
+                  {creative.summary}
+                </p>
+                
+                {/* Stats Bar with Colored Icons */}
+                <div className="flex items-center gap-4 text-sm mb-3">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="flex items-center gap-1.5">
+                          <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                          <span className="font-semibold text-gray-300">{creative.score}/10</span>
+                          <Info className="w-3 h-3 text-gray-500 hover:text-gray-400 transition-colors cursor-help" />
+                        </span>
+                      </TooltipTrigger>
+                      <TooltipContent className="bg-black/90 text-white border-white/20">
+                        <p className="text-xs">This is calculated using Spencer's Algorithm</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                  <span className="text-gray-600">•</span>
+                  <span className="flex items-center gap-1.5">
+                    <Eye className="w-3.5 h-3.5 text-sky-400" />
+                    <span className="font-semibold text-gray-300">{creative.views}</span>
+                  </span>
+                  <span className="text-gray-600">•</span>
+                  <span className="flex items-center gap-1.5">
+                    <Video className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="font-semibold text-gray-300">{creative.totalTrendVideos}</span>
+                  </span>
                 </div>
 
-                <div className="mb-4">
-                  <div className="flex items-center justify-between text-sm text-gray-400 mb-3">
-                    <span>Active Period</span>
-                    <span className="font-medium text-gray-300">{creative.datesActive}</span>
-                  </div>
-                </div>
-
-                <Carousel className="w-full">
-                  <CarouselContent className="-ml-3">
-                    {creative.videos.map((video, idx) => (
-                      <CarouselItem key={idx} className="pl-3 basis-1/2">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
-                          <div className="aspect-[9/16] rounded-t-lg overflow-hidden bg-gray-900 relative group">
-                            <img 
-                              src={video.thumbnail} 
-                              alt={`Video ${idx + 1}`}
-                              className="w-full h-full object-cover"
-                            />
-                            {/* Tags at the top */}
-                            <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1.5">
-                              <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
-                                video.gender === "Female" || (idx % 2 === 0) 
-                                  ? "bg-pink-500/30 text-pink-300 border-pink-400/40" 
-                                  : "bg-blue-500/30 text-blue-300 border-blue-400/40"
-                              }`}>
-                                {video.gender || (idx % 2 === 0 ? "Female" : "Male")}
-                              </span>
-                              <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-gray-300 text-xs font-medium rounded-full border border-white/30">
-                                {video.archetype || ["Gen Z", "Millennial", "Creator", "Influencer"][idx]}
-                              </span>
-                              <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
-                                ["USA", "UK"].includes(video.region || ["USA", "MEX", "BRA", "UK"][idx])
-                                  ? "bg-blue-500/30 text-blue-300 border-blue-400/40"
-                                  : "bg-green-500/30 text-green-300 border-green-400/40"
-                              }`}>
-                                {video.region || ["USA", "MEX", "BRA", "UK"][idx]}
-                              </span>
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
-                              <Play className="w-6 h-6 text-white" />
-                            </div>
-                          </div>
-                          <div className="p-2.5 bg-black/50">
-                            <div className="flex items-center gap-1.5 text-sm font-medium text-white">
-                              <Eye className="w-4 h-4" />
-                              <span>{video.views}</span>
-                            </div>
+                {/* Video Thumbnails - Fill the entire remaining space */}
+                <div className="flex gap-3 flex-1 justify-center items-stretch">
+                  {creative.videos.slice(0, 2).map((video, idx) => (
+                    <div key={idx} className="relative group flex-1 max-w-[200px]">
+                      <div className="h-full min-h-[320px] bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20">
+                        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                          <Video className="w-6 h-6 text-gray-700" />
+                        </div>
+                        <img 
+                          src={video.thumbnail} 
+                          alt={`Video ${idx + 1}`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        
+                        {/* View count */}
+                        <div className="absolute bottom-2 left-2 flex items-center gap-1 text-white bg-black/50 backdrop-blur-md px-2 py-1 rounded-lg">
+                          <Eye className="w-3 h-3" />
+                          <span className="text-xs font-semibold">{video.views}</span>
+                        </div>
+                        
+                        {/* Play overlay on hover */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <div className="w-12 h-12 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/30">
+                            <Play className="w-4 h-4 text-white ml-0.5" fill="white" />
                           </div>
                         </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
-                  <CarouselNext className="right-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
-                </Carousel>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
+                {/* Bottom Date Only */}
+                <div className="flex items-center justify-end pt-2 border-t border-white/5 mt-2">
+                  <span className="text-xs text-gray-500 flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {creative.datesActive}
+                  </span>
+                </div>
+
+                {/* Selection indicator */}
                 {isSelected && (
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute top-3 right-3"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="absolute top-4 right-4"
                   >
-                    <div className="w-2 h-2 bg-sky-500 rounded-full animate-pulse" />
+                    <div className="relative">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                      <div className="absolute inset-0 w-2 h-2 bg-purple-400 rounded-full animate-ping" />
+                    </div>
                   </motion.div>
                 )}
               </CardContent>

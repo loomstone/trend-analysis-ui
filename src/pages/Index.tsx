@@ -58,7 +58,7 @@ const IndexContent = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="py-6 px-8"
+          className="py-4 px-8"
         >
           {/* Breadcrumbs */}
           <motion.div
@@ -66,7 +66,7 @@ const IndexContent = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Breadcrumb className="mb-6">
+            <Breadcrumb className="mb-0">
               <BreadcrumbList className="text-base">
                 <BreadcrumbItem>
                   <BreadcrumbLink href="/" className="text-gray-400 hover:text-white transition-colors font-medium">
@@ -97,13 +97,13 @@ const IndexContent = () => {
         </motion.div>
 
         {/* Dashboard Content */}
-        <div className="flex-1 flex flex-col p-6 space-y-6">
+        <div className="flex-1 flex flex-col p-6 space-y-4 overflow-y-auto">
           {/* Top Panel - Full Width Graph */}
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="h-[550px]"
+            className="min-h-[56vh]"
           >
             <SimpleTrendGraph 
               selectedTrendId={selectedCreative?.id?.toString() || selectedTrendId} 

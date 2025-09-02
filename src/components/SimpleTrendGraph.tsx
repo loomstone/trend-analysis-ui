@@ -98,7 +98,7 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.8 }}
             >
-              Started Last week
+              Started Dec 20, 2024
             </motion.span>
           </div>
         </div>
@@ -163,7 +163,7 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
         <ResponsiveContainer width="100%" height="100%">
           <LineChart 
             data={data}
-            margin={{ top: 20, right: 30, left: 40, bottom: 30 }}
+            margin={{ top: 30, right: 40, left: 50, bottom: 40 }}
           >
             <CartesianGrid 
               strokeDasharray="0" 
@@ -174,31 +174,31 @@ const SimpleTrendGraph = ({ selectedTrendId, selectedCreative }: SimpleTrendGrap
             />
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
               stroke="rgba(255, 255, 255, 0.1)"
               axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
             />
             <YAxis 
               yAxisId="videos"
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
               stroke="rgba(255, 255, 255, 0.1)"
               axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.5)', fontSize: 12 } }}
+              label={{ value: 'Videos (K)', angle: -90, position: 'insideLeft', style: { fill: 'rgba(255, 255, 255, 0.6)', fontSize: 14 } }}
             />
             <YAxis 
               yAxisId="streams"
               orientation="right"
-              tick={{ fontSize: 11, fill: 'rgba(255, 255, 255, 0.5)', fontWeight: 500 }}
+              tick={{ fontSize: 12, fill: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}
               stroke="rgba(255, 255, 255, 0.1)"
               axisLine={{ stroke: 'rgba(255, 255, 255, 0.1)' }}
               tickLine={false}
               domain={[0, 'dataMax']}
               tickFormatter={(value) => `${value}K`}
-              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.5)', fontSize: 12 } }}
+              label={{ value: 'Spotify Streams (K)', angle: 90, position: 'insideRight', style: { fill: 'rgba(255, 255, 255, 0.6)', fontSize: 14 } }}
             />
             <Tooltip 
               contentStyle={{ 
