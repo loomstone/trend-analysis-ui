@@ -173,40 +173,54 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-3 mb-2">
               <h2 className="text-2xl font-bold text-white">{displayCreative.name}</h2>
               {displayCreative.momentum === "rising" && (
-                <Badge className="bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400 border border-orange-500/30 font-medium flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 text-orange-400" />
-                  Hot
-                </Badge>
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+                    <Flame className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
+                    <span className="text-xs font-semibold text-orange-400">Hot</span>
+                  </div>
+                </div>
               )}
               {displayCreative.momentum === "stable" && displayCreative.viralScore >= 8 && (
-                <Badge className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 border border-green-500/30 font-medium flex items-center gap-1.5">
-                  <TrendingUp className="w-3.5 h-3.5 text-green-400" />
-                  Rising
-                </Badge>
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+                    <TrendingUp className="w-3.5 h-3.5 text-purple-400" />
+                    <span className="text-xs font-semibold text-purple-400">Rising</span>
+                  </div>
+                </div>
               )}
               {displayCreative.momentum === "stable" && displayCreative.viralScore < 8 && (
-                <Badge className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 border border-blue-500/30 font-medium flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-blue-400" />
-                  Emerging
-                </Badge>
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+                    <Zap className="w-3.5 h-3.5 text-blue-400" />
+                    <span className="text-xs font-semibold text-blue-400">Emerging</span>
+                  </div>
+                </div>
               )}
               {displayCreative.momentum === "declining" && (
-                <Badge className="bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-400 border border-gray-500/30 font-medium flex items-center gap-1.5">
-                  <TrendingDown className="w-3.5 h-3.5 text-gray-400" />
-                  Dying
-                </Badge>
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-gray-500/20 to-gray-600/20 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+                    <TrendingDown className="w-3.5 h-3.5 text-gray-400" />
+                    <span className="text-xs font-semibold text-gray-400">Dying</span>
+                  </div>
+                </div>
               )}
             </div>
             <p className="text-gray-400">{displayCreative.description}</p>
           </div>
           <Button 
-            className="flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white border border-purple-400/30 backdrop-blur-md shadow-lg rounded-full px-6"
+            className="group relative flex items-center gap-2.5 px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-purple-400/30 backdrop-blur-md rounded-full transition-all duration-300 overflow-hidden"
           >
-            <Rocket className="w-4 h-4" />
-            Scale
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300" />
+            <Rocket className="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors relative z-10" />
+            <span className="font-medium text-sm group-hover:text-purple-300 transition-colors relative z-10">Scale</span>
+            <div className="absolute -bottom-1 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Button>
         </div>
       </CardHeader>
@@ -460,171 +474,364 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
           </TabsContent>
 
           <TabsContent value="engagement" className="mt-4">
-            <div className="space-y-6">
+            <div className="space-y-10">
               {/* Engagement Analysis Header */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <BarChart3 className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-400">Engagement analysis across different creator segments</span>
+                  <BarChart3 className="w-5 h-5 text-purple-400" />
+                  <span className="text-base text-gray-300">Demographic Analytics</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-400">Viral Score</span>
+                    <span className="text-2xl font-bold text-green-400">{displayCreative.viralScore}/10</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 rounded-full border border-purple-500/20">
+                    <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                    <span className="text-sm text-purple-300 font-medium">Live Analytics</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Key Metrics */}
-              <div className="grid grid-cols-4 gap-4">
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col justify-between min-h-[120px] transform-gpu"
-                >
-                  <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs text-gray-400 leading-tight">Total</p>
-                      <p className="text-xs text-gray-400 leading-tight">Views</p>
-                    </div>
-                  </div>
-                  <p className="text-2xl font-bold text-white">{displayCreative.views}</p>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col justify-between min-h-[120px] transform-gpu"
-                >
-                  <div className="flex items-center gap-2">
-                    <Play className="w-4 h-4 text-purple-400 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs text-gray-400 leading-tight">Detected</p>
-                      <p className="text-xs text-gray-400 leading-tight">Videos</p>
-                    </div>
-                  </div>
-                  <p className="text-2xl font-bold text-white">{displayCreative.totalTrendVideos || "12.4K"}</p>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col justify-between min-h-[120px] transform-gpu"
-                >
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0" />
-                    <p className="text-xs text-gray-400">Growth</p>
-                  </div>
-                  <p className="text-2xl font-bold text-green-400">{displayCreative.growth}</p>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col justify-between min-h-[120px] transform-gpu"
-                >
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                    <div>
-                      <p className="text-xs text-gray-400 leading-tight">Dates</p>
-                      <p className="text-xs text-gray-400 leading-tight">Active</p>
-                    </div>
-                  </div>
-                  <p className="text-xs font-medium text-white leading-tight">{displayCreative.datesActive}</p>
-                </motion.div>
-              </div>
-
-              {/* Viral Score */}
-              <div className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
-                {renderViralScore(displayCreative.viralScore)}
-              </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              {/* Left Side - Engagement Stats & Videos */}
-              <div className="space-y-4">
-                {/* Engagement Metrics */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-blue-500/20 rounded-xl">
-                        <Eye className="w-5 h-5 text-blue-400" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-white">{displayCreative.views}</p>
-                        <p className="text-sm text-gray-400">Total Views</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-purple-500/20 rounded-xl">
-                        <Video className="w-5 h-5 text-purple-400" />
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-white">{displayCreative.totalTrendVideos}</p>
-                        <p className="text-sm text-gray-400">Detected Videos</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Top Videos Carousel */}
-                <div className="bg-white/5 backdrop-blur-md rounded-xl p-5 border border-white/10">
-                  <h4 className="font-medium text-white mb-4">Top Performing Videos</h4>
-                  <div className="relative">
-                    <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                      {displayCreative.videos.slice(0, 3).map((video, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-48">
-                          <div className="bg-white/5 backdrop-blur-md rounded-xl overflow-hidden border border-white/10 hover:border-purple-400/30 transition-all">
-                            <div className="aspect-[9/16] bg-gray-900 relative">
-                              <img src={video.thumbnail} alt={`Video ${idx + 1}`} className="w-full h-full object-cover" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                                <div className="text-white">
-                                  <p className="text-sm font-semibold">{video.views}</p>
-                                  <p className="text-xs opacity-80">by @{video.creator || `creator${idx + 1}`}</p>
+              {/* Top Row with Videos Carousel on Left */}
+              <div className="grid grid-cols-3 gap-10">
+                {/* Top Videos Carousel - Left Side */}
+                <div className="col-span-1">
+                  <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 h-full flex flex-col">
+                    <h4 className="font-bold text-2xl text-white mb-6 flex items-center gap-3">
+                      <Video className="w-7 h-7 text-purple-400" />
+                      Top Videos
+                    </h4>
+                    <div className="relative flex-1 min-h-[600px]">
+                      <div className="flex gap-4 overflow-x-auto scrollbar-hide h-full pb-2">
+                        {displayCreative.videos.map((video, idx) => (
+                          <div key={idx} className="flex-shrink-0 w-52 h-full">
+                            <div className="bg-white/5 backdrop-blur-md rounded-lg overflow-hidden border border-white/10 hover:border-purple-400/30 transition-all h-full flex flex-col">
+                              <div className="flex-1 bg-gray-900 relative min-h-[550px]">
+                                <img src={video.thumbnail} alt={`Video ${idx + 1}`} className="w-full h-full object-cover" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 p-5">
+                                  <div className="text-white">
+                                    <p className="text-2xl font-bold mb-2">{video.views}</p>
+                                    <p className="text-base opacity-90">@{video.creator || `creator${idx + 1}`}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Side - Engagement Insights */}
-              <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-md rounded-xl p-6 border border-white/10">
-                <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
-                  <div className="p-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl">
-                    <BarChart3 className="w-5 h-5 text-purple-400" />
-                  </div>
-                  Engagement Analysis
-                </h4>
-                <div className="space-y-4">
-                  <div className="bg-white/5 rounded-xl p-4">
-                    <h5 className="font-medium text-white mb-2">Content Performance</h5>
-                    <ul className="space-y-2 text-sm text-gray-300">
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5 flex-shrink-0" />
-                        <span>Videos using this trend achieve an average of {Math.floor(parseInt(displayCreative.views.replace(/[^\d]/g, '')) / parseInt(displayCreative.totalTrendVideos.replace(/[^\d]/g, ''))).toLocaleString()} views per post</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-pink-400 mt-1.5 flex-shrink-0" />
-                        <span>Peak engagement occurs during {displayCreative.momentum === 'rising' ? 'evening hours (7-11 PM)' : 'afternoon hours (2-6 PM)'}</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0" />
-                        <span>Tutorial-style content sees {displayCreative.momentum === 'rising' ? '5x' : '3x'} higher completion rates</span>
-                      </li>
-                    </ul>
-                  </div>
+                {/* Gender Performance - Takes up remaining 2 columns */}
+                <div className="col-span-2 grid grid-cols-2 gap-6">
+                {/* Gender Performance */}
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl p-10 border border-white/10">
+                  <h4 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
+                    <Users className="w-5 h-5 text-purple-400" />
+                    Gender
+                  </h4>
                   
-                  <div className="bg-white/5 rounded-xl p-4">
-                    <h5 className="font-medium text-white mb-2">Growth Trajectory</h5>
-                    <p className="text-sm text-gray-300 leading-relaxed">
-                      This trend is currently {displayCreative.momentum} with a {displayCreative.growth} growth rate. 
-                      {displayCreative.momentum === 'rising' 
-                        ? ' Optimal time to launch campaigns and maximize reach before market saturation.'
-                        : displayCreative.momentum === 'stable'
-                        ? ' Consistent performance indicates reliable engagement for long-term campaigns.'
-                        : ' Consider refreshing creative approach or pivoting to emerging trends.'}
-                    </p>
+                  <div className="space-y-8">
+                    {/* Female Performance */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="relative"
+                    >
+                      <div className="bg-gradient-to-r from-pink-500/15 to-purple-500/15 rounded-xl p-4 border border-pink-500/30 shadow-lg shadow-pink-500/10">
+                        <div className="flex items-center justify-between mb-6">
+                          <div>
+                            <p className="text-base font-semibold text-white">Female Creators</p>
+                            <p className="text-sm text-gray-400">65% of total creators</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-3xl font-bold text-pink-400">187M</p>
+                            <p className="text-sm text-gray-400">views</p>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-3 gap-4 mt-6">
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/15 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Avg Views</p>
+                              <p className="text-3xl font-bold text-white">23.4K</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-green-500/15 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Engagement</p>
+                              <p className="text-3xl font-bold text-green-400">+12%</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/15 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Retention</p>
+                              <p className="text-3xl font-bold text-white">68%</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-3">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-gray-400">Performance Score</span>
+                            <span className="text-pink-400 font-semibold">8.7/10</span>
+                          </div>
+                          <div className="w-full bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-xl rounded-full h-2">
+                            <motion.div 
+                              className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500"
+                              initial={{ width: 0 }}
+                              animate={{ width: "87%" }}
+                              transition={{ duration: 1, ease: "easeOut" }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Male Performance */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="relative"
+                    >
+                      <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-xl p-4 border border-blue-500/20">
+                        <div className="flex items-center justify-between mb-6">
+                          <div>
+                            <p className="text-base font-semibold text-white">Male Creators</p>
+                            <p className="text-sm text-gray-400">35% of total creators</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-3xl font-bold text-blue-400">100M</p>
+                            <p className="text-sm text-gray-400">views</p>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-3 gap-4 mt-6">
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Avg Views</p>
+                              <p className="text-3xl font-bold text-white">18.2K</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-yellow-500/5 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Engagement</p>
+                              <p className="text-3xl font-bold text-yellow-400">+8%</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden rounded-xl p-5">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl" />
+                            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/5 to-transparent" />
+                            <div className="relative z-10">
+                              <p className="text-xl text-gray-400">Retention</p>
+                              <p className="text-3xl font-bold text-white">62%</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-3">
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-gray-400">Performance Score</span>
+                            <span className="text-blue-400 font-semibold">7.2/10</span>
+                          </div>
+                          <div className="w-full bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-xl rounded-full h-2">
+                            <motion.div 
+                              className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"
+                              initial={{ width: 0 }}
+                              animate={{ width: "72%" }}
+                              transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
+
+                {/* Age Group Performance */}
+                <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+                  <h4 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-green-400" />
+                    Age Groups
+                  </h4>
+                  
+                  <div className="space-y-3">
+                    {[
+                      { range: "13-17", views: "95M", engagement: "+18%", color: "green", percentage: 42 },
+                      { range: "18-24", views: "122M", engagement: "+15%", color: "purple", percentage: 38 },
+                      { range: "25-34", views: "52M", engagement: "+9%", color: "blue", percentage: 15 },
+                      { range: "35+", views: "18M", engagement: "+5%", color: "orange", percentage: 5 }
+                    ].map((age, idx) => (
+                      <motion.div
+                        key={age.range}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className={`bg-gradient-to-r ${
+                          age.color === 'green' ? 'from-green-500/10 to-emerald-500/10 border-green-500/20' :
+                          age.color === 'purple' ? 'from-purple-500/10 to-pink-500/10 border-purple-500/20' :
+                          age.color === 'blue' ? 'from-blue-500/10 to-cyan-500/10 border-blue-500/20' :
+                          'from-orange-500/10 to-red-500/10 border-orange-500/20'
+                        } rounded-xl p-3 border`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-base font-semibold text-white">{age.range} years</p>
+                            <p className="text-sm text-gray-400">{age.percentage}% of audience</p>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <div className="text-right">
+                              <p className="text-xl font-bold text-white">{age.views}</p>
+                              <p className="text-sm text-gray-400">total views</p>
+                            </div>
+                            <div className={`px-2 py-1 rounded-lg bg-black/20 border ${
+                              age.color === 'green' ? 'border-green-500/30' :
+                              age.color === 'purple' ? 'border-purple-500/30' :
+                              age.color === 'blue' ? 'border-blue-500/30' :
+                              'border-orange-500/30'
+                            }`}>
+                              <p className={`text-sm font-semibold ${
+                                age.color === 'green' ? 'text-green-400' :
+                                age.color === 'purple' ? 'text-purple-400' :
+                                age.color === 'blue' ? 'text-blue-400' :
+                                'text-orange-400'
+                              }`}>{age.engagement}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
+
+              {/* Creator Archetype Performance */}
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-10 border border-white/10">
+                <h4 className="font-bold text-2xl text-white mb-8 flex items-center gap-3">
+                  <Sparkles className="w-7 h-7 text-yellow-400" />
+                  Creator Archetypes
+                </h4>
+                
+                <div className="grid grid-cols-4 gap-6">
+                  {[
+                    { 
+                      type: "Influencers", 
+                      views: "89M", 
+                      avgViews: "125K", 
+                      engagement: "9.2%",
+                      growth: "+45%",
+                      color: "purple",
+                      topContent: "Lifestyle & Fashion"
+                    },
+                    { 
+                      type: "Entertainers", 
+                      views: "76M", 
+                      avgViews: "85K", 
+                      engagement: "8.5%",
+                      growth: "+38%",
+                      color: "pink",
+                      topContent: "Comedy & Dance"
+                    },
+                    { 
+                      type: "Educators", 
+                      views: "62M", 
+                      avgViews: "42K", 
+                      engagement: "7.8%",
+                      growth: "+22%",
+                      color: "blue",
+                      topContent: "Tutorials & Tips"
+                    },
+                    { 
+                      type: "Artists", 
+                      views: "60M", 
+                      avgViews: "38K", 
+                      engagement: "8.9%",
+                      growth: "+31%",
+                      color: "green",
+                      topContent: "Music & Visual"
+                    }
+                  ].map((archetype, idx) => (
+                    <motion.div
+                      key={archetype.type}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ scale: 1.02 }}
+                      className={`relative bg-gradient-to-br ${
+                        archetype.color === 'purple' ? 'from-purple-500/10 to-pink-500/10' :
+                        archetype.color === 'pink' ? 'from-pink-500/10 to-rose-500/10' :
+                        archetype.color === 'blue' ? 'from-blue-500/10 to-cyan-500/10' :
+                        'from-green-500/10 to-emerald-500/10'
+                      } rounded-xl p-4 border ${
+                        archetype.color === 'purple' ? 'border-purple-500/20' :
+                        archetype.color === 'pink' ? 'border-pink-500/20' :
+                        archetype.color === 'blue' ? 'border-blue-500/20' :
+                        'border-green-500/20'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                          <div className={`px-2 py-0.5 rounded-full bg-black/20 border ${
+                            archetype.color === 'purple' ? 'border-purple-500/30' :
+                            archetype.color === 'pink' ? 'border-pink-500/30' :
+                            archetype.color === 'blue' ? 'border-blue-500/30' :
+                            'border-green-500/30'
+                          }`}>
+                            <span className={`text-sm font-semibold ${
+                              archetype.color === 'purple' ? 'text-purple-400' :
+                              archetype.color === 'pink' ? 'text-pink-400' :
+                              archetype.color === 'blue' ? 'text-blue-400' :
+                              'text-green-400'
+                            }`}>{archetype.growth}</span>
+                          </div>
+                        </div>
+                        
+                        <h5 className="font-semibold text-base text-white mb-2">{archetype.type}</h5>
+                        
+                        <div className="space-y-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-gray-400">Total Views</span>
+                            <span className="text-base font-bold text-white">{archetype.views}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-gray-400">Avg/Video</span>
+                            <span className="text-base font-bold text-white">{archetype.avgViews}</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-gray-400">Engagement</span>
+                            <span className={`text-base font-bold ${
+                              archetype.color === 'purple' ? 'text-purple-400' :
+                              archetype.color === 'pink' ? 'text-pink-400' :
+                              archetype.color === 'blue' ? 'text-blue-400' :
+                              'text-green-400'
+                            }`}>{archetype.engagement}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-3 pt-3 border-t border-white/10">
+                          <p className="text-sm text-gray-400">Top Content</p>
+                          <p className="text-sm font-medium text-white">{archetype.topContent}</p>
+                        </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </TabsContent>
 

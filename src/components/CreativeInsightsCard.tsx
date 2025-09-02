@@ -205,12 +205,12 @@ const CreativeInsightsCard = ({ selectedTrendId }: CreativeInsightsCardProps) =>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="p-0 h-auto font-normal hover:bg-transparent group"
+                  className="group relative flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/30 rounded-full transition-all duration-200 backdrop-blur-md"
                 >
-                  <CardTitle className="text-lg flex items-center gap-2 group-hover:text-purple-400 transition-colors cursor-pointer">
+                  <CardTitle className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors">
                     {selectedTrend}
-                    <ChevronDown className="w-4 h-4 text-gray-500 group-hover:text-purple-400 transition-colors" />
                   </CardTitle>
+                  <ChevronDown className="w-4 h-4 text-gray-400 group-hover:text-purple-400 transition-all duration-200 group-hover:rotate-180" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" align="start">
