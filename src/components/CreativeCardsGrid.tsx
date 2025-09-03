@@ -378,60 +378,60 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
           >
             <Card 
               className={`
-                relative overflow-hidden transition-all duration-300 backdrop-blur-xl
+                relative overflow-hidden transition-all duration-300 shadow-lg
                 ${isSelected 
-                  ? 'bg-white/10 border border-purple-500/40' 
-                  : 'bg-white/5 border border-white/10 hover:bg-white/8 hover:border-white/20'
+                  ? 'bg-white border-2 border-blue-600 shadow-xl' 
+                  : 'bg-white border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:shadow-xl'
                 }
               `}
             >
               <CardContent className="p-6">
                 <div className="mb-4">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
-                      <Music className="w-5 h-5 text-white" />
+                    <div className="p-2 rounded-lg bg-blue-50 border border-blue-200">
+                      <Music className="w-5 h-5 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-white">{creative.name}</h3>
-                      <p className="text-sm text-gray-400 mt-1">{creative.description}</p>
+                      <h3 className="font-semibold text-lg text-gray-900">{creative.name}</h3>
+                      <p className="text-sm text-gray-600 mt-1">{creative.description}</p>
                     </div>
                   </div>
                   {/* Trend Status Tag */}
                   <div className="flex items-center gap-2">
                     {creative.momentum === "rising" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400 text-sm font-medium rounded-full border border-orange-500/30 flex items-center gap-1.5">
-                        <Flame className="w-4 h-4 text-orange-400" />
+                      <span className="px-3 py-1.5 bg-orange-50 text-orange-700 text-sm font-medium rounded-full border border-orange-200 flex items-center gap-1.5">
+                        <Flame className="w-4 h-4 text-orange-600" />
                         Hot
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore >= 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 text-sm font-medium rounded-full border border-green-500/30 flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4 text-green-400" />
+                      <span className="px-3 py-1.5 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-200 flex items-center gap-1.5">
+                        <TrendingUp className="w-4 h-4 text-green-600" />
                         Rising
                       </span>
                     )}
                     {creative.momentum === "stable" && creative.viralScore < 8 && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-400 text-sm font-medium rounded-full border border-blue-500/30 flex items-center gap-1.5">
-                        <Zap className="w-4 h-4 text-blue-400" />
+                      <span className="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-full border border-blue-200 flex items-center gap-1.5">
+                        <Zap className="w-4 h-4 text-blue-600" />
                         Emerging
                       </span>
                     )}
                     {creative.momentum === "declining" && (
-                      <span className="px-3 py-1.5 bg-gradient-to-r from-gray-500/20 to-gray-600/20 text-gray-400 text-sm font-medium rounded-full border border-gray-500/30 flex items-center gap-1.5">
-                        <TrendingDown className="w-4 h-4 text-gray-400" />
+                      <span className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full border border-gray-300 flex items-center gap-1.5">
+                        <TrendingDown className="w-4 h-4 text-gray-600" />
                         Dying
                       </span>
                     )}
-                    <span className="text-sm text-gray-400">
+                    <span className="text-sm text-gray-600">
                       {creative.views} views • {creative.totalTrendVideos} videos
                     </span>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <div className="flex items-center justify-between text-sm text-gray-400 mb-3">
+                  <div className="flex items-center justify-between text-sm text-gray-600 mb-3">
                     <span>Active Period</span>
-                    <span className="font-medium text-gray-300">{creative.datesActive}</span>
+                    <span className="font-medium text-gray-900">{creative.datesActive}</span>
                   </div>
                 </div>
 
@@ -439,7 +439,7 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                   <CarouselContent className="-ml-3">
                     {creative.videos.map((video, idx) => (
                       <CarouselItem key={idx} className="pl-3 basis-1/2">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
+                        <div className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm">
                           <div className="aspect-[9/16] rounded-t-lg overflow-hidden bg-gray-900 relative group">
                             <img 
                               src={video.thumbnail} 
@@ -450,18 +450,18 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                             <div className="absolute top-2 left-2 right-2 flex flex-wrap gap-1.5">
                               <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
                                 video.gender === "Female" || (idx % 2 === 0) 
-                                  ? "bg-pink-500/30 text-pink-300 border-pink-400/40" 
-                                  : "bg-blue-500/30 text-blue-300 border-blue-400/40"
+                                  ? "bg-pink-100/90 text-pink-800 border-pink-300/60" 
+                                  : "bg-blue-100/90 text-blue-800 border-blue-300/60"
                               }`}>
                                 {video.gender || (idx % 2 === 0 ? "Female" : "Male")}
                               </span>
-                              <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-gray-300 text-xs font-medium rounded-full border border-white/30">
+                              <span className="px-2 py-1 bg-gray-100/90 backdrop-blur-sm text-gray-800 text-xs font-medium rounded-full border border-gray-300/60">
                                 {video.archetype || ["Gen Z", "Millennial", "Creator", "Influencer"][idx]}
                               </span>
                               <span className={`px-2 py-1 text-xs font-medium rounded-full backdrop-blur-sm border ${
                                 ["USA", "UK"].includes(video.region || ["USA", "MEX", "BRA", "UK"][idx])
-                                  ? "bg-blue-500/30 text-blue-300 border-blue-400/40"
-                                  : "bg-green-500/30 text-green-300 border-green-400/40"
+                                  ? "bg-blue-100/90 text-blue-800 border-blue-300/60"
+                                  : "bg-green-100/90 text-green-800 border-green-300/60"
                               }`}>
                                 {video.region || ["USA", "MEX", "BRA", "UK"][idx]}
                               </span>
@@ -470,8 +470,8 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                               <Play className="w-6 h-6 text-white" />
                             </div>
                           </div>
-                          <div className="p-2.5 bg-black/50">
-                            <div className="flex items-center gap-1.5 text-sm font-medium text-white">
+                          <div className="p-2.5 bg-gray-100">
+                            <div className="flex items-center gap-1.5 text-sm font-medium text-gray-900">
                               <Eye className="w-4 h-4" />
                               <span>{video.views}</span>
                             </div>
@@ -480,8 +480,8 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="left-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
-                  <CarouselNext className="right-0 bg-white/20 backdrop-blur-sm border-white/30 hover:bg-white/30 text-white" />
+                  <CarouselPrevious className="left-0 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 shadow-sm" />
+                  <CarouselNext className="right-0 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 shadow-sm" />
                 </Carousel>
 
                 {isSelected && (
@@ -490,7 +490,7 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
                     animate={{ scale: 1 }}
                     className="absolute top-3 right-3"
                   >
-                    <div className="w-2 h-2 bg-sky-500 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
                   </motion.div>
                 )}
               </CardContent>

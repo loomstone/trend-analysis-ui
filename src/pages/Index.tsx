@@ -32,27 +32,11 @@ const IndexContent = () => {
   
   return (
     <div className="min-h-screen m-0 p-0 w-full flex relative overflow-hidden">
-      {/* Dark Background */}
-      <div className="absolute inset-0 bg-[#121212]" />
+      {/* Light Background */}
+      <div className="absolute inset-0 bg-white" />
       
-
-      
-      {/* Edge Blur Effects - Icy Glass */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-white/5 via-white/2 to-transparent blur-2xl" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white/5 via-white/2 to-transparent blur-2xl" />
-        <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white/5 via-white/2 to-transparent blur-2xl" />
-        <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-white/5 via-white/2 to-transparent blur-2xl" />
-        
-        {/* Corner blur enhancements */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white/3 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/3 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/3 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/3 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-      </div>
-      
-      {/* Main Content with Glass Effect */}
-      <div className="flex-1 flex flex-col relative z-10 bg-white/5 backdrop-blur-xl">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col relative z-10">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
@@ -69,25 +53,25 @@ const IndexContent = () => {
             <Breadcrumb className="mb-6">
               <BreadcrumbList className="text-base">
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/" className="text-gray-400 hover:text-white transition-colors font-medium">
+                  <BreadcrumbLink href="/" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                     Home
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-gray-600" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/artists/fuerza-regida" className="text-gray-400 hover:text-white transition-colors font-medium">
+                  <BreadcrumbLink href="/artists/fuerza-regida" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                     Fuerza Regida
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-gray-600" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/songs/me-jalo" className="text-gray-400 hover:text-white transition-colors font-medium">
+                  <BreadcrumbLink href="/songs/me-jalo" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
                     Me Jalo
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="text-gray-600" />
+                <BreadcrumbSeparator className="text-gray-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage className="text-white font-semibold">
+                  <BreadcrumbPage className="text-gray-900 font-semibold">
                     Trend Analysis
                   </BreadcrumbPage>
                 </BreadcrumbItem>
@@ -124,8 +108,8 @@ const IndexContent = () => {
                 className="flex-1"
               >
                 <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-white">Trending Creatives</h2>
-                  <span className="text-sky-400 font-semibold">• Click any card to analyze</span>
+                  <h2 className="text-2xl font-bold text-gray-900">Trending Creatives</h2>
+                  <span className="text-blue-600 font-semibold">• Click any card to analyze</span>
                 </div>
                 <CreativeCardsGrid 
                   onCreativeSelect={handleCreativeSelect}
@@ -145,16 +129,16 @@ const IndexContent = () => {
                 <div className="mb-4 flex items-center justify-between">
                   <button
                     onClick={handleBackToGrid}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 text-white font-medium rounded-xl transition-all duration-200 border border-purple-400/30 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium rounded-xl transition-all duration-200 border border-blue-200 shadow-sm hover:shadow-md hover:shadow-blue-100"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                     Back to All Creatives
                   </button>
-                  <h2 className="text-2xl font-bold text-white">Creative Insights</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">Creative Insights</h2>
                 </div>
-                <CreativeDetailsCard creative={selectedCreative} />
+                <CreativeDetailsCard selectedCreative={selectedCreative} />
               </motion.div>
             )}
           </AnimatePresence>
