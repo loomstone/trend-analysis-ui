@@ -224,7 +224,19 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
   
   // Enhanced video data with metadata for filtering
   const allVideos = [
-    { thumbnail: "/placeholder.svg", views: "3.1M", viewCount: 3100000, creator: "@alexsmith", gender: "female", age: "18-24", region: "USA", archetype: "Influencer", trending: true },
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/fernanfloo_video_7479874076975074615.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/fernanfloo.png",
+      videoUrl: "https://www.tiktok.com/@fernanfloo/video/7479874076975074615",
+      views: "3.1M", 
+      viewCount: 3100000, 
+      creator: "@fernanfloo", 
+      gender: "male", 
+      age: "18-24", 
+      region: "USA", 
+      archetype: "Influencer", 
+      trending: true 
+    },
     { thumbnail: "/placeholder.svg", views: "2.8M", viewCount: 2800000, creator: "@mariagarcia", gender: "female", age: "25-34", region: "Mexico", archetype: "Entertainer", trending: true },
     { thumbnail: "/placeholder.svg", views: "2.3M", viewCount: 2300000, creator: "@jennylee", gender: "female", age: "13-17", region: "USA", archetype: "Artist", trending: false },
     { thumbnail: "/placeholder.svg", views: "2.1M", viewCount: 2100000, creator: "@pedrosilva", gender: "male", age: "18-24", region: "Brazil", archetype: "Entertainer", trending: true },
@@ -1266,7 +1278,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
               {/* Header */}
               <div className="flex items-center justify-between">
                 <h4 className="font-bold text-2xl text-gray-900">
-                  Top Videos
+                  Top Examples
                 </h4>
                   </div>
                   
@@ -1279,7 +1291,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.03 }}
-                      className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-all min-h-[400px]"
+                      className="bg-white rounded-2xl border border-gray-200 p-10 hover:shadow-lg transition-all min-h-[600px]"
                     >
                       {/* Top Section with Profile and Carousel side by side */}
                       <div className="flex gap-6">
@@ -1287,12 +1299,20 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <div className="flex-1">
                           {/* Profile Header */}
                           <div className="flex items-start gap-4 mb-6">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-lg">
-                              {video.creator.slice(1, 3).toUpperCase()}
-                          </div>
+                            {video.profilePic ? (
+                              <img 
+                                src={video.profilePic} 
+                                alt={`${video.creator} profile`}
+                                className="w-20 h-20 rounded-full object-cover border-2 border-gray-200"
+                              />
+                            ) : (
+                              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-xl">
+                                {video.creator.slice(1, 3).toUpperCase()}
+                            </div>
+                          )}
                               <div>
                                       <div className="flex items-center gap-2">
-                                <h4 className="font-semibold text-gray-900 text-lg">{video.creator}</h4>
+                                <h4 className="font-semibold text-gray-900 text-xl">{video.creator}</h4>
                                 <span className={`px-3 py-1 text-sm rounded-full font-medium ${
                                   idx % 4 === 0 ? 'bg-purple-100 text-purple-700' :
                                   idx % 4 === 1 ? 'bg-pink-100 text-pink-700' :
@@ -1306,29 +1326,29 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                             </div>
                             
                           {/* Stats Row */}
-                          <div className="grid grid-cols-2 gap-6 mb-6">
+                          <div className="grid grid-cols-2 gap-8 mb-8">
                             <div>
-                              <p className="text-sm text-gray-700 font-medium">FOLLOWERS</p>
-                              <p className="font-semibold text-gray-900 text-lg">{Math.floor(Math.random() * 200 + 50)}K</p>
+                              <p className="text-base text-gray-700 font-medium">FOLLOWERS</p>
+                              <p className="font-semibold text-gray-900 text-xl">{Math.floor(Math.random() * 200 + 50)}K</p>
                                   </div>
                             <div>
-                              <p className="text-sm text-gray-700 font-medium">GENDER</p>
-                              <p className="font-semibold text-gray-900 text-lg">{['Female', 'Male', 'Female', 'Female'][idx % 4]}</p>
+                              <p className="text-base text-gray-700 font-medium">GENDER</p>
+                              <p className="font-semibold text-gray-900 text-xl">{['Female', 'Male', 'Female', 'Female'][idx % 4]}</p>
                                 </div>
                             <div>
-                              <p className="text-sm text-gray-700 font-medium">REGION</p>
-                              <p className="font-semibold text-gray-900 text-lg">{['USA', 'Europe', 'Asia', 'LATAM'][idx % 4]}</p>
+                              <p className="text-base text-gray-700 font-medium">REGION</p>
+                              <p className="font-semibold text-gray-900 text-xl">{['USA', 'Europe', 'Asia', 'LATAM'][idx % 4]}</p>
                               </div>
                             <div>
-                              <p className="text-sm text-gray-700 font-medium">LANGUAGE</p>
-                              <p className="font-semibold text-gray-900 text-lg">English</p>
+                              <p className="text-base text-gray-700 font-medium">LANGUAGE</p>
+                              <p className="font-semibold text-gray-900 text-xl">English</p>
                                 </div>
                               </div>
                               
                           {/* Creator Analysis */}
-                          <div className="mt-6">
-                            <p className="text-sm font-semibold text-gray-600 mb-2">CREATOR ANALYSIS</p>
-                            <p className="text-base text-gray-700 leading-relaxed">
+                          <div className="mt-8">
+                            <p className="text-base font-semibold text-gray-600 mb-3">CREATOR ANALYSIS</p>
+                            <p className="text-lg text-gray-700 leading-relaxed">
                               {idx === 0 ? 
                                 "Lifestyle creator with strong beauty/fashion engagement. Posts 3-4x weekly with peak evening performance. Authentic style and engaged audience make them perfect for this trend." :
                               idx === 1 ? 
@@ -1341,29 +1361,32 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                                 </div>
                               </div>
                               
-                        {/* Right Side - Recent Content Carousel */}
-                        <div className="w-[420px]">
-                          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                            <p className="text-sm font-semibold text-gray-600 mb-3">RECENT CONTENT</p>
-                            <div className="flex gap-2 overflow-x-auto pb-1">
-                              {/* Main Trend Video - First */}
+                        {/* Right Side - Trend Video */}
+                        <div className="w-[280px]">
+                          <div className="bg-gray-50 rounded-xl p-3 border border-gray-200">
+                            <div className="flex justify-center">
+                              {/* Main Trend Video - Centered */}
                               <div className="flex-shrink-0">
-                                <div className="relative">
-                                  <div className="w-28 h-40 bg-gray-200 rounded-lg overflow-hidden">
-                          <img 
-                            src={video.thumbnail} 
-                                      alt={`${video.creator} trend video`} 
-                                      className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute top-2 left-2 px-2 py-1 bg-blue-600/90 text-white text-xs rounded font-medium">
-                                      Trend Video
+                                <a 
+                                  href={video.videoUrl || `https://www.tiktok.com/${video.creator}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block"
+                                >
+                                  <div className="relative">
+                                    <div className="w-64 h-96 bg-gray-200 rounded-lg overflow-hidden cursor-pointer hover:ring-4 hover:ring-blue-400/50 transition-all">
+                            <img 
+                              src={video.thumbnail} 
+                                        alt={`${video.creator} trend video`} 
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                      />
                                   </div>
                                 </div>
+                                </a>
                               </div>
-                            </div>
 
-                              {/* Other Recent Content */}
-                              {[1, 2, 3, 4].map((item) => (
+                              {/* Other Recent Content - Removed */}
+                              {false && [1, 2, 3, 4].map((item) => (
                                 <div key={item} className="flex-shrink-0">
                                   <div className="w-28 h-40 bg-gray-200 rounded-lg overflow-hidden">
                                     <img 
@@ -1375,7 +1398,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                                   </div>
                               ))}
                                 </div>
-                            <p className="text-[9px] text-gray-700 text-center mt-1.5 italic">Swipe to see more • Tap to view videos</p>
+                            <p className="text-xs text-gray-600 text-center mt-2">Tap to view on TikTok</p>
                                   </div>
                                 </div>
                               </div>

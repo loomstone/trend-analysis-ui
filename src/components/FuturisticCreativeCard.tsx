@@ -135,10 +135,21 @@ const FuturisticCreativeCard: React.FC<FuturisticCreativeCardProps> = ({
           <div className="text-blue-600 text-xs font-semibold mb-3 uppercase tracking-wide">Top Videos</div>
           <div className="grid grid-cols-3 gap-3">
             {[1, 2, 3].map((index) => (
-              <div key={index} className="relative aspect-[9/16] rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center">
-                <div className="w-8 h-8 rounded bg-slate-300 flex items-center justify-center">
-                  <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-slate-500 ml-0.5"></div>
-                </div>
+              <div key={index} className="relative aspect-[9/16] rounded-lg bg-slate-100 border border-slate-200 overflow-hidden">
+                {/* Show fernanfloo thumbnail for first video of Magnetic Pull Me Jalo Dance */}
+                {creative.name === "Magnetic Pull Me Jalo Dance" && index === 1 ? (
+                  <img 
+                    src="https://tiktokthumbnails.s3.us-east-2.amazonaws.com/fernanfloo_video_7479874076975074615.png"
+                    alt="Top video thumbnail"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-8 h-8 rounded bg-slate-300 flex items-center justify-center">
+                      <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-slate-500 ml-0.5"></div>
+                    </div>
+                  </div>
+                )}
                 {/* View count */}
                 <div className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
                   <Eye className="w-3 h-3" />
