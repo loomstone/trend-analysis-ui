@@ -607,7 +607,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-gray-100 pointer-events-none z-10"
+            className="absolute inset-0 bg-gray-50 pointer-events-none z-10"
           />
         )}
       </AnimatePresence>
@@ -825,7 +825,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                               <span className="text-xs font-medium text-gray-900">{range.range}</span>
                               <span className="text-xs font-semibold text-gray-900">{range.percentage}%</span>
                           </div>
-                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                            <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
                                 className="h-full rounded-full"
                                 style={{ backgroundColor: barColor }}
@@ -879,7 +879,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                               <span className="text-xs font-medium text-gray-900">{arch.type}</span>
                               <span className="text-xs font-semibold text-gray-900">{arch.percentage}%</span>
                           </div>
-                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                            <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
                                 className="h-full rounded-full"
                                 style={{ backgroundColor: barColor }}
@@ -920,7 +920,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                               <span className="text-xs font-medium text-gray-900">{country.country}</span>
                               <span className="text-xs font-semibold text-gray-900">{country.percentage}%</span>
                           </div>
-                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                            <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
                                 className="h-full rounded-full"
                                 style={{ backgroundColor: barColor }}
@@ -955,7 +955,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                       className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all capitalize ${
                         engagementMetric === metric 
                           ? 'bg-blue-50 text-blue-600 border-blue-200' 
-                          : 'bg-gray-50 text-gray-900 border-gray-200 hover:bg-gray-100 hover:text-gray-900'
+                          : 'bg-gray-50 text-gray-900 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
                       } border`}
                     >
                       {metric}
@@ -969,7 +969,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Gender Performance */}
                   <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,1),0_0_30px_rgba(168,85,247,0.5)]" />
+                    <div className="w-2 h-2 rounded-full bg-slate-400" />
                     Gender Performance
                   </h5>
                   <div className="space-y-3">
@@ -978,9 +978,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Female</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.female.value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div
-                          className="bg-purple-500 h-full rounded-full"
+                          className="bg-slate-400 h-full rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: `${genderRelativePercentages.female}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -993,9 +993,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Male</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.male.value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-blue-500 h-full rounded-full"
+                          className="bg-slate-300 h-full rounded-full"
                                   initial={{ width: 0 }}
                           animate={{ width: `${genderRelativePercentages.male}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
@@ -1009,7 +1009,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Age Group Performance */}
                             <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,1),0_0_30px_rgba(34,211,238,0.5)]" />
+                    <div className="w-2 h-2 rounded-full bg-blue-400/70" />
                     Age Group Performance
                   </h5>
                     <div className="space-y-3">
@@ -1019,9 +1019,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">13-17</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['13-17'].value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-cyan-400 h-full rounded-full"
+                          className="bg-blue-400/70 h-full rounded-full"
                                   initial={{ width: 0 }}
                           animate={{ width: `${ageRelativePercentages['13-17'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1036,9 +1036,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">18-24</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['18-24'].value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-pink-500 h-full rounded-full"
+                          className="bg-blue-400/60 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${ageRelativePercentages['18-24'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
@@ -1053,9 +1053,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">25-34</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['25-34'].value)}</span>
                   </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div
-                          className="bg-yellow-400 h-full rounded-full"
+                          className="bg-sky-300/70 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${ageRelativePercentages['25-34'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -1070,9 +1070,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">35-44</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['35-44'].value)}</span>
                               </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-lime-400 h-full rounded-full"
+                          className="bg-sky-300/60 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${ageRelativePercentages['35-44'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -1087,9 +1087,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">45+</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['45+'].value)}</span>
                             </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-purple-400 h-full rounded-full"
+                          className="bg-sky-300/50 h-full rounded-full"
                                   initial={{ width: 0 }}
                           animate={{ width: `${ageRelativePercentages['45+'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
@@ -1104,7 +1104,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Creator Type Performance */}
                 <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_15px_rgba(251,146,60,1),0_0_30px_rgba(251,146,60,0.5)]" />
+                    <div className="w-2 h-2 rounded-full bg-indigo-400/70" />
                     Creator Type Performance
                   </h5>
                     <div className="space-y-3">
@@ -1114,9 +1114,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Influencer</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Influencer'].value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-orange-400 h-full rounded-full"
+                          className="bg-indigo-400/70 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${creatorRelativePercentages['Influencer'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1131,9 +1131,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Entertainer</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Entertainer'].value)}</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                          className="bg-pink-500 h-full rounded-full"
+                          className="bg-indigo-400/60 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${creatorRelativePercentages['Entertainer'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
@@ -1148,9 +1148,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Educator</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Educator'].value)}</span>
                     </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-cyan-400 h-full rounded-full"
+                          className="bg-violet-300/70 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${creatorRelativePercentages['Educator'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -1165,9 +1165,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Artist</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Artist'].value)}</span>
                               </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-lime-400 h-full rounded-full"
+                          className="bg-violet-300/60 h-full rounded-full"
                                   initial={{ width: 0 }}
                           animate={{ width: `${creatorRelativePercentages['Artist'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -1182,7 +1182,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Region Performance */}
                               <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_15px_rgba(74,222,128,1),0_0_30px_rgba(74,222,128,0.5)]" />
+                    <div className="w-2 h-2 rounded-full bg-teal-400/70" />
                     Region Performance
                   </h5>
                         <div className="space-y-3">
@@ -1192,9 +1192,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">USA</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel((currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']).value)}</span>
                               </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                          className="bg-green-400 h-full rounded-full"
+                          className="bg-teal-400/70 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${regionRelativePercentages['USA'] || regionRelativePercentages['United States'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -1209,9 +1209,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Mexico</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Mexico'].value)}</span>
                         </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                       <motion.div
-                          className="bg-violet-500 h-full rounded-full"
+                          className="bg-teal-400/60 h-full rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: `${regionRelativePercentages['Mexico'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
@@ -1226,9 +1226,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Brazil</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Brazil'].value)}</span>
                         </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-rose-500 h-full rounded-full"
+                          className="bg-emerald-300/70 h-full rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: `${regionRelativePercentages['Brazil'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -1243,9 +1243,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         <span className="text-sm text-gray-900 font-medium">Indonesia</span>
                         <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Indonesia'].value)}</span>
                               </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                          className="bg-amber-400 h-full rounded-full"
+                          className="bg-emerald-300/60 h-full rounded-full"
                               initial={{ width: 0 }}
                           animate={{ width: `${regionRelativePercentages['Indonesia'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -1410,8 +1410,10 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         </div>
                         
               {/* Creative Brief Section */}
-              <div className="bg-gray-50/80 p-8 rounded-lg space-y-8">
+              <div className="space-y-8">
                 <h4 className="text-2xl font-bold text-gray-900">CREATIVE BRIEF</h4>
+                
+                <div className="bg-gray-50/80 p-8 rounded-lg space-y-8">
 
                 {/* Quick Steps */}
                               <div>
@@ -1440,6 +1442,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 </div>
                 
                   </div>
+                      </div>
             </div>
           </TabsContent>
                   </div>
@@ -1451,7 +1454,21 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
     <Dialog open={showScaleModal} onOpenChange={setShowScaleModal}>
       <DialogContent className="sm:max-w-[500px] bg-white">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-gray-900">Scale Campaign</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-gray-900">
+            Scale <span 
+              className="text-orange-500"
+              style={{
+                color: '#FF6B00',
+                textShadow: '0 0 2px rgba(255, 107, 0, 0.5), 0 0 4px rgba(255, 107, 0, 0.3)',
+                filter: 'brightness(1.1)',
+                fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif",
+                fontWeight: 400,
+                fontSize: '1.125rem'
+              }}
+            >
+              Trend
+                            </span>
+          </DialogTitle>
         </DialogHeader>
         
         <div className="space-y-6 py-4">
@@ -1586,7 +1603,18 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             }
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300"
           >
-            Launch Campaign
+            Launch <span 
+              style={{
+                color: '#FF6B00',
+                textShadow: '0 0 2px rgba(255, 107, 0, 0.5), 0 0 4px rgba(255, 107, 0, 0.3)',
+                filter: 'brightness(1.1)',
+                fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif",
+                fontWeight: 400,
+                fontSize: '0.875rem'
+              }}
+            >
+              Trend
+                                </span>
           </Button>
                               </div>
       </DialogContent>

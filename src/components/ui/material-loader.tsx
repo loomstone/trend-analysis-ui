@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Progress } from '@/components/ui/progress';
 
 interface MaterialCircularLoaderProps {
   size?: number;
@@ -146,12 +147,43 @@ export const MaterialLinearLoader: React.FC<{ className?: string }> = ({ classNa
   );
 };
 
+// Progress bar loader with percentage
+export const ProgressLoader: React.FC<{ className?: string }> = ({ className }) => {
+  const [progress, setProgress] = useState(0);
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        // Variable speed progression for more realistic loading
+        const increment = prevProgress < 50 ? 8 : prevProgress < 80 ? 4 : 2;
+        return Math.min(prevProgress + increment, 100);
+      });
+    }, 100);
+    
+    return () => clearInterval(timer);
+  }, []);
+  
+  return (
+    <div className={cn("space-y-3", className)}>
+      <Progress value={progress} className="h-2" />
+      <div className="text-center">
+        <p className="text-sm text-gray-600">Analyzing trend data...</p>
+        <p className="text-xs text-gray-500 mt-1">{progress}%</p>
+      </div>
+    </div>
+  );
+};
+
 // Loading overlay container
 export const LoadingOverlay: React.FC<{ 
   isLoading: boolean;
   children: React.ReactNode;
-  variant?: 'circular' | 'linear';
-}> = ({ isLoading, children, variant = 'circular' }) => {
+  variant?: 'circular' | 'linear' | 'progress';
+}> = ({ isLoading, children, variant = 'progress' }) => {
   return (
     <div className="relative">
       {/* Content with reduced opacity when loading */}
@@ -175,12 +207,16 @@ export const LoadingOverlay: React.FC<{
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ minHeight: '300px' }}
         >
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
             {variant === 'circular' ? (
               <MaterialCircularLoader size={56} />
-            ) : (
+            ) : variant === 'linear' ? (
               <div className="w-48">
                 <MaterialLinearLoader />
+              </div>
+            ) : (
+              <div className="w-64">
+                <ProgressLoader />
               </div>
             )}
           </div>

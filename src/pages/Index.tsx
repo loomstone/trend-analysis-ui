@@ -132,7 +132,7 @@ const IndexContent = () => {
           </motion.div>
 
           {/* Middle/Bottom Section - Cards or Details */}
-          <LoadingOverlay isLoading={isLoadingData} variant="circular">
+          <LoadingOverlay isLoading={isLoadingData} variant="progress">
             <AnimatePresence mode="wait">
               {!showDetails ? (
                 // Grid View - Trending Creative Cards
