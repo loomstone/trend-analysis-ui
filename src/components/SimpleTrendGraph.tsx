@@ -5,131 +5,11 @@ import { RedLamp } from "@/components/ui/red-lamp";
 import { Calendar } from "lucide-react";
 import { MaterialCircularLoader } from "@/components/ui/material-loader";
 import type { Creative } from "@/components/CreativeCardsGrid";
+import { transformTrendData } from "@/utils/dataTransformer";
 
-// Import the creative trends data
-const allCreatives: Creative[] = [
-  {
-    id: 1,
-    name: "Lip Sync with TOS",
-    description: "Viral lip sync trend featuring dramatic emotional performances",
-    datesActive: "Dec 20 - Jan 10",
-    videos: [],
-    views: "287M",
-    totalTrendVideos: "15.2K",
-    growth: "+156%",
-    viralScore: 9.2,
-    momentum: "rising",
-    demographics: { ageRanges: [], genderSplit: { male: 40, female: 60 }, topCountries: [] },
-    keyTakeaways: [],
-    spotifyData: [
-      { date: "Jun 13", streams: 1.2 },
-      { date: "Jun 14", streams: 1.5 },
-      { date: "Jun 15", streams: 1.8 },
-      { date: "Jun 16", streams: 2.1 },
-      { date: "Jun 17", streams: 2.4 },
-      { date: "Jun 18", streams: 2.8 },
-      { date: "Jun 19", streams: 3.2 },
-      { date: "Jun 20", streams: 3.5 },
-      { date: "Jun 21", streams: 3.3 },
-      { date: "Jun 22", streams: 3.0 },
-      { date: "Jun 23", streams: 2.8 },
-      { date: "Jun 24", streams: 2.6 }
-    ]
-  },
-  {
-    id: 2,
-    name: "Dance Challenge",
-    description: "High-energy choreography with synchronized movements",
-    datesActive: "Jan 5 - Jan 25",
-    videos: [],
-    views: "412M",
-    totalTrendVideos: "23.8K",
-    growth: "+89%",
-    viralScore: 8.7,
-    momentum: "stable",
-    demographics: { ageRanges: [], genderSplit: { male: 40, female: 60 }, topCountries: [] },
-    keyTakeaways: [],
-    spotifyData: [
-      { date: "Jun 13", streams: 2.1 },
-      { date: "Jun 14", streams: 2.3 },
-      { date: "Jun 15", streams: 2.8 },
-      { date: "Jun 16", streams: 2.6 },
-      { date: "Jun 17", streams: 2.4 },
-      { date: "Jun 18", streams: 2.9 },
-      { date: "Jun 19", streams: 3.4 },
-      { date: "Jun 20", streams: 3.8 },
-      { date: "Jun 21", streams: 4.1 },
-      { date: "Jun 22", streams: 4.3 },
-      { date: "Jun 23", streams: 4.0 },
-      { date: "Jun 24", streams: 3.7 }
-    ]
-  },
-  {
-    id: 3,
-    name: "Transition Effect",
-    description: "Creative transitions with visual effects and timing",
-    datesActive: "Jan 8 - Jan 28",
-    videos: [],
-    views: "178M",
-    totalTrendVideos: "8.7K",
-    growth: "+234%",
-    viralScore: 7.9,
-    momentum: "declining",
-    demographics: { ageRanges: [], genderSplit: { male: 40, female: 60 }, topCountries: [] },
-    keyTakeaways: [],
-    spotifyData: [
-      { date: "Jun 13", streams: 1.8 },
-      { date: "Jun 14", streams: 2.0 },
-      { date: "Jun 15", streams: 2.3 },
-      { date: "Jun 16", streams: 2.7 },
-      { date: "Jun 17", streams: 3.1 },
-      { date: "Jun 18", streams: 3.6 },
-      { date: "Jun 19", streams: 4.2 },
-      { date: "Jun 20", streams: 4.5 },
-      { date: "Jun 21", streams: 4.1 },
-      { date: "Jun 22", streams: 3.8 },
-      { date: "Jun 23", streams: 3.5 },
-      { date: "Jun 24", streams: 3.2 }
-    ]
-  }
-];
+// Import the creative trends data from the mock data
+const allCreatives: Creative[] = transformTrendData();
 
-// Generate data based on selected creative
-const generateData = (creative?: Creative | null) => {
-  // Default data if no creative selected
-  const defaultDates = [
-    'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19',
-    'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25'
-  ];
-  
-  // Trend Videos data (in thousands, not millions)
-  const trendVideos = [1.2, 1.8, 2.1, 1.9, 1.3, 2.0, 3.1, 2.9, 5.2, 3.4, 3.2, 4.1, 2.3];
-  
-  // All Videos data (higher than trend videos)
-  const allVideos = [2.5, 3.2, 3.8, 3.5, 2.8, 3.9, 5.2, 4.9, 7.8, 5.9, 5.6, 6.5, 4.1];
-
-  // Use creative's Spotify data if available
-  if (creative?.spotifyData && creative.spotifyData.length > 0) {
-    return creative.spotifyData.map((item, i) => ({
-      date: item.date,
-      trendVideos: trendVideos[i] || 0,
-      spotifyStreams: item.streams * 1000, // Convert to thousands
-      allVideos: allVideos[i] || 0,
-    }));
-  }
-
-  // Default Spotify data (in thousands)
-  const spotifyStreams = [850, 1100, 1400, 1200, 900, 1500, 2300, 2100, 3800, 2500, 2400, 3000, 1700];
-
-  const combinedData = defaultDates.map((date, i) => ({
-    date,
-    trendVideos: trendVideos[i],
-    spotifyStreams: spotifyStreams[i],
-    allVideos: allVideos[i],
-  }));
-
-  return combinedData;
-};
 
 interface SimpleTrendGraphProps {
   selectedTrendId: string;
@@ -147,14 +27,7 @@ interface SimpleTrendGraphProps {
   const [showSpotifyStreams, setShowSpotifyStreams] = useState(true); // State for showing/hiding Spotify streams
   const [showAllVideos, setShowAllVideos] = useState(true); // State for showing/hiding All Videos line
   const [isLoadingTrend, setIsLoadingTrend] = useState(false);
-
-  // Generate data based on selected creative
-  const data = useMemo(() => {
-    const generatedData = generateData(selectedCreative);
-    console.log('Graph data:', generatedData);
-    console.log('Active metrics:', activeMetrics);
-    return generatedData;
-  }, [selectedCreative]);
+  const [dataMode, setDataMode] = useState<'videos' | 'views'>('videos'); // Toggle between videos and views
 
   // Auto-enable trend videos when a creative is selected
   useEffect(() => {
@@ -185,8 +58,21 @@ interface SimpleTrendGraphProps {
   };
 
   const getTrendColor = (trendId: number) => {
-    const colors = ['#ec4899', '#f59e0b', '#8b5cf6']; // Pink, Orange, Purple for Spotify trends
-    return colors[trendId - 1] || '#6b7280';
+    // Dynamic color palette that can handle any number of trends
+    const colors = [
+      '#ec4899', // Pink
+      '#f59e0b', // Orange
+      '#8b5cf6', // Purple
+      '#10b981', // Emerald
+      '#ef4444', // Red
+      '#6366f1', // Indigo
+      '#f97316', // Orange
+      '#06b6d4', // Cyan
+      '#84cc16', // Lime
+      '#a855f7', // Purple
+    ];
+    // Use modulo to cycle through colors if there are more trends than colors
+    return colors[(trendId - 1) % colors.length] || '#6b7280';
   };
 
   const metricConfig = {
@@ -200,50 +86,96 @@ interface SimpleTrendGraphProps {
 
   // Generate combined data for all selected trends with both videos and streams
   const combinedTrendData = useMemo(() => {
-    const dates = ['Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24'];
+    // Get all unique dates from all creatives' countByDate data
+    const allDates = new Set<string>();
+    const dateDataMap = new Map<string, any>();
     
-    // Base video data (in thousands)
-    const videoData = [1500, 1800, 2100, 2600, 2800, 3200, 3800, 3400, 3200, 3000, 2800, 2600];
+    console.log('Graph data:', allCreatives);
+    console.log('Active metrics:', activeMetrics);
+    console.log('Total videos per creative:', allCreatives.map(c => ({
+      name: c.name,
+      totalTrendVideos: c.totalTrendVideos,
+      countByDateSum: c.countByDate?.reduce((sum, d) => sum + d.value, 0) || 0
+    })));
     
-    const data = dates.map((date, index) => {
+    allCreatives.forEach(creative => {
+      // Use countByDate if available from the mock data
+      if ((creative as any).countByDate) {
+        (creative as any).countByDate.forEach((item: any) => {
+          allDates.add(item.date);
+          if (!dateDataMap.has(item.date)) {
+            dateDataMap.set(item.date, {});
+          }
+          dateDataMap.get(item.date)[`trend${creative.id}`] = item.value;
+        });
+      }
+    });
+    
+    // Convert dates to sorted array and format them
+    const sortedDates = Array.from(allDates).sort();
+    
+    // If no real data, return empty array
+    if (sortedDates.length === 0) {
+      return [];
+    }
+    
+    // Build data array with real data
+    const data = sortedDates.map(date => {
       const dataPoint: any = { 
-        date,
-        videos: videoData[index] // Videos made data
+        date: new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        videos: 0 // Total videos across all trends
       };
       
-      // Add combined Spotify streams data from ALL trends (not just selected)
-      let spotifyTotal = 0;
+      // Add data for each trend
+      const dateData = dateDataMap.get(date) || {};
+      let totalVideos = 0;
+      let totalViews = 0;
       
       allCreatives.forEach(creative => {
-        if (creative.spotifyData) {
-          const spotifyPoint = creative.spotifyData.find(d => d.date === date);
-          if (spotifyPoint) {
-            spotifyTotal += spotifyPoint.streams;
+        const trendKey = `trend${creative.id}`;
+        if (dateData[trendKey]) {
+          const videoCount = dateData[trendKey];
+          totalVideos += videoCount;
+          
+          // Calculate views based on average views per video for this creative
+          const avgViewsPerVideo = creative.engagement?.avgViews || 
+            (parseInt(creative.views.replace(/[^0-9]/g, '')) * 1000000 / parseInt(creative.totalTrendVideos.replace(/[^0-9]/g, '')));
+          const dailyViews = videoCount * avgViewsPerVideo;
+          
+          // Only add trend-specific data if it's selected
+          if (selectedTrends.includes(creative.id)) {
+            dataPoint[trendKey] = dataMode === 'videos' ? videoCount : Math.round(dailyViews / 1000); // Convert views to thousands
           }
-        } else {
-          // Generate mock Spotify data if not available
-          const baseValue = 2.0 + (creative.id * 0.3);
-          const variation = Math.sin((index + creative.id * 2) * 0.5) * 0.8;
-          const spotifyValue = baseValue + variation + (index * 0.05);
-          spotifyTotal += spotifyValue;
+          
+          totalViews += dailyViews;
         }
       });
       
-      // Add trend-specific video data for selected trends
-      selectedTrends.forEach(trendId => {
-        const trendVideoBase = 1200 + (trendId * 300);
-        const trendVideoVariation = Math.sin((index + trendId) * 0.6) * 400;
-        dataPoint[`trend${trendId}`] = trendVideoBase + trendVideoVariation + (index * 50);
+      dataPoint.videos = dataMode === 'videos' ? totalVideos : Math.round(totalViews / 1000); // Convert views to thousands
+      
+      // Add combined Spotify streams data
+      let spotifyTotal = 0;
+      allCreatives.forEach(creative => {
+        if (creative.spotifyData) {
+          const spotifyPoint = creative.spotifyData.find(d => 
+            d.date === dataPoint.date || 
+            new Date(d.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) === dataPoint.date
+          );
+          if (spotifyPoint) {
+            spotifyTotal += spotifyPoint.streams;
+          }
+        }
       });
       
-      // Store the combined Spotify total
-      dataPoint.spotifyTotal = spotifyTotal;
+      // Scale Spotify data to be in reasonable range (in millions)
+      dataPoint.spotifyTotal = spotifyTotal > 0 ? spotifyTotal / 1000000 : Math.random() * 2 + 1; // Convert to millions
       
       return dataPoint;
     });
     
-    return data;
-  }, [selectedTrends]);
+    // Limit to last 30 days if too many data points
+    return data.slice(-30);
+  }, [selectedTrends, dataMode]);
 
   return (
     <div className="ice-glass-card rounded-3xl p-6 h-full flex flex-col ice-sparkle" style={{ minHeight: '500px' }}>
@@ -271,6 +203,34 @@ interface SimpleTrendGraphProps {
         </div>
         
         <div className="flex items-center gap-3">
+          {/* Videos/Views Mode Toggle */}
+          <div className="flex items-center bg-gray-100 rounded-lg p-0.5 mr-4">
+            <motion.button
+              onClick={() => setDataMode('videos')}
+              className={`relative px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 ${
+                dataMode === 'videos' 
+                  ? 'bg-white text-gray-900 shadow-sm' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Videos
+            </motion.button>
+            <motion.button
+              onClick={() => setDataMode('views')}
+              className={`relative px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 ${
+                dataMode === 'views' 
+                  ? 'bg-white text-gray-900 shadow-sm' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Views
+            </motion.button>
+          </div>
+          
           {/* All Videos Toggle Button */}
           <motion.button
             onClick={() => setShowAllVideos(!showAllVideos)}
@@ -372,7 +332,7 @@ interface SimpleTrendGraphProps {
         <ResponsiveContainer width="100%" height="100%">
           <LineChart 
             data={combinedTrendData}
-            margin={{ top: 20, right: 60, left: 60, bottom: 60 }}
+            margin={{ top: 20, right: 60, left: 100, bottom: 60 }}
           >
             <CartesianGrid 
               strokeDasharray="0" 
@@ -395,9 +355,26 @@ interface SimpleTrendGraphProps {
               stroke="rgba(0, 0, 0, 0.1)"
               axisLine={{ stroke: 'rgba(0, 0, 0, 0.1)' }}
               tickLine={false}
-              domain={[0, 4500]}
-              tickFormatter={(value) => `${(value/1000).toFixed(1)}k`}
-              label={{ value: 'Videos', angle: -90, position: 'insideLeft', style: { fill: 'rgba(0, 0, 0, 0.6)', fontSize: 12 } }}
+              domain={[0, 'dataMax + 50']}
+              tickFormatter={(value) => {
+                if (dataMode === 'views') {
+                  // Views are already in thousands
+                  if (value >= 1000) {
+                    return `${(value/1000).toFixed(1)}M`;
+                  }
+                  return `${value}K`;
+                } else {
+                  // Videos count
+                  return value >= 1000 ? `${(value/1000).toFixed(1)}k` : value;
+                }
+              }}
+              label={{ 
+                value: dataMode === 'videos' ? 'Videos' : 'Views', 
+                angle: -90, 
+                position: 'insideLeft',
+                offset: -40,
+                style: { fill: 'rgba(0, 0, 0, 0.6)', fontSize: 12, textAnchor: 'middle' } 
+              }}
             />
             {/* Right Y-axis for Spotify Streams */}
             <YAxis 
@@ -407,8 +384,8 @@ interface SimpleTrendGraphProps {
               stroke="rgba(0, 0, 0, 0.1)"
               axisLine={{ stroke: 'rgba(0, 0, 0, 0.1)' }}
               tickLine={false}
-              domain={[0, 'dataMax + 0.5']}
-              tickFormatter={(value) => `${value}M`}
+              domain={[0, 15]}
+              tickFormatter={(value) => `${value.toFixed(0)}M`}
               label={{ value: 'Spotify Streams', angle: 90, position: 'insideRight', style: { fill: showSpotifyStreams ? '#10b981' : 'rgba(0, 0, 0, 0.3)', fontSize: 12 } }}
             />
             <Tooltip 
@@ -422,14 +399,25 @@ interface SimpleTrendGraphProps {
               labelStyle={{ color: 'rgba(0, 0, 0, 0.9)', fontWeight: 600 }}
               formatter={(value: number, name: string) => {
                 if (name === 'videos') {
-                  return [
-                    <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '14px' }}>
-                      {(value/1000).toFixed(1)}k
-                    </span>,
-                    <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
-                      All Videos
-                    </span>
-                  ];
+                  if (dataMode === 'views') {
+                    return [
+                      <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '14px' }}>
+                        {value >= 1000 ? `${(value/1000).toFixed(1)}M` : `${value}K`}
+                      </span>,
+                      <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
+                        All Views
+                      </span>
+                    ];
+                  } else {
+                    return [
+                      <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '14px' }}>
+                        {value >= 1000 ? `${(value/1000).toFixed(1)}k` : value}
+                      </span>,
+                      <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
+                        All Videos
+                      </span>
+                    ];
+                  }
                 }
                 if (name === 'spotifyTotal') {
                   return [
@@ -445,14 +433,25 @@ interface SimpleTrendGraphProps {
                 if (trendMatch) {
                   const trendId = parseInt(trendMatch[1]);
                   const trend = allCreatives.find(c => c.id === trendId);
-                  return [
-                    <span style={{ color: getTrendColor(trendId), fontWeight: 700, fontSize: '14px' }}>
-                      {(value/1000).toFixed(1)}k
-                    </span>,
-                    <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
-                      {trend?.name || 'Unknown Trend'}
-                    </span>
-                  ];
+                  if (dataMode === 'views') {
+                    return [
+                      <span style={{ color: getTrendColor(trendId), fontWeight: 700, fontSize: '14px' }}>
+                        {value >= 1000 ? `${(value/1000).toFixed(1)}M` : `${value}K`}
+                      </span>,
+                      <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
+                        {trend?.name || 'Unknown Trend'}
+                      </span>
+                    ];
+                  } else {
+                    return [
+                      <span style={{ color: getTrendColor(trendId), fontWeight: 700, fontSize: '14px' }}>
+                        {value >= 1000 ? `${(value/1000).toFixed(1)}k` : value}
+                      </span>,
+                      <span style={{ color: 'rgba(0, 0, 0, 0.7)', fontSize: '12px' }}>
+                        {trend?.name || 'Unknown Trend'}
+                      </span>
+                    ];
+                  }
                 }
                 return [value, name];
               }}

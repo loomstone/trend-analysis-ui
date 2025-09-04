@@ -76,13 +76,32 @@ const recommendedCreative: Creative = {
     "Strong emotional connection drives shares",
     "Audio clips under 15 seconds perform best",
     "User-generated duets increase reach by 3x"
-  ]
+  ],
+  creativeAnalysis: {
+    description: "This trend revolves around comedic timing and relatable scenarios using trending audio. Creators act out everyday situations with exaggerated reactions that sync perfectly with the audio cues.",
+    content_strategy: "The trend thrives on relatability and perfect comedic timing. Top performing content uses the audio to highlight universal experiences that viewers instantly recognize."
+  },
+  creativeBrief: {
+    quick_steps: [
+      "Set up phone at eye level with good lighting",
+      "Practice audio timing (0:04, 0:08, 0:12)",
+      "Build emotional intensity throughout"
+    ],
+    key_tips: [
+      "Natural lighting works best",
+      "Film in 1080p minimum",
+      "Post 6-10 PM for best reach"
+    ],
+    avoid: ["Poor audio sync", "Overcomplicating", "Bad lighting"]
+  }
 };
 
 const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreative }) => {
   const [isFlashing, setIsFlashing] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [demographicsTimeFilter, setDemographicsTimeFilter] = useState('1 Week');
+  const [demographicsTimeFilter, setDemographicsTimeFilter] = useState('30 Days');
+  const [engagementTimeFilter, setEngagementTimeFilter] = useState('30 Days');
+  const [engagementMetric, setEngagementMetric] = useState('views');
   
   // Examples Tab Filter States - Now support multiple selections
   const [genderFilter, setGenderFilter] = useState<Set<string>>(new Set());
@@ -289,51 +308,268 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
 
   // Get demographics based on time filter
   const getDemographicsForPeriod = (period: string) => {
-    const baseDemo = displayCreative.demographics;
-    
-    // Simulate different data for different time periods
-    switch(period) {
-      case '1 Day':
-        return {
-          ...baseDemo,
-          genderSplit: { male: 42, female: 58 },
-          ageRanges: [
-            { range: "13-17", percentage: 35 },
-            { range: "18-24", percentage: 45 },
-            { range: "25-34", percentage: 15 },
-            { range: "35+", percentage: 5 }
-          ]
-        };
-      case '1 Week':
-        return baseDemo; // Default data
-      case '1 Month':
-        return {
-          ...baseDemo,
-          genderSplit: { male: 38, female: 62 },
-          ageRanges: [
-            { range: "13-17", percentage: 40 },
-            { range: "18-24", percentage: 35 },
-            { range: "25-34", percentage: 18 },
-            { range: "35+", percentage: 7 }
-          ]
-        };
-      case '3 Months':
-        return {
-          ...baseDemo,
-          genderSplit: { male: 33, female: 67 },
-          ageRanges: [
-            { range: "13-17", percentage: 45 },
-            { range: "18-24", percentage: 32 },
-            { range: "25-34", percentage: 16 },
-            { range: "35+", percentage: 7 }
-          ]
-        };
-      default:
-        return baseDemo;
-    }
+    // Demographics percentages don't change with time period
+    // Only the absolute values (views, engagement) change
+    return displayCreative.demographics;
   };
 
   const currentDemographics = getDemographicsForPeriod(demographicsTimeFilter);
+  
+  // Function to get engagement data based on time filter and metric
+  const getEngagementDataForPeriod = (period: string, metric: string = 'views') => {
+    // Use actual data from selected creative
+    if (!displayCreative || !displayCreative.demographics) {
+        return {
+        gender: { female: { value: 0, percentage: 0 }, male: { value: 0, percentage: 0 } },
+        age: {},
+        creators: {},
+        regions: {}
+      };
+    }
+
+    // Calculate multiplier based on period (30-day base)
+    const periodMultiplier = {
+      '1 Day': 0.033,   // ~1/30
+      '7 Days': 0.233,  // ~7/30
+      '14 Days': 0.467, // ~14/30
+      '30 Days': 1      // Full period
+    }[period] || 1;
+
+    // Get actual demographics from selected creative
+    const genderSplit = displayCreative.demographics.genderSplit || { female: 65, male: 35 };
+    const ageRanges = displayCreative.demographics.ageRanges || [];
+    const creatorArchetypes = displayCreative.demographics.creatorArchetypes || [];
+    const topCountries = displayCreative.demographics.topCountries || [];
+
+    // Get actual values from engagement stats
+    const engagementStats = displayCreative.engagement_stats || displayCreative.engagement || {};
+    const totalViews = (engagementStats.total_views || parseInt(displayCreative.views?.replace(/[^0-9]/g, '') || '0')) * periodMultiplier;
+    
+    // Use actual average values from the data
+    const avgViews = engagementStats.avg_views || engagementStats.avgViews || (totalViews / parseInt(displayCreative.totalTrendVideos?.replace(/[^0-9]/g, '') || '1'));
+    const avgComments = engagementStats.avg_comments || engagementStats.avgComments || (avgViews * 0.008);
+    const avgShares = engagementStats.avg_shares || engagementStats.avgShares || (avgViews * 0.025);
+    const totalEngagements = engagementStats.total_engagements || engagementStats.totalEngagements || (totalViews * 0.15);
+    
+    // Calculate base value based on selected metric
+    let baseValue;
+    switch(metric) {
+      case 'views':
+        baseValue = totalViews;
+        break;
+      case 'comments':
+        baseValue = avgComments * parseInt(displayCreative.totalTrendVideos?.replace(/[^0-9]/g, '') || '1') * periodMultiplier;
+        break;
+      case 'shares':
+        baseValue = avgShares * parseInt(displayCreative.totalTrendVideos?.replace(/[^0-9]/g, '') || '1') * periodMultiplier;
+        break;
+      case 'engagement':
+        baseValue = totalEngagements;
+        break;
+      default:
+        baseValue = totalViews;
+    }
+
+    // Format the data structure expected by the UI
+    const formatValue = (val: number) => {
+      // Keep the actual value without converting to millions/thousands
+      // The formatMetricLabel function will handle the display formatting
+      return Math.round(val);
+    };
+
+    // Build gender data
+    const genderData = {
+      female: { 
+        value: formatValue(baseValue * (genderSplit.female / 100)), 
+        percentage: genderSplit.female 
+      },
+      male: { 
+        value: formatValue(baseValue * (genderSplit.male / 100)), 
+        percentage: genderSplit.male 
+      }
+    };
+
+    // Build age data
+    const ageData: any = {};
+    ageRanges.forEach((range: any) => {
+      const ageKey = range.range === '35+' ? '35+' : range.range;
+      ageData[ageKey] = {
+        value: formatValue(baseValue * (range.percentage / 100)),
+        percentage: range.percentage
+      };
+    });
+
+    // Build creator data
+    const creatorData: any = {};
+    creatorArchetypes.forEach((archetype: any) => {
+      creatorData[archetype.type] = {
+        value: formatValue(baseValue * (archetype.percentage / 100)),
+        percentage: archetype.percentage
+      };
+    });
+
+    // Build region data
+    const regionData: any = {};
+    topCountries.forEach((country: any) => {
+      regionData[country.country] = {
+        value: formatValue(baseValue * (country.percentage / 100)),
+        percentage: country.percentage
+      };
+    });
+
+    const baseData = {
+      views: {
+        gender: genderData,
+        age: ageData,
+        creators: creatorData,
+        regions: regionData
+      },
+      comments: {
+        gender: genderData,
+        age: ageData,
+        creators: creatorData,
+        regions: regionData
+      },
+      shares: {
+        gender: genderData,
+        age: ageData,
+        creators: creatorData,
+        regions: regionData
+      },
+      engagement: {
+        gender: genderData,
+        age: ageData,
+        creators: creatorData,
+        regions: regionData
+      }
+    };
+    
+    const selectedMetricData = baseData[metric as keyof typeof baseData] || baseData.views;
+    
+    // Adjust values based on period
+    const multipliers = {
+      '1 Day': 0.02,
+      '1 Week': 0.14,
+      '1 Month': 0.6,
+      '3 Months': 1
+    };
+    
+    const multiplier = multipliers[period] || 1;
+    
+    // Apply multiplier to all values
+    const adjustedData = JSON.parse(JSON.stringify(selectedMetricData));
+    
+    Object.keys(adjustedData.gender).forEach(key => {
+      adjustedData.gender[key].value = Math.round(adjustedData.gender[key].value * multiplier);
+    });
+    
+    Object.keys(adjustedData.age).forEach(key => {
+      adjustedData.age[key].value = Math.round(adjustedData.age[key].value * multiplier);
+    });
+    
+    Object.keys(adjustedData.creators).forEach(key => {
+      adjustedData.creators[key].value = Math.round(adjustedData.creators[key].value * multiplier);
+    });
+    
+    Object.keys(adjustedData.regions).forEach(key => {
+      adjustedData.regions[key].value = Math.round(adjustedData.regions[key].value * multiplier);
+    });
+    
+    return adjustedData;
+  };
+  
+  const currentEngagementData = getEngagementDataForPeriod(engagementTimeFilter, engagementMetric);
+  
+  // Calculate relative percentages for bar widths based on actual values
+  const calculateRelativePercentage = (value: number, allValues: number[]) => {
+    const maxValue = Math.max(...allValues);
+    return maxValue > 0 ? (value / maxValue) * 100 : 0;
+  };
+  
+  // Get relative percentages for each category
+  const genderValues = [
+    currentEngagementData.gender.female?.value || 0,
+    currentEngagementData.gender.male?.value || 0
+  ];
+  const genderRelativePercentages = {
+    female: calculateRelativePercentage(currentEngagementData.gender.female?.value || 0, genderValues),
+    male: calculateRelativePercentage(currentEngagementData.gender.male?.value || 0, genderValues)
+  };
+  
+  // Calculate relative percentages for age groups
+  const ageValues = Object.values(currentEngagementData.age || {}).map((item: any) => item.value || 0);
+  const ageRelativePercentages: any = {};
+  Object.keys(currentEngagementData.age || {}).forEach(ageKey => {
+    ageRelativePercentages[ageKey] = calculateRelativePercentage(
+      currentEngagementData.age[ageKey]?.value || 0, 
+      ageValues
+    );
+  });
+  
+  // Calculate relative percentages for creator types
+  const creatorValues = Object.values(currentEngagementData.creators || {}).map((item: any) => item.value || 0);
+  const creatorRelativePercentages: any = {};
+  Object.keys(currentEngagementData.creators || {}).forEach(creatorKey => {
+    creatorRelativePercentages[creatorKey] = calculateRelativePercentage(
+      currentEngagementData.creators[creatorKey]?.value || 0, 
+      creatorValues
+    );
+  });
+  
+  // Calculate relative percentages for regions
+  const regionValues = Object.values(currentEngagementData.regions || {}).map((item: any) => item.value || 0);
+  const regionRelativePercentages: any = {};
+  Object.keys(currentEngagementData.regions || {}).forEach(regionKey => {
+    regionRelativePercentages[regionKey] = calculateRelativePercentage(
+      currentEngagementData.regions[regionKey]?.value || 0, 
+      regionValues
+    );
+  });
+  
+  // Helper function to format engagement metric labels
+  const formatMetricLabel = (value: number) => {
+    switch(engagementMetric) {
+      case 'views':
+        if (value >= 1000000000) {
+          return `${(value / 1000000000).toFixed(1)}B views`;
+        } else if (value >= 1000000) {
+          return `${(value / 1000000).toFixed(1)}M views`;
+        } else if (value >= 1000) {
+          return `${(value / 1000).toFixed(1)}K views`;
+        }
+        return `${value} views`;
+      case 'comments':
+        if (value >= 1000000) {
+          return `${(value / 1000000).toFixed(1)}M comments`;
+        } else if (value >= 1000) {
+          return `${(value / 1000).toFixed(1)}K comments`;
+        }
+        return `${value} comments`;
+      case 'shares':
+        if (value >= 1000000) {
+          return `${(value / 1000000).toFixed(1)}M shares`;
+        } else if (value >= 1000) {
+          return `${(value / 1000).toFixed(1)}K shares`;
+        }
+        return `${value} shares`;
+      case 'engagement':
+        if (value >= 1000000000) {
+          return `${(value / 1000000000).toFixed(1)}B engagements`;
+        } else if (value >= 1000000) {
+          return `${(value / 1000000).toFixed(1)}M engagements`;
+        } else if (value >= 1000) {
+          return `${(value / 1000).toFixed(1)}K engagements`;
+        }
+        return `${value} engagements`;
+      default:
+        if (value >= 1000000) {
+          return `${(value / 1000000).toFixed(1)}M views`;
+        } else if (value >= 1000) {
+          return `${(value / 1000).toFixed(1)}K views`;
+        }
+        return `${value} views`;
+    }
+  };
 
   const renderViralScore = (score: number) => {
     const percentage = (score / 10) * 100;
@@ -376,10 +612,10 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
         )}
       </AnimatePresence>
 
-      <CardHeader className="pb-4">
+      <CardHeader className="pb-6">
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-4 mb-4">
               <h2 className="text-2xl font-bold text-gray-900">{displayCreative.name}</h2>
               {displayCreative.momentum === "rising" && (
                 <div className="relative group">
@@ -418,7 +654,6 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 </div>
               )}
             </div>
-            <p className="text-gray-600">{displayCreative.description}</p>
           </div>
           <Button 
             onClick={() => setShowScaleModal(true)}
@@ -432,10 +667,10 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-8 pt-2">
         {/* Tabs for detailed information */}
         <Tabs defaultValue="demographics" className="w-full" value={activeTab} onValueChange={handleTabChange} activationMode="manual">
-          <TabsList className="flex gap-8 bg-transparent p-0 mb-6 h-auto">
+          <TabsList className="flex gap-8 bg-transparent p-0 mb-8 h-auto">
             <TabsTrigger 
               value="demographics" 
               className="px-4 py-2 bg-transparent text-gray-600 data-[state=active]:text-blue-600 data-[state=active]:bg-blue-50 font-medium data-[state=active]:font-bold transition-all duration-150 ease-in-out hover:bg-gray-50 hover:text-gray-900 rounded-lg data-[state=active]:shadow-none transform hover:scale-[1.02] active:scale-[0.98]"
@@ -483,35 +718,11 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             </AnimatePresence>
             
             {/* Tab Content with smooth fade transition */}
-            <motion.div 
-              className="relative h-full"
-              animate={{ 
-                opacity: isLoadingTab ? 0.7 : 1
-              }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-          <TabsContent value="demographics" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
+            <TabsContent value="demographics" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
             <div className="space-y-6 pb-6">
-              {/* Time Filter */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xl font-bold text-gray-900">Demographics from creators using this sound</span>
-                </div>
-                <div className="flex gap-2">
-                  {['1 Day', '1 Week', '1 Month', '3 Months'].map((period) => (
-                    <button
-                      key={period}
-                      onClick={() => setDemographicsTimeFilter(period)}
-                      className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all border ${
-                        demographicsTimeFilter === period 
-                          ? 'bg-blue-50 text-blue-600 border-blue-200' 
-                          : 'bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100 hover:text-gray-900'
-                      }`}
-                    >
-                      {period}
-                    </button>
-                  ))}
-                </div>
+              {/* Title */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900">Demographics of creators on this sound</h3>
               </div>
 
               {/* Main Demographics Grid */}
@@ -567,22 +778,22 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                       <>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: colorScheme.gender.primary }} />
-                          <span className="text-xs text-gray-600">Female: <span className="font-semibold" style={{ color: colorScheme.gender.primary }}>{currentDemographics.genderSplit.female}%</span></span>
+                          <span className="text-xs text-gray-900">Female: <span className="font-bold">{currentDemographics.genderSplit.female}%</span></span>
                       </div>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: colorScheme.gender.secondary }} />
-                          <span className="text-xs text-gray-600">Male: <span className="font-semibold" style={{ color: colorScheme.gender.secondary }}>{currentDemographics.genderSplit.male}%</span></span>
+                          <span className="text-xs text-gray-900">Male: <span className="font-bold">{currentDemographics.genderSplit.male}%</span></span>
                       </div>
                       </>
                     ) : (
                       <>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: colorScheme.gender.primary }} />
-                          <span className="text-xs text-gray-600">Male: <span className="font-semibold" style={{ color: colorScheme.gender.primary }}>{currentDemographics.genderSplit.male}%</span></span>
+                          <span className="text-xs text-gray-900">Male: <span className="font-bold">{currentDemographics.genderSplit.male}%</span></span>
                     </div>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: colorScheme.gender.secondary }} />
-                          <span className="text-xs text-gray-600">Female: <span className="font-semibold" style={{ color: colorScheme.gender.secondary }}>{currentDemographics.genderSplit.female}%</span></span>
+                          <span className="text-xs text-gray-900">Female: <span className="font-bold">{currentDemographics.genderSplit.female}%</span></span>
                         </div>
                       </>
                     )}
@@ -611,35 +822,18 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                       return (
                           <div key={range.range} className="relative">
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-medium text-gray-600">{range.range}</span>
-                              <span className="text-xs font-semibold" style={{ color: barColor }}>{range.percentage}%</span>
+                              <span className="text-xs font-medium text-gray-900">{range.range}</span>
+                              <span className="text-xs font-semibold text-gray-900">{range.percentage}%</span>
                           </div>
-                            <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                              style={{ 
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1px solid rgba(255, 255, 255, 0.2)',
-                                boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                              }}
-                            >
+                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                                className="h-full rounded-full relative"
-                                style={{ 
-                                  background: `linear-gradient(90deg, ${barColor}dd, ${barColor}99)`,
-                                  backdropFilter: 'blur(8px)',
-                                  boxShadow: `inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px ${barColor}40`
-                                }}
+                                className="h-full rounded-full"
+                                style={{ backgroundColor: barColor }}
                               initial={{ width: 0 }}
                               animate={{ width: `${range.percentage}%` }}
                               transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
                               key={`age-${range.range}-${demographicsTimeFilter}`}
-                            >
-                              <div 
-                                className="absolute inset-0 rounded-full"
-                                style={{
-                                  background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                                }}
-                              />
-                            </motion.div>
+                            />
                           </div>
                         </div>
                       );
@@ -682,34 +876,17 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                       return (
                           <div key={arch.type} className="relative">
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-medium text-gray-600">{arch.type}</span>
-                              <span className="text-xs font-semibold" style={{ color: barColor }}>{arch.percentage}%</span>
+                              <span className="text-xs font-medium text-gray-900">{arch.type}</span>
+                              <span className="text-xs font-semibold text-gray-900">{arch.percentage}%</span>
                           </div>
-                            <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                              style={{ 
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1px solid rgba(255, 255, 255, 0.2)',
-                                boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                              }}
-                            >
+                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                                className="h-full rounded-full relative"
-                                style={{ 
-                                  background: `linear-gradient(90deg, ${barColor}dd, ${barColor}99)`,
-                                  backdropFilter: 'blur(8px)',
-                                  boxShadow: `inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px ${barColor}40`
-                                }}
+                                className="h-full rounded-full"
+                                style={{ backgroundColor: barColor }}
                               initial={{ width: 0 }}
-                              animate={{ width: `${arch.percentage}%` }}
+                                animate={{ width: `${arch.percentage}%` }}
                               transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
-                            >
-                              <div 
-                                className="absolute inset-0 rounded-full"
-                                style={{
-                                  background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                                }}
-                              />
-                            </motion.div>
+                            />
                           </div>
                         </div>
                       );
@@ -740,34 +917,17 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                       return (
                           <div key={country.country} className="relative">
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-medium text-gray-600">{country.country}</span>
-                              <span className="text-xs font-semibold" style={{ color: barColor }}>{country.percentage}%</span>
+                              <span className="text-xs font-medium text-gray-900">{country.country}</span>
+                              <span className="text-xs font-semibold text-gray-900">{country.percentage}%</span>
                           </div>
-                            <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                              style={{ 
-                                background: 'rgba(255, 255, 255, 0.1)',
-                                border: '1px solid rgba(255, 255, 255, 0.2)',
-                                boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                              }}
-                            >
+                            <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                                className="h-full rounded-full relative"
-                                style={{ 
-                                  background: `linear-gradient(90deg, ${barColor}dd, ${barColor}99)`,
-                                  backdropFilter: 'blur(8px)',
-                                  boxShadow: `inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px ${barColor}40`
-                                }}
+                                className="h-full rounded-full"
+                                style={{ backgroundColor: barColor }}
                               initial={{ width: 0 }}
-                              animate={{ width: `${country.percentage}%` }}
+                                animate={{ width: `${country.percentage}%` }}
                               transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
-                            >
-                              <div 
-                                className="absolute inset-0 rounded-full"
-                                style={{
-                                  background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                                }}
-                              />
-                            </motion.div>
+                            />
                           </div>
                         </div>
                       );
@@ -784,8 +944,26 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
           <TabsContent value="engagement" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
             {/* Simplified Engagement - Best Performing Demographics */}
             <div className="space-y-6 pb-6">
-              <h4 className="text-xl font-bold text-gray-900">Best Performing Demographics</h4>
-              
+                <div className="flex items-center justify-between mb-6">
+                <h4 className="text-xl font-bold text-gray-900">Best Performing Demographics</h4>
+                <div className="flex gap-2">
+                  {/* Metric selector buttons */}
+                  {['views', 'comments', 'shares'].map(metric => (
+                    <button
+                      key={metric}
+                      onClick={() => setEngagementMetric(metric)}
+                      className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all capitalize ${
+                        engagementMetric === metric 
+                          ? 'bg-blue-50 text-blue-600 border-blue-200' 
+                          : 'bg-gray-50 text-gray-900 border-gray-200 hover:bg-gray-100 hover:text-gray-900'
+                      } border`}
+                    >
+                      {metric}
+                    </button>
+                  ))}
+                  </div>
+                </div>
+                
               {/* Clean bar graphs showing views for each demographic category */}
               <div className="grid grid-cols-2 gap-8">
                 {/* Gender Performance */}
@@ -797,459 +975,360 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                   <div className="space-y-3">
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Female</span>
-                        <span className="text-sm font-bold text-gray-900">187M views</span>
-                  </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
+                        <span className="text-sm text-gray-900 font-medium">Female</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.female.value)}</span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                     <motion.div
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #a855f6dd, #a855f699)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #a855f640'
-                          }}
+                          className="bg-purple-500 h-full rounded-full"
                           initial={{ width: 0 }}
-                          animate={{ width: "65%" }}
+                          animate={{ width: `${genderRelativePercentages.female}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                          </div>
-                        </div>
+                          key={`gender-female-${engagementTimeFilter}-${engagementMetric}`}
+                        />
+                    </div>
+                    </div>
                           <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Male</span>
-                        <span className="text-sm font-bold text-gray-900">98M views</span>
-                              </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
+                        <span className="text-sm text-gray-900 font-medium">Male</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.male.value)}</span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #0ea5e9dd, #0ea5e999)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #0ea5e940'
-                          }}
+                          className="bg-blue-500 h-full rounded-full"
                                   initial={{ width: 0 }}
-                          animate={{ width: "35%" }}
+                          animate={{ width: `${genderRelativePercentages.male}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                              </div>
-                            </div>
-                          </div>
-                </div>
-                
+                          key={`gender-male-${engagementTimeFilter}-${engagementMetric}`}
+                                />
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                 {/* Age Group Performance */}
-                <div>
+                            <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,1),0_0_30px_rgba(34,211,238,0.5)]" />
                     Age Group Performance
                   </h5>
                     <div className="space-y-3">
+                    {currentEngagementData.age['13-17'] && (
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">13-17</span>
-                        <span className="text-sm font-bold text-gray-900">122M views</span>
-                    </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
-                    <motion.div 
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #22d3eedd, #22d3ee99)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #22d3ee40'
-                          }}
-                          initial={{ width: 0 }}
-                                                    animate={{ width: "42%" }}
+                        <span className="text-sm text-gray-900 font-medium">13-17</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['13-17'].value)}</span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                                <motion.div 
+                          className="bg-cyan-400 h-full rounded-full"
+                                  initial={{ width: 0 }}
+                          animate={{ width: `${ageRelativePercentages['13-17'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                        </div>
-                      </div>
-                          <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">18-24</span>
-                        <span className="text-sm font-bold text-gray-900">110M views</span>
-                              </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
-                            <motion.div 
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #ec4899dd, #ec489999)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #ec489940'
-                          }}
-                              initial={{ width: 0 }}
-                                                    animate={{ width: "38%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                          </div>
-                          </div>
+                          key={`age-13-17-${engagementTimeFilter}-${engagementMetric}`}
+                                />
+                    </div>
+                    </div>
+                      )}
+                          {currentEngagementData.age['18-24'] && (
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">25-34</span>
-                        <span className="text-sm font-bold text-gray-900">43M views</span>
-                        </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
-                    <motion.div 
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #facc15dd, #facc1599)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #facc1540'
-                          }}
-                          initial={{ width: 0 }}
-                          animate={{ width: "15%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                        </div>
+                        <span className="text-sm text-gray-900 font-medium">18-24</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['18-24'].value)}</span>
                       </div>
-                          <div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                          className="bg-pink-500 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${ageRelativePercentages['18-24'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                          key={`age-18-24-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                      </div>
+                    </div>
+                          )}
+                    {currentEngagementData.age['25-34'] && (
+                  <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">35+</span>
-                        <span className="text-sm font-bold text-gray-900">14M views</span>
-                              </div>
-                      <div className="relative w-full h-2.5 rounded-full overflow-hidden backdrop-blur-sm" 
-                        style={{ 
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05)'
-                        }}
-                      >
-                        <motion.div 
-                          className="h-full rounded-full relative"
-                          style={{ 
-                            background: 'linear-gradient(90deg, #a3e635dd, #a3e63599)',
-                            backdropFilter: 'blur(8px)',
-                            boxShadow: 'inset 0 1px 2px rgba(255, 255, 255, 0.3), 0 0 8px #a3e63540'
-                          }}
-                          initial={{ width: 0 }}
-                          animate={{ width: "5%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                        >
-                          <div 
-                            className="absolute inset-0 rounded-full"
-                            style={{
-                              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
-                            }}
-                          />
-                        </motion.div>
-                            </div>
-                            </div>
+                        <span className="text-sm text-gray-900 font-medium">25-34</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['25-34'].value)}</span>
+                  </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                    <motion.div
+                          className="bg-yellow-400 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${ageRelativePercentages['25-34'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          key={`age-25-34-${engagementTimeFilter}-${engagementMetric}`}
+                            />
                           </div>
                         </div>
-                        
+                      )}
+                          {currentEngagementData.age['35-44'] && (
+                          <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium">35-44</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['35-44'].value)}</span>
+                              </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                          className="bg-lime-400 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${ageRelativePercentages['35-44'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                          key={`age-35-44-${engagementTimeFilter}-${engagementMetric}`}
+                        />
+                            </div>
+                              </div>
+                          )}
+                          {currentEngagementData.age['45+'] && (
+                            <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium">45+</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['45+'].value)}</span>
+                            </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                                <motion.div 
+                          className="bg-purple-400 h-full rounded-full"
+                                  initial={{ width: 0 }}
+                          animate={{ width: `${ageRelativePercentages['45+'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                          key={`age-45+-${engagementTimeFilter}-${engagementMetric}`}
+                                />
+                              </div>
+                            </div>
+                          )}
+                          </div>
+                </div>
+                
                 {/* Creator Type Performance */}
                 <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-orange-400 shadow-[0_0_15px_rgba(251,146,60,1),0_0_30px_rgba(251,146,60,0.5)]" />
                     Creator Type Performance
                   </h5>
-                        <div className="space-y-3">
+                    <div className="space-y-3">
+                    {currentEngagementData.creators['Influencer'] && (
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Influencer</span>
-                        <span className="text-sm font-bold text-gray-900">101M views</span>
-                              </div>
+                        <span className="text-sm text-gray-900 font-medium">Influencer</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Influencer'].value)}</span>
+                      </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                            <motion.div 
+                    <motion.div 
                           className="bg-orange-400 h-full rounded-full"
                               initial={{ width: 0 }}
-                          animate={{ width: "35%" }}
+                          animate={{ width: `${creatorRelativePercentages['Influencer'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
+                          key={`creator-influencer-${engagementTimeFilter}-${engagementMetric}`}
                             />
-                          </div>
-                          </div>
+                      </div>
+                    </div>
+                    )}
+                    {currentEngagementData.creators['Entertainer'] && (
+                          <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium">Entertainer</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Entertainer'].value)}</span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                            <motion.div 
+                          className="bg-pink-500 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${creatorRelativePercentages['Entertainer'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                          key={`creator-entertainer-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                      </div>
+                    </div>
+                          )}
+                          {currentEngagementData.creators['Educator'] && (
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Entertainer</span>
-                        <span className="text-sm font-bold text-gray-900">87M views</span>
+                        <span className="text-sm text-gray-900 font-medium">Educator</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Educator'].value)}</span>
                     </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                      <motion.div
-                          className="bg-pink-500 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: "30%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                        />
-                          </div>
+                    <motion.div 
+                          className="bg-cyan-400 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${creatorRelativePercentages['Educator'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          key={`creator-educator-${engagementTimeFilter}-${engagementMetric}`}
+                            />
                         </div>
-                              <div>
+                      </div>
+                          )}
+                    {currentEngagementData.creators['Artist'] && (
+                          <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Educator</span>
-                        <span className="text-sm font-bold text-gray-900">58M views</span>
-                                  </div>
+                        <span className="text-sm text-gray-900 font-medium">Artist</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Artist'].value)}</span>
+                              </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-cyan-400 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                          animate={{ width: "20%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        />
-                                  </div>
-                                </div>
-                                <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Artist</span>
-                        <span className="text-sm font-bold text-gray-900">43M views</span>
-                                  </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                        <motion.div 
                           className="bg-lime-400 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: "15%" }}
+                                  initial={{ width: 0 }}
+                          animate={{ width: `${creatorRelativePercentages['Artist'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                        />
-                                </div>
-                              </div>
+                          key={`creator-artist-${engagementTimeFilter}-${engagementMetric}`}
+                                />
                             </div>
-                  </div>
-                  
+                              </div>
+                    )}
+                          </div>
+                        </div>
+                        
                 {/* Region Performance */}
-                <div>
+                              <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_15px_rgba(74,222,128,1),0_0_30px_rgba(74,222,128,0.5)]" />
                     Region Performance
                   </h5>
-                      <div className="space-y-3">
-                    <div>
+                        <div className="space-y-3">
+                    {(currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']) && (
+                      <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">USA</span>
-                        <span className="text-sm font-bold text-gray-900">80M views</span>
-                        </div>
+                        <span className="text-sm text-gray-900 font-medium">USA</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel((currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']).value)}</span>
+                              </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                        <motion.div 
+                            <motion.div 
                           className="bg-green-400 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: "28%" }}
+                              initial={{ width: 0 }}
+                          animate={{ width: `${regionRelativePercentages['USA'] || regionRelativePercentages['United States'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut" }}
-                        />
-                        </div>
-                      </div>
+                          key={`region-usa-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                          </div>
+                          </div>
+                      )}
+                                {currentEngagementData.regions['Mexico'] && (
                     <div>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Mexico</span>
-                        <span className="text-sm font-bold text-gray-900">63M views</span>
+                        <span className="text-sm text-gray-900 font-medium">Mexico</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Mexico'].value)}</span>
                         </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                    <motion.div
+                      <motion.div
                           className="bg-violet-500 h-full rounded-full"
                           initial={{ width: 0 }}
-                          animate={{ width: "22%" }}
+                          animate={{ width: `${regionRelativePercentages['Mexico'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                          key={`region-mexico-${engagementTimeFilter}-${engagementMetric}`}
                         />
-                          </div>
-                        </div>
-                          <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Brazil</span>
-                        <span className="text-sm font-bold text-gray-900">43M views</span>
                               </div>
+                          </div>
+                          )}
+                          {currentEngagementData.regions['Brazil'] && (
+                              <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium">Brazil</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Brazil'].value)}</span>
+                        </div>
                       <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                        <motion.div 
+                    <motion.div 
                           className="bg-rose-500 h-full rounded-full"
                           initial={{ width: 0 }}
-                          animate={{ width: "15%" }}
+                          animate={{ width: `${regionRelativePercentages['Brazil'] || 0}%` }}
                           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                          key={`region-brazil-${engagementTimeFilter}-${engagementMetric}`}
                         />
-                            </div>
-                              </div>
-                            <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-600">Indonesia</span>
-                        <span className="text-sm font-bold text-gray-900">34M views</span>
-                            </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                                <motion.div 
-                          className="bg-amber-400 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                          animate={{ width: "12%" }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                                />
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
-            </div>
+                          )}
+                            {currentEngagementData.regions['Indonesia'] && (
+                          <div>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium">Indonesia</span>
+                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Indonesia'].value)}</span>
+                              </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                            <motion.div 
+                          className="bg-amber-400 h-full rounded-full"
+                              initial={{ width: 0 }}
+                          animate={{ width: `${regionRelativePercentages['Indonesia'] || 0}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                          key={`region-indonesia-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                          </div>
+                          </div>
+                            )}
+                        </div>
+                              </div>
+                          </div>
+                        </div>
           </TabsContent>
 
           {/* Examples Tab */}
           <TabsContent value="examples" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
             <div className="space-y-6 pb-6">
-              {/* Header with Filter Button */}
+              {/* Header */}
               <div className="flex items-center justify-between">
                 <h4 className="font-bold text-2xl text-gray-900">
                   Top Videos
                 </h4>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600">Showing</span>
-                    <span className="text-sm font-bold text-gray-900">{getFilteredVideos().length}</span>
-                    <span className="text-sm text-gray-600">of 2 videos</span>
                   </div>
                   
-                  {/* Filter Popover */}
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        className="flex items-center gap-2 bg-white hover:bg-blue-50 text-gray-700 border-blue-200 hover:border-blue-400"
-                      >
-                        <Filter className="w-4 h-4" />
-                        Filter & Sort
-                        {(genderFilter.size > 0 || ageFilter.size > 0 || regionFilter.size > 0 || archetypeFilter.size > 0) && (
-                          <div className="ml-1 px-1.5 py-0.5 bg-blue-100 rounded-full">
-                            <span className="text-xs font-bold text-blue-600">
-                              {genderFilter.size + ageFilter.size + regionFilter.size + archetypeFilter.size}
-                            </span>
-                          </div>
-                        )}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[600px] bg-white border-blue-100" align="end">
-                      <div className="space-y-6">
-                        <div className="flex items-center justify-between">
-                          <h4 className="text-lg font-bold text-gray-900">Filter & Sort Examples</h4>
-                          {(genderFilter.size > 0 || ageFilter.size > 0 || regionFilter.size > 0 || archetypeFilter.size > 0) && (
-                            <button 
-                              onClick={clearAllFilters}
-                              className="text-xs text-blue-600 hover:text-blue-800"
-                            >
-                              Clear all
-                            </button>
-                          )}
-                        </div>
-                        
-                        <div className="grid grid-cols-2 gap-4">
-                          {/* Filter content will go here */}
-                              </div>
-                              </div>
-                    </PopoverContent>
-                  </Popover>
-                              </div>
-                            </div>
-                            
               {/* Creator Cards Grid */}
               <div>
                 <div className="grid grid-cols-2 gap-6">
                   {getFilteredVideos().slice(0, visibleCards).map((video, idx) => (
-                    <motion.div
+                      <motion.div
                       key={`${video.creator}-${idx}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.03 }}
-                      className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-all"
+                      className="bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-all min-h-[400px]"
                     >
                       {/* Top Section with Profile and Carousel side by side */}
                       <div className="flex gap-6">
                         {/* Left Side - Creator Info */}
                         <div className="flex-1">
                           {/* Profile Header */}
-                          <div className="flex items-start gap-3 mb-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold">
+                          <div className="flex items-start gap-4 mb-6">
+                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-lg">
                               {video.creator.slice(1, 3).toUpperCase()}
-                              </div>
-                            <div>
+                          </div>
+                              <div>
                                       <div className="flex items-center gap-2">
-                                <h4 className="font-semibold text-gray-900">{video.creator}</h4>
-                                <span className={`px-2 py-0.5 text-xs rounded-full font-medium ${
+                                <h4 className="font-semibold text-gray-900 text-lg">{video.creator}</h4>
+                                <span className={`px-3 py-1 text-sm rounded-full font-medium ${
                                   idx % 4 === 0 ? 'bg-purple-100 text-purple-700' :
                                   idx % 4 === 1 ? 'bg-pink-100 text-pink-700' :
                                   idx % 4 === 2 ? 'bg-orange-100 text-orange-700' :
                                   'bg-green-100 text-green-700'
                                 }`}>
                                   {['Lifestyle Influencer', 'Fashion Creator', 'Beauty Guru', 'Content Creator'][idx % 4]}
-                                </span>
-                              </div>
+                                  </span>
+                                </div>
                               </div>
                             </div>
                             
                           {/* Stats Row */}
-                          <div className="grid grid-cols-2 gap-4 mb-4">
+                          <div className="grid grid-cols-2 gap-6 mb-6">
                             <div>
-                              <p className="text-xs text-gray-500">FOLLOWERS</p>
-                              <p className="font-semibold text-gray-900">{Math.floor(Math.random() * 200 + 50)}K</p>
-                                      </div>
+                              <p className="text-sm text-gray-700 font-medium">FOLLOWERS</p>
+                              <p className="font-semibold text-gray-900 text-lg">{Math.floor(Math.random() * 200 + 50)}K</p>
+                                  </div>
                             <div>
-                              <p className="text-xs text-gray-500">GENDER</p>
-                              <p className="font-semibold text-gray-900">{['Female', 'Male', 'Female', 'Female'][idx % 4]}</p>
+                              <p className="text-sm text-gray-700 font-medium">GENDER</p>
+                              <p className="font-semibold text-gray-900 text-lg">{['Female', 'Male', 'Female', 'Female'][idx % 4]}</p>
+                                </div>
+                            <div>
+                              <p className="text-sm text-gray-700 font-medium">REGION</p>
+                              <p className="font-semibold text-gray-900 text-lg">{['USA', 'Europe', 'Asia', 'LATAM'][idx % 4]}</p>
                               </div>
                             <div>
-                              <p className="text-xs text-gray-500">REGION</p>
-                              <p className="font-semibold text-gray-900">{['USA', 'Europe', 'Asia', 'LATAM'][idx % 4]}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-gray-500">LANGUAGE</p>
-                              <p className="font-semibold text-gray-900">English</p>
-                            </div>
-                          </div>
-                          
+                              <p className="text-sm text-gray-700 font-medium">LANGUAGE</p>
+                              <p className="font-semibold text-gray-900 text-lg">English</p>
+                                </div>
+                              </div>
+                              
                           {/* Creator Analysis */}
-                          <div className="mt-4">
-                            <p className="text-xs font-semibold text-gray-600 mb-1">CREATOR ANALYSIS</p>
-                            <p className="text-sm text-gray-700 leading-relaxed">
+                          <div className="mt-6">
+                            <p className="text-sm font-semibold text-gray-600 mb-2">CREATOR ANALYSIS</p>
+                            <p className="text-base text-gray-700 leading-relaxed">
                               {idx === 0 ? 
                                 "Lifestyle creator with strong beauty/fashion engagement. Posts 3-4x weekly with peak evening performance. Authentic style and engaged audience make them perfect for this trend." :
                               idx === 1 ? 
@@ -1259,145 +1338,111 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                                 "Versatile lifestyle creator with 8% comment rate. Excels at storytelling for Gen Z audiences. Strong aesthetic alignment with brand values and campaign goals."
                               }
                             </p>
+                                </div>
                               </div>
-                            </div>
-                            
+                              
                         {/* Right Side - Recent Content Carousel */}
-                        <div className="w-[380px]">
-                          <div className="bg-gray-50 rounded-xl p-3 border border-gray-200">
-                            <p className="text-xs font-semibold text-gray-600 mb-2">RECENT CONTENT</p>
+                        <div className="w-[420px]">
+                          <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                            <p className="text-sm font-semibold text-gray-600 mb-3">RECENT CONTENT</p>
                             <div className="flex gap-2 overflow-x-auto pb-1">
                               {/* Main Trend Video - First */}
                               <div className="flex-shrink-0">
                                 <div className="relative">
-                                  <div className="w-24 h-36 bg-gray-200 rounded-lg overflow-hidden">
+                                  <div className="w-28 h-40 bg-gray-200 rounded-lg overflow-hidden">
                           <img 
                             src={video.thumbnail} 
                                       alt={`${video.creator} trend video`} 
                                       className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute top-1 left-1 px-1 py-0.5 bg-blue-600/90 text-white text-[9px] rounded font-medium">
+                                    <div className="absolute top-2 left-2 px-2 py-1 bg-blue-600/90 text-white text-xs rounded font-medium">
                                       Trend Video
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        
+
                               {/* Other Recent Content */}
                               {[1, 2, 3, 4].map((item) => (
                                 <div key={item} className="flex-shrink-0">
-                                  <div className="w-24 h-36 bg-gray-200 rounded-lg overflow-hidden">
+                                  <div className="w-28 h-40 bg-gray-200 rounded-lg overflow-hidden">
                                     <img 
                                       src="/placeholder.svg" 
                                       alt={`Recent content ${item}`} 
                                       className="w-full h-full object-cover"
-                                    />
-                                </div>
-                                </div>
+                                />
+                              </div>
+                                  </div>
                               ))}
                                 </div>
-                            <p className="text-[9px] text-gray-500 text-center mt-1.5 italic">Swipe to see more • Tap to view videos</p>
+                            <p className="text-[9px] text-gray-700 text-center mt-1.5 italic">Swipe to see more • Tap to view videos</p>
+                                  </div>
                                 </div>
-                </div>
-              </div>
-              
-                    </motion.div>
-                  ))}
-                    </div>
-                
                               </div>
-                            </div>
+                          
+                      </motion.div>
+                    ))}
+                  </div>
+                    </div>
+                        </div>
           </TabsContent>
 
-                    {/* Creative Analysis Tab */}
-          <TabsContent value="creative-analysis" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
-            <div className="grid grid-cols-2 gap-6 pb-6 h-full">
-              {/* Left side - Creative Analysis Text */}
-              <div className="bg-gray-50 rounded-lg p-8 h-full overflow-y-auto">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">CREATIVE ANALYSIS</h2>
+          <TabsContent value="creative-analysis" className="mt-6 h-full overflow-y-auto" tabIndex={-1}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Creative Analysis Section */}
+              <div className="space-y-8">
+                <h4 className="text-2xl font-bold text-gray-900">CREATIVE ANALYSIS</h4>
                 
-                <div className="space-y-12">
-                              <div>
-                    <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-6">Description</h3>
-                    <p className="text-base text-gray-600 leading-loose">
-                      {displayCreative.name === 'Lip Sync with TOS' ? 
-                        "This trend centers on lip-syncing to dramatic emotional moments in popular audio clips, often with on-screen text to add context. Creators express a wide range of emotions, from relationship frustration to moments of self-realization. To recreate, film a close-up shot of yourself lip-syncing with genuine emotion that connects to the audio's emotional peaks at 0:04, 0:08, and 0:12." :
-                      displayCreative.name === 'Dance Challenge X' ?
-                        "This trend features a high-energy dance routine set to an upbeat track with distinct beat drops. Creators perform synchronized moves often in groups or with creative transitions between solo and group shots. To recreate, master the core 8-count routine, film in a well-lit space with room for movement, and add your personal flair during the freestyle sections." :
-                        "This trend revolves around comedic timing and relatable scenarios using trending audio. Creators act out everyday situations with exaggerated reactions that sync perfectly with the audio cues. To recreate, focus on facial expressions and body language that amplify the comedic moments, using quick cuts or transitions to enhance the punchline."
-                      }
-                    </p>
-                              </div>
-                              
-                  <div className="mt-12">
-                    <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-6">Content Strategy</h3>
-                    <p className="text-base text-gray-600 leading-loose">
-                      {displayCreative.name === 'Lip Sync with TOS' ?
-                        "The trend's hook is the audio's relatable and emotional moments, which creators use to build a narrative. The most common format is a direct-to-camera lip-sync, often enhanced with text prompts like 'POV:...' or contextual captions. For best performance, creators should focus on authentic facial expressions and convey vulnerability to build a strong connection with the audience." :
-                      displayCreative.name === 'Dance Challenge X' ?
-                        "The trend's viral factor lies in its catchy choreography and room for creative interpretation. Successful creators add unique elements like costume changes, location switches, or collaborative performances. The key is maintaining energy throughout while hitting the signature moves precisely on beat." :
-                        "The trend thrives on relatability and perfect comedic timing. Top performing content uses the audio to highlight universal experiences that viewers instantly recognize. The format works best with a clear setup and payoff structure, using visual storytelling to complement the audio."
-                      }
-                    </p>
-                                </div>
-                                </div>
-                                </div>
-                
-              {/* Right side - Visual Recreation Guide */}
-              <div className="bg-white border border-blue-100 rounded-lg p-8 h-full">
-                <h2 className="text-xl font-bold text-gray-900 mb-6">CREATIVE BRIEF</h2>
-                
-            <div className="space-y-6">
-                  {/* Quick Steps */}
+                        <div className="space-y-8">
                   <div>
-                    <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-3">QUICK STEPS</h3>
-                    <div className="space-y-2">
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs font-bold text-blue-600">1</span>
-                                </div>
-                        <p className="text-sm text-gray-700">Set up phone at eye level with good lighting</p>
-                              </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs font-bold text-blue-600">2</span>
-                            </div>
-                        <p className="text-sm text-gray-700">Practice audio timing (0:04, 0:08, 0:12)</p>
+                    <h5 className="text-base font-semibold text-blue-600 mb-4">DESCRIPTION</h5>
+                    <p className="text-gray-700 leading-loose text-base">
+                      {displayCreative.creativeAnalysis?.description || "This trend revolves around comedic timing and relatable scenarios using trending audio."}
+                    </p>
                           </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-xs font-bold text-blue-600">3</span>
+                          <div>
+                    <h5 className="text-base font-semibold text-blue-600 mb-4">CONTENT STRATEGY</h5>
+                    <p className="text-gray-700 leading-loose text-base">
+                      {displayCreative.creativeAnalysis?.content_strategy || "The trend thrives on relatability and perfect comedic timing."}
+                    </p>
+                            </div>
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-700">Build emotional intensity throughout</p>
-                      </div>
-                  </div>
+                        
+              {/* Creative Brief Section */}
+              <div className="bg-gray-50/80 p-8 rounded-lg space-y-8">
+                <h4 className="text-2xl font-bold text-gray-900">CREATIVE BRIEF</h4>
+
+                {/* Quick Steps */}
+                              <div>
+                  <h5 className="text-base font-semibold text-blue-600 mb-5">QUICK STEPS</h5>
+                  <ol className="space-y-4">
+                    {(displayCreative.creativeBrief?.quick_steps || ["Set up phone at eye level", "Practice timing", "Build intensity"]).map((step, index) => (
+                      <li key={index} className="flex items-center gap-3">
+                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-700 text-sm font-bold">{index + 1}</span>
+                        <span className="text-gray-800 text-base">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                          </div>
+                          
+                {/* Key Tips */}
+                            <div>
+                  <h5 className="text-base font-semibold text-blue-600 mb-5">KEY TIPS</h5>
+                  <ul className="space-y-4">
+                    {(displayCreative.creativeBrief?.key_tips || ["Natural lighting works best", "Film in 1080p minimum", "Post 8-10 PM for best reach"]).map((tip, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="text-blue-500 mt-1">&#8226;</span>
+                        <span className="text-gray-800 text-base">{tip}</span>
+                      </li>
+                    ))}
+                    </ul>
                 </div>
                 
-                  {/* Pro Tips */}
-                  <div className="border-t border-gray-100 pt-4">
-                    <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-3">KEY TIPS</h3>
-                    <div className="bg-blue-50 rounded-lg p-3 space-y-1.5">
-                      <p className="text-sm text-gray-700">• Natural lighting works best</p>
-                      <p className="text-sm text-gray-700">• Film in 1080p minimum</p>
-                      <p className="text-sm text-gray-700">• Post 6-10 PM for best reach</p>
-                    </div>
-              </div>
-
-                  {/* Common Mistakes */}
-                  <div className="border-t border-gray-100 pt-4">
-                    <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">AVOID</h3>
-                    <div className="space-y-1">
-                      <p className="text-sm text-gray-600">✗ Poor audio sync</p>
-                      <p className="text-sm text-gray-600">✗ Overcomplicating</p>
-                      <p className="text-sm text-gray-600">✗ Bad lighting</p>
                   </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </TabsContent>
-            </motion.div>
-          </div>
+                  </div>
         </Tabs>
       </CardContent>
     </Card>
@@ -1411,12 +1456,12 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
         
         <div className="space-y-6 py-4">
           {/* Budget Input */}
-          <div className="space-y-2">
+                            <div className="space-y-2">
             <Label htmlFor="budget" className="text-sm font-medium text-blue-600">
               Total Budget
             </Label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
               <Input
                 id="budget"
                 type="number"
@@ -1425,17 +1470,17 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 onChange={(e) => setScaleBudget(e.target.value)}
                 className="pl-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
               />
-                      </div>
-                    </div>
-
+                              </div>
+                            </div>
+                            
           {/* Region Selection */}
-          <div className="space-y-2">
+                            <div className="space-y-2">
             <Label className="text-sm font-medium text-blue-600">
               Select Regions
             </Label>
             <div className="grid grid-cols-2 gap-3">
               {['USA', 'Europe', 'Asia', 'LATAM', 'Middle East', 'Africa'].map((region) => (
-                <button
+                                  <button
                   key={region}
                   onClick={() => {
                     const newRegions = selectedRegions.includes(region)
@@ -1460,11 +1505,11 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                   }`}
                 >
                   {region}
-                </button>
-                  ))}
-                </div>
-              </div>
-
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                            
           {/* Budget Allocation */}
           {selectedRegions.length > 0 && (
                   <div className="space-y-3">
@@ -1476,7 +1521,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                   <div key={region} className="space-y-1">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium text-gray-700">{region}</span>
-                      <div className="flex items-center gap-2">
+                                      <div className="flex items-center gap-2">
                         <Input
                           type="number"
                           min="0"
@@ -1491,20 +1536,20 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                           }}
                           className="w-16 text-center text-sm border-gray-300"
                         />
-                        <span className="text-sm text-gray-600">%</span>
-                    </div>
-                    </div>
+                        <span className="text-sm text-gray-900 font-medium">%</span>
+                                      </div>
+                              </div>
                     {scaleBudget && (
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-700">
                         ${((parseFloat(scaleBudget) * (regionBudgets[region] || 0)) / 100).toFixed(2)}
                       </p>
-                    )}
-                    </div>
-                ))}
+                                )}
+                              </div>
+                  ))}
                 
                 {/* Total Percentage Check */}
                 <div className="pt-3 mt-3 border-t border-gray-200">
-                  <div className="flex items-center justify-between">
+                              <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-gray-700">Total</span>
                     <span className={`text-sm font-medium ${
                       Object.values(regionBudgets).reduce((sum, val) => sum + val, 0) === 100
@@ -1513,13 +1558,13 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                     }`}>
                       {Object.values(regionBudgets).reduce((sum, val) => sum + val, 0)}%
                     </span>
-                    </div>
-                    </div>
-                    </div>
-                  </div>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
           )}
               </div>
-
+              
         <div className="flex justify-end gap-3 pt-4 border-t">
           <Button
             variant="outline"
@@ -1543,7 +1588,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
           >
             Launch Campaign
           </Button>
-                  </div>
+                              </div>
       </DialogContent>
     </Dialog>
     </>

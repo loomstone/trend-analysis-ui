@@ -280,20 +280,20 @@ class TikTokTrendMockDataGenerator:
         peak_phase = int(days * 0.20)       # ~6 days
         decline_phase = int(days * 0.40)    # ~12 days
         
-        # Adjust phases based on virality level - scaled for 2000 total videos
+        # Adjust phases based on virality level
         if virality_level >= 4:  # Viral trend - faster growth, shorter peak
             discovery_phase = int(days * 0.10)  # ~3 days
             growth_phase = int(days * 0.20)     # ~6 days
             peak_phase = int(days * 0.25)       # ~7-8 days
             decline_phase = int(days * 0.45)    # ~13-14 days
             
-            # Base values for viral trends (scaled down for 2000 video analysis)
-            discovery_base = random.randint(5, 15)  # Start with 5-15 videos per day
-            peak_multiplier = random.uniform(8, 12)  # Peak at 40-180 videos per day
+            # Base values for viral trends
+            discovery_base = random.randint(100, 500)
+            peak_multiplier = random.uniform(15, 25)
             
         elif virality_level == 3:  # Moderate trend
-            discovery_base = random.randint(3, 10)  # Start with 3-10 videos per day
-            peak_multiplier = random.uniform(5, 8)   # Peak at 15-80 videos per day
+            discovery_base = random.randint(50, 200)
+            peak_multiplier = random.uniform(8, 12)
             
         else:  # Slow burn trend - longer discovery, sustained plateau
             discovery_phase = int(days * 0.25)  # ~7-8 days
@@ -301,8 +301,8 @@ class TikTokTrendMockDataGenerator:
             peak_phase = int(days * 0.30)       # ~9 days
             decline_phase = int(days * 0.15)    # ~4-5 days
             
-            discovery_base = random.randint(2, 5)   # Start with 2-5 videos per day
-            peak_multiplier = random.uniform(3, 5)  # Peak at 6-25 videos per day
+            discovery_base = random.randint(10, 50)
+            peak_multiplier = random.uniform(3, 6)
         
         peak_value = discovery_base * peak_multiplier
         
@@ -343,17 +343,17 @@ class TikTokTrendMockDataGenerator:
                 
                 base_value = peak_value * 0.8 * decline_factor
             
-            # Weekly patterns - weekends see 10-20% more activity (reduced variance)
+            # Weekly patterns - weekends see 20-40% more activity
             day_of_week = current_date.weekday()
             if day_of_week == 4:  # Friday
-                day_multiplier = random.uniform(1.05, 1.10)
+                day_multiplier = random.uniform(1.15, 1.25)
             elif day_of_week >= 5:  # Weekend
-                day_multiplier = random.uniform(1.10, 1.20)
+                day_multiplier = random.uniform(1.2, 1.4)
             else:  # Weekday
-                day_multiplier = random.uniform(0.95, 1.05)
+                day_multiplier = random.uniform(0.85, 1.0)
             
-            # Add minimal daily variance for smoother curves
-            daily_noise = random.uniform(0.95, 1.05)
+            # Add daily variance
+            daily_noise = random.uniform(0.8, 1.2)
             
             # Calculate final value
             value = int(base_value * day_multiplier * daily_noise)
@@ -649,12 +649,8 @@ class TikTokTrendMockDataGenerator:
     
     def _generate_trend(self, trend_index: int) -> Dict:
         """Generate a complete trend object"""
-        # Force first trend to be dance (Magnetic Pull Me Jalo Dance)
-        if trend_index == 0:
-            trend_type = "dance"
-            template = next((t for t in self.config["trend_templates"] if t["type"] == "dance"), 
-                          self.config["trend_templates"][0])
-        elif self.suggested_trend_types and trend_index < len(self.suggested_trend_types):
+        # Prioritize suggested trend types from input files
+        if self.suggested_trend_types and trend_index < len(self.suggested_trend_types):
             # Use suggested trend type
             trend_type = self.suggested_trend_types[trend_index]
             # Find matching template
@@ -668,49 +664,45 @@ class TikTokTrendMockDataGenerator:
         # Generate trend names based on context
         if self.input_context and "magnetic pull" in self.input_context.lower():
             trend_names = {
-                "dance": f"Magnetic Pull Me Jalo Dance",
-                "transformation": f"Me Jalo Glow Up",
-                "storytelling": f"El Otro POV",
-                "lifestyle": f"Me Jalo Golden Hour Aesthetic",
-                "challenge": f"Me Jalo Challenge"
-            }
-            trend_summaries = {
-                "dance": f"Couples recreate the iconic 'magnetic pull' gesture.",
-                "transformation": f"Dramatic outfit reveals synced to chorus drops.",
-                "storytelling": f"POV: dropping everything for forbidden love.",
-                "lifestyle": f"Golden hour couple content showcasing romantic aesthetics.",
-                "challenge": f"The viral magnetic pull dance move challenge."
+                "dance": f"Magnetic Pull {self.song_title} Dance",
+                "transformation": f"{self.song_title} Glow Up Challenge",
+                "storytelling": f"El Otro POV - {self.song_title}",
+                "lifestyle": f"{self.song_title} Golden Hour Aesthetic",
+                "challenge": f"{self.song_title} Challenge"
             }
         else:
             trend_names = {
-                "dance": f"Synchronized {self.song_title} Dance",
-                "transformation": f"{self.song_title} Transformation Challenge",
-                "storytelling": f"POV {self.song_title} Stories",
-                "lifestyle": f"{self.song_title} Aesthetic Vibes",
-                "challenge": f"{self.song_title} Challenge"
-            }
-            trend_summaries = {
-                "dance": f"Dance moves synced to {self.song_title}.",
-                "transformation": f"Quick outfit changes timed to beat drops.",
-                "storytelling": f"POV scenarios with {self.song_title}.",
-                "lifestyle": f"Aesthetic vibes matching the song mood.",
-                "challenge": f"Viral challenge using {self.song_title}."
-            }
+            "dance": f"Synchronized {self.song_title} Dance",
+            "transformation": f"{self.song_title} Transformation Challenge",
+            "storytelling": f"POV {self.song_title} Stories",
+            "lifestyle": f"{self.song_title} Aesthetic Vibes",
+            "challenge": f"{self.song_title} Challenge"
+        }
+        
+        trend_summaries = {
+            "dance": f"Creators perform energetic choreography to {self.song_title}, featuring signature moves and formations.",
+            "transformation": f"Dramatic transformations and reveals synchronized to the beat drops in {self.song_title}.",
+            "storytelling": f"Creative POV scenarios and relatable stories set to {self.song_title}'s emotional moments.",
+            "lifestyle": f"Aesthetic content capturing moods and vibes that match {self.song_title}'s energy.",
+            "challenge": f"Viral challenge incorporating {self.song_title}'s catchy elements into creative tasks."
+        }
         
         # Base metrics for 30-day period with 2000 total videos target
         virality_level = random.randint(2, 5)
         
         # Distribute 2000 videos across 3 trends proportionally based on virality
-        # Make the first trend (based on real data) perform best
-        if trend_index == 0:  # First trend - best performer (real data based)
-            virality_level = 5  # Force viral for the real data trend
-            detected_videos = random.randint(900, 1100)  # ~45-55% of total
-        elif trend_index == 1:  # Second trend - moderate performer
-            virality_level = 3
-            detected_videos = random.randint(500, 700)   # ~25-35% of total
-        else:  # Third trend - lowest performer
-            virality_level = 2
-            detected_videos = random.randint(200, 400)   # ~10-20% of total
+        # Each trend gets a share of the 2000 total videos
+        if trend_index == 0:  # First trend gets ~50%
+            if virality_level >= 4:  # Viral trend
+                detected_videos = random.randint(800, 1200)  # ~50-60% of total
+        elif virality_level == 3:  # Moderate trend
+                detected_videos = random.randint(600, 900)   # ~30-45% of total
+        else:  # Niche trend
+                detected_videos = random.randint(400, 600)   # ~20-30% of total
+        elif trend_index == 1:  # Second trend gets ~30%
+            detected_videos = random.randint(400, 700)
+        else:  # Third trend gets ~20%
+            detected_videos = random.randint(200, 400)
         
         # Generate time series for full 30-day period
         # Trends can start at different times within the analysis window
@@ -719,24 +711,14 @@ class TikTokTrendMockDataGenerator:
         start_date = self.config["start_date"] + timedelta(days=trend_start_offset)
         time_series = self._generate_time_series(virality_level, start_date, days_active, trend_type)
         
-        # Adjust time series to match detected_videos total
-        actual_total = sum(day["value"] for day in time_series)
-        if actual_total > 0:
-            scale_factor = detected_videos / actual_total
-            for day in time_series:
-                day["value"] = max(1, int(day["value"] * scale_factor))
-        
-        # Calculate engagement stats proportional to video count
-        # Views per video should be consistent with virality level
+        # Calculate engagement stats based on 30-day totals with 2000 videos
+        # More realistic view counts for 30-day period
         if virality_level >= 4:
-            avg_views_per_video = random.randint(30000, 50000)  # 30-50K per video for viral
+            base_views = random.randint(10000000, 50000000)  # 10M-50M for viral in 30 days
         elif virality_level == 3:
-            avg_views_per_video = random.randint(10000, 25000)  # 10-25K per video for moderate
+            base_views = random.randint(2000000, 10000000)   # 2M-10M for moderate
         else:
-            avg_views_per_video = random.randint(2000, 8000)    # 2-8K per video for niche
-        
-        # Calculate total views based on actual video count
-        base_views = detected_videos * avg_views_per_video
+            base_views = random.randint(500000, 2000000)     # 500K-2M for niche
         
         trend = {
             "name": trend_names.get(trend_type, f"{self.song_title} Trend"),
@@ -744,7 +726,6 @@ class TikTokTrendMockDataGenerator:
             "description": self._generate_detailed_description(trend_type),
             "virality_level": virality_level,
             "momentum_status": self._generate_momentum_status(virality_level, trend_start_offset + days_active, 30),
-            "recommended": trend_index == 0,  # First trend (real data based) is recommended
             "detected_videos": detected_videos,
             "top_examples": self._generate_video_examples(3),
             "engagement_stats": {
@@ -905,7 +886,8 @@ class TikTokTrendMockDataGenerator:
 
         return {
             "quick_steps": quick_steps,
-            "key_tips": key_tips
+            "key_tips": key_tips,
+            "avoid": avoid
         }
     
     def _generate_video_examples(self, count: int) -> List[Dict]:
@@ -979,7 +961,7 @@ class TikTokTrendMockDataGenerator:
             }
         else:
             # Fallback to generic tags
-            base_tags = [
+        base_tags = [
             f"#{self.song_title.replace(' ', '')}",
             f"#{self.artist.replace(' ', '')}",
             "#fyp",

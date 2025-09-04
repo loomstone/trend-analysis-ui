@@ -112,6 +112,11 @@ All colors MUST be HSL.
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   
+  /* Use SF Pro Text for all other headings and text */
+  h3, h4, h5, h6, p, span, div, button, input, select, textarea, label, a, li, td, th {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
   /* Ensure monospace elements use SF Mono */
   code, kbd, samp, pre {
     font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;

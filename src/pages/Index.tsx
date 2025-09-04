@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import type { Creative } from "@/components/CreativeCardsGrid";
+import { getSongMetadata } from "@/utils/dataTransformer";
 
 const IndexContent = () => {
   const [selectedTrendId, setSelectedTrendId] = useState<string>("1");
@@ -22,6 +23,9 @@ const IndexContent = () => {
   const [selectedCreative, setSelectedCreative] = useState<Creative | null>(null);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
+  
+  // Get song metadata from the generated data
+  const songMetadata = getSongMetadata();
   
   const handleCreativeSelect = (creative: Creative) => {
     setIsLoadingData(true);
@@ -78,14 +82,14 @@ const IndexContent = () => {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-slate-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/artists/fuerza-regida" className="text-slate-600 hover:text-slate-800 transition-colors font-medium">
-                    Fuerza Regida
+                  <BreadcrumbLink href={`/artists/${songMetadata.artist.toLowerCase().replace(/\s+/g, '-')}`} className="text-slate-600 hover:text-slate-800 transition-colors font-medium">
+                    {songMetadata.artist}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-slate-400" />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/songs/me-jalo" className="text-slate-600 hover:text-slate-800 transition-colors font-medium">
-                    Me Jalo
+                  <BreadcrumbLink href={`/songs/${songMetadata.title.toLowerCase().replace(/\s+/g, '-')}`} className="text-slate-600 hover:text-slate-800 transition-colors font-medium">
+                    {songMetadata.title}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="text-slate-400" />
@@ -108,7 +112,7 @@ const IndexContent = () => {
         >
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-slate-900 mb-2">Compare trends</h1>
-            <p className="text-slate-600">Trend analysis from up to the 2,000 most recent posts</p>
+            <p className="text-slate-600">Trend analysis on the last 2000 posts for this sound</p>
           </div>
         </motion.div>
 
@@ -140,10 +144,6 @@ const IndexContent = () => {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   className="flex-1"
                 >
-                  <div className="mb-4">
-                    <h2 className="text-2xl font-bold text-slate-900">Trending Creatives</h2>
-                    <p className="text-gray-500 text-sm mt-1">Click Any Card To Dive Deeper</p>
-                  </div>
                   <CreativeCardsGrid 
                     onCreativeSelect={handleCreativeSelect}
                     selectedCreativeId={selectedCreative?.id}

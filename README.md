@@ -1,73 +1,143 @@
-# Welcome to your Lovable project
+# TikTok Trend Analytics Dashboard
 
-## Project info
+A modern, data-driven dashboard for analyzing TikTok trends and creative performance. Built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/6288d4d7-b5e2-4040-b731-e4f031e5acf2
+## 🚀 Features
 
-## How can I edit this code?
+- **Trend Analysis**: Real-time visualization of trending TikTok sounds and creatives
+- **Interactive Graphs**: Dynamic line charts showing video/view counts over time with Spotify streams correlation
+- **Creative Insights**: Detailed analytics for each trend including:
+  - Demographics breakdown (age, gender, regions, creator types)
+  - Engagement metrics (views, comments, shares)
+  - Creative briefs and content strategies
+  - Top performing videos
+- **Mock Data Generation**: Python script to generate realistic trend data for demonstration
+- **Responsive Design**: Beautiful, modern UI that works on all devices
 
-There are several ways of editing your application.
+## 📋 Prerequisites
 
-**Use Lovable**
+- Node.js (v16 or higher)
+- Python 3.x (for mock data generation)
+- npm or yarn package manager
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6288d4d7-b5e2-4040-b731-e4f031e5acf2) and start prompting.
+## 🛠️ Installation
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```bash
+git clone [your-repo-url]
+cd import-my-git-buddy-main
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Generate mock data:
+```bash
+python3 mock_data.py
+```
 
-**Use GitHub Codespaces**
+This will create a `trend_analysis_output.json` file with sample data.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🚀 Running the Application
 
-## What technologies are used for this project?
+1. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-This project is built with:
+2. Open your browser and navigate to `http://localhost:8082`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📁 Project Structure
 
-## How can I deploy this project?
+```
+├── src/
+│   ├── components/
+│   │   ├── CreativeCardsGrid.tsx    # Grid of trend cards
+│   │   ├── CreativeDetailsCard.tsx  # Detailed view for selected trend
+│   │   ├── SimpleTrendGraph.tsx     # Main trend visualization graph
+│   │   ├── FuturisticCreativeCard.tsx # Individual trend card
+│   │   └── ui/                      # Reusable UI components
+│   ├── pages/
+│   │   └── Index.tsx               # Main page
+│   ├── utils/
+│   │   └── dataTransformer.ts      # Transforms mock data to app format
+│   └── App.tsx                     # Root component
+├── mock_data.py                    # Python script for generating sample data
+├── trend_analysis_output.json      # Generated mock data
+└── package.json
+```
 
-Simply open [Lovable](https://lovable.dev/projects/6288d4d7-b5e2-4040-b731-e4f031e5acf2) and click on Share -> Publish.
+## 🎯 Key Features Explained
 
-## Can I connect a custom domain to my Lovable project?
+### Trend Cards
+- Display key metrics: detected videos, total views, dates active
+- Show momentum status (Viral, Trending, Growing, Dying)
+- "Recommended" tag for best performing trends
+- Click to view detailed insights
 
-Yes, you can!
+### Trend Graph
+- Toggle between Videos and Views mode
+- Shows daily counts for up to 30 days
+- Includes Spotify streams correlation
+- Dynamic Y-axis scaling
+- Interactive tooltips
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Creative Insights
+Four main tabs:
+1. **Demographics**: Creator demographics who use the sound
+2. **Engagement**: Performance metrics with dynamic bar charts
+3. **Examples**: Top performing videos (limited to 2 for clarity)
+4. **Creative Analysis**: Content strategy and creative brief
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Mock Data
+The `mock_data.py` script generates:
+- Realistic trend names and descriptions
+- Time series data for video/view counts
+- Demographics distributions
+- Engagement statistics
+- Creative briefs and strategies
+
+## 🎨 Customization
+
+### Generating New Data
+Edit `mock_data.py` to customize:
+- Number of trends
+- Date ranges
+- Virality levels
+- Demographics distributions
+
+### Styling
+- Uses Tailwind CSS for styling
+- SF Pro font family throughout
+- Blue (#3B82F6) as primary theme color
+- Responsive design with mobile support
+
+## 🔧 Technologies Used
+
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Charts**: Recharts
+- **State Management**: React Hooks
+- **Build Tool**: Vite
+- **Data Generation**: Python 3
+
+## 📝 Notes
+
+- The dashboard uses mock data for demonstration purposes
+- All trend data is generated randomly but follows realistic patterns
+- The "Magnetic Pull Me Jalo Dance" trend uses real context from input files
+- Data represents analysis of the last 2000 posts for each sound
+
+## 🤝 Contributing
+
+Feel free to submit issues and enhancement requests!
+
+## 📄 License
+
+[Your License Here]

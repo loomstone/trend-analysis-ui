@@ -1,0 +1,1712 @@
+{
+  "song_metadata": {
+    "title": "vampire",
+    "artist": "Olivia Rodrigo",
+    "music_id": "7426114969307896634",
+    "duration_ms": 200351,
+    "release_date": "2024-11-05",
+    "genre": "Pop/Alternative"
+  },
+  "spotify_data": {
+    "spotify_id": "tQGBX4PfD4OV7yzIAX4bsn",
+    "total_streams": 61643164,
+    "daily_streams": 627753,
+    "monthly_listeners": 3718107,
+    "playlist_adds": 252027,
+    "save_rate": 0.174,
+    "skip_rate": 0.263,
+    "replay_rate": 0.26,
+    "discovery_source": {
+      "algorithmic_playlists": 0.47,
+      "user_playlists": 0.23,
+      "search": 0.13,
+      "artist_profile": 0.06,
+      "other": 0.15
+    }
+  },
+  "trends": [
+    {
+      "name": "Synchronized vampire Dance",
+      "summary": "Creators perform energetic choreography to vampire, featuring signature moves and formations.",
+      "description": "This trend features creators performing synchronized choreography to vampire. The dance includes signature moves that match the song's rhythm and energy. Groups and solo performers alike showcase their interpretation, often adding personal flair while maintaining core choreographic elements.",
+      "virality_level": 2,
+      "momentum_status": "Dying",
+      "detected_videos": 908,
+      "top_examples": [
+        {
+          "id": "7590287597299939332",
+          "author_uid": "7510712923128908151",
+          "music_id": "7426114969307896634",
+          "desc": "POV: you finally get it \u2728 #relatable",
+          "share_url": "https://www.tiktok.com/@creator0/video/7561029540142154014",
+          "create_time": 1755596294,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7501995387979026078.png",
+          "statistics": {
+            "play_count": 9698256,
+            "share_count": 79049,
+            "comment_count": 45593,
+            "like_count": 797378
+          }
+        },
+        {
+          "id": "7497984604965366707",
+          "author_uid": "7578634966336374361",
+          "music_id": "7426114969307896634",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator2/video/7506305203805590322",
+          "create_time": 1754905094,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7522938236960297112.png",
+          "statistics": {
+            "play_count": 5711336,
+            "share_count": 81904,
+            "comment_count": 31440,
+            "like_count": 849523
+          }
+        },
+        {
+          "id": "7416415538803269048",
+          "author_uid": "7460763188355996502",
+          "music_id": "7426114969307896634",
+          "desc": "Wait for it... \ud83d\ude31 #vampire #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator1/video/7454442453925522503",
+          "create_time": 1756805894,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7535870703117754099.png",
+          "statistics": {
+            "play_count": 3611559,
+            "share_count": 79009,
+            "comment_count": 42355,
+            "like_count": 1451576
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 1504.66,
+        "median_views": 1053.26,
+        "avg_likes": 180.56,
+        "avg_comments": 12.04,
+        "avg_shares": 37.62,
+        "avg_engagement_rate": 0.1293,
+        "total_views": 1366231,
+        "total_engagements": 209033.0
+      },
+      "demographics": {
+        "age_range": "18-24",
+        "age_distribution": {
+          "13-17": 0.377,
+          "18-24": 0.386,
+          "25-34": 0.184,
+          "35-44": 0.042,
+          "45+": 0.011
+        },
+        "age_confidence": 0.65,
+        "gender": "Mixed",
+        "gender_split": {
+          "female": 0.5,
+          "male": 0.482,
+          "other": 0.018
+        },
+        "gender_confidence": 0.897,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.942
+      },
+      "creator_archetypes": {
+        "Entertainer": 0.475,
+        "Influencer": 0.313,
+        "Artist": 0.199,
+        "Educator": 0.059
+      },
+      "regional_distribution": [
+        {
+          "code": "UK",
+          "country": "United Kingdom",
+          "percentage": 0.263,
+          "video_count": 34,
+          "avg_engagement_rate": 0.08
+        },
+        {
+          "code": "FR",
+          "country": "France",
+          "percentage": 0.24,
+          "video_count": 194,
+          "avg_engagement_rate": 0.137
+        },
+        {
+          "code": "DE",
+          "country": "Germany",
+          "percentage": 0.224,
+          "video_count": 165,
+          "avg_engagement_rate": 0.128
+        },
+        {
+          "code": "AU",
+          "country": "Australia",
+          "percentage": 0.167,
+          "video_count": 147,
+          "avg_engagement_rate": 0.131
+        },
+        {
+          "code": "CA",
+          "country": "Canada",
+          "percentage": 0.106,
+          "video_count": 149,
+          "avg_engagement_rate": 0.144
+        }
+      ],
+      "type_of_content": [
+        "dance",
+        "lip sync",
+        "music",
+        "choreography"
+      ],
+      "content_type_confidence": 0.932,
+      "creative_analysis": "Success factors include clean synchronization, creative formations, and engaging facial expressions. Videos filmed in interesting locations with good lighting consistently outperform. The hook is the opening move sequence that immediately captures attention.",
+      "creative_brief": {
+        "instructions": "Perform the signature choreography to vampire with precise timing. Match your movements to the beat drops and rhythm changes. The key is to maintain energy throughout while adding your personal style to make it unique.",
+        "key_elements": [
+          "Master the signature moves at key timestamps",
+          "Sync movements to beat drops and rhythm changes",
+          "Film with good lighting and clean background",
+          "Add personal flair while maintaining core choreography",
+          "Consider group performances for added impact"
+        ]
+      },
+      "active_date_range": {
+        "start_date": "2025-07-04",
+        "end_date": "2025-09-04",
+        "days_active": 62,
+        "current_phase": "Fade-out"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-07-04",
+          "value": 18
+        },
+        {
+          "date": "2025-07-05",
+          "value": 18
+        },
+        {
+          "date": "2025-07-06",
+          "value": 24
+        },
+        {
+          "date": "2025-07-07",
+          "value": 16
+        },
+        {
+          "date": "2025-07-08",
+          "value": 18
+        },
+        {
+          "date": "2025-07-09",
+          "value": 17
+        },
+        {
+          "date": "2025-07-10",
+          "value": 22
+        },
+        {
+          "date": "2025-07-11",
+          "value": 28
+        },
+        {
+          "date": "2025-07-12",
+          "value": 31
+        },
+        {
+          "date": "2025-07-13",
+          "value": 33
+        },
+        {
+          "date": "2025-07-14",
+          "value": 27
+        },
+        {
+          "date": "2025-07-15",
+          "value": 23
+        },
+        {
+          "date": "2025-07-16",
+          "value": 26
+        },
+        {
+          "date": "2025-07-17",
+          "value": 32
+        },
+        {
+          "date": "2025-07-18",
+          "value": 38
+        },
+        {
+          "date": "2025-07-19",
+          "value": 34
+        },
+        {
+          "date": "2025-07-20",
+          "value": 34
+        },
+        {
+          "date": "2025-07-21",
+          "value": 23
+        },
+        {
+          "date": "2025-07-22",
+          "value": 29
+        },
+        {
+          "date": "2025-07-23",
+          "value": 38
+        },
+        {
+          "date": "2025-07-24",
+          "value": 35
+        },
+        {
+          "date": "2025-07-25",
+          "value": 49
+        },
+        {
+          "date": "2025-07-26",
+          "value": 72
+        },
+        {
+          "date": "2025-07-27",
+          "value": 68
+        },
+        {
+          "date": "2025-07-28",
+          "value": 59
+        },
+        {
+          "date": "2025-07-29",
+          "value": 68
+        },
+        {
+          "date": "2025-07-30",
+          "value": 64
+        },
+        {
+          "date": "2025-07-31",
+          "value": 92
+        },
+        {
+          "date": "2025-08-01",
+          "value": 104
+        },
+        {
+          "date": "2025-08-02",
+          "value": 144
+        },
+        {
+          "date": "2025-08-03",
+          "value": 144
+        },
+        {
+          "date": "2025-08-04",
+          "value": 136
+        },
+        {
+          "date": "2025-08-05",
+          "value": 134
+        },
+        {
+          "date": "2025-08-06",
+          "value": 120
+        },
+        {
+          "date": "2025-08-07",
+          "value": 129
+        },
+        {
+          "date": "2025-08-08",
+          "value": 189
+        },
+        {
+          "date": "2025-08-09",
+          "value": 185
+        },
+        {
+          "date": "2025-08-10",
+          "value": 164
+        },
+        {
+          "date": "2025-08-11",
+          "value": 120
+        },
+        {
+          "date": "2025-08-12",
+          "value": 139
+        },
+        {
+          "date": "2025-08-13",
+          "value": 142
+        },
+        {
+          "date": "2025-08-14",
+          "value": 145
+        },
+        {
+          "date": "2025-08-15",
+          "value": 149
+        },
+        {
+          "date": "2025-08-16",
+          "value": 201
+        },
+        {
+          "date": "2025-08-17",
+          "value": 164
+        },
+        {
+          "date": "2025-08-18",
+          "value": 135
+        },
+        {
+          "date": "2025-08-19",
+          "value": 132
+        },
+        {
+          "date": "2025-08-20",
+          "value": 110
+        },
+        {
+          "date": "2025-08-21",
+          "value": 98
+        },
+        {
+          "date": "2025-08-22",
+          "value": 169
+        },
+        {
+          "date": "2025-08-23",
+          "value": 139
+        },
+        {
+          "date": "2025-08-24",
+          "value": 182
+        },
+        {
+          "date": "2025-08-25",
+          "value": 109
+        },
+        {
+          "date": "2025-08-26",
+          "value": 78
+        },
+        {
+          "date": "2025-08-27",
+          "value": 98
+        },
+        {
+          "date": "2025-08-28",
+          "value": 85
+        },
+        {
+          "date": "2025-08-29",
+          "value": 92
+        },
+        {
+          "date": "2025-08-30",
+          "value": 83
+        },
+        {
+          "date": "2025-08-31",
+          "value": 84
+        },
+        {
+          "date": "2025-09-01",
+          "value": 34
+        },
+        {
+          "date": "2025-09-02",
+          "value": 34
+        },
+        {
+          "date": "2025-09-03",
+          "value": 22
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-07-04",
+          "week_end": "2025-07-10",
+          "total_videos": 133,
+          "avg_daily_videos": 19.0,
+          "peak_day_videos": 24,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-07-11",
+          "week_end": "2025-07-17",
+          "total_videos": 200,
+          "avg_daily_videos": 28.6,
+          "peak_day_videos": 33,
+          "growth_rate": 50.4
+        },
+        {
+          "week_start": "2025-07-18",
+          "week_end": "2025-07-24",
+          "total_videos": 231,
+          "avg_daily_videos": 33.0,
+          "peak_day_videos": 38,
+          "growth_rate": 15.5
+        },
+        {
+          "week_start": "2025-07-25",
+          "week_end": "2025-07-31",
+          "total_videos": 472,
+          "avg_daily_videos": 67.4,
+          "peak_day_videos": 92,
+          "growth_rate": 104.3
+        },
+        {
+          "week_start": "2025-08-01",
+          "week_end": "2025-08-07",
+          "total_videos": 911,
+          "avg_daily_videos": 130.1,
+          "peak_day_videos": 144,
+          "growth_rate": 93.0
+        },
+        {
+          "week_start": "2025-08-08",
+          "week_end": "2025-08-14",
+          "total_videos": 1084,
+          "avg_daily_videos": 154.9,
+          "peak_day_videos": 189,
+          "growth_rate": 19.0
+        },
+        {
+          "week_start": "2025-08-15",
+          "week_end": "2025-08-21",
+          "total_videos": 989,
+          "avg_daily_videos": 141.3,
+          "peak_day_videos": 201,
+          "growth_rate": -8.8
+        },
+        {
+          "week_start": "2025-08-22",
+          "week_end": "2025-08-28",
+          "total_videos": 860,
+          "avg_daily_videos": 122.9,
+          "peak_day_videos": 182,
+          "growth_rate": -13.0
+        },
+        {
+          "week_start": "2025-08-29",
+          "week_end": "2025-09-03",
+          "total_videos": 349,
+          "avg_daily_videos": 58.2,
+          "peak_day_videos": 92,
+          "growth_rate": -59.4
+        }
+      ],
+      "trending_hashtags": [
+        "#vampire",
+        "#OliviaRodrigo",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#dance",
+        "#choreography",
+        "#dancechallenge"
+      ],
+      "audio_features": {
+        "bpm": 147,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "emotional"
+      },
+      "real_creative_example": {
+        "description": "Original dance created by @originalcreator",
+        "video_url": "https://www.tiktok.com/@originalcreator/video/123456",
+        "engagement": {
+          "views": 5000000,
+          "likes": 750000,
+          "shares": 100000
+        }
+      }
+    },
+    {
+      "name": "vampire Transformation Challenge",
+      "summary": "Dramatic transformations and reveals synchronized to the beat drops in vampire.",
+      "description": "Creators use vampire to showcase dramatic transformations, typically synced to beat drops or emotional peaks in the music. Common themes include outfit changes, makeup transformations, room reveals, and before/after scenarios that surprise and delight viewers.",
+      "virality_level": 5,
+      "momentum_status": "Dying",
+      "detected_videos": 27276,
+      "top_examples": [
+        {
+          "id": "7549647526706313908",
+          "author_uid": "7511803592742059296",
+          "music_id": "7426114969307896634",
+          "desc": "vampire hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator0/video/7562701773739823668",
+          "create_time": 1754991494,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7487193408280858172.png",
+          "statistics": {
+            "play_count": 8504135,
+            "share_count": 32582,
+            "comment_count": 31445,
+            "like_count": 953507
+          }
+        },
+        {
+          "id": "7440516315422278474",
+          "author_uid": "7510714251066291670",
+          "music_id": "7426114969307896634",
+          "desc": "vampire hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator2/video/7526604253165710875",
+          "create_time": 1754818694,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7472959813656165605.png",
+          "statistics": {
+            "play_count": 7593008,
+            "share_count": 13667,
+            "comment_count": 26951,
+            "like_count": 573046
+          }
+        },
+        {
+          "id": "7557795238659756288",
+          "author_uid": "7575922095853099849",
+          "music_id": "7426114969307896634",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator1/video/7473070795514317558",
+          "create_time": 1755164294,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7484754485366070410.png",
+          "statistics": {
+            "play_count": 6892550,
+            "share_count": 61808,
+            "comment_count": 2117,
+            "like_count": 34442
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 17342.68,
+        "median_views": 12139.88,
+        "avg_likes": 2081.12,
+        "avg_comments": 138.74,
+        "avg_shares": 433.57,
+        "avg_engagement_rate": 0.1104,
+        "total_views": 473038954,
+        "total_engagements": 72374960.0
+      },
+      "demographics": {
+        "age_range": "18-24",
+        "age_distribution": {
+          "13-17": 0.341,
+          "18-24": 0.405,
+          "25-34": 0.205,
+          "35-44": 0.039,
+          "45+": 0.01
+        },
+        "age_confidence": 0.724,
+        "gender": "Mixed",
+        "gender_split": {
+          "female": 0.489,
+          "male": 0.489,
+          "other": 0.022
+        },
+        "gender_confidence": 0.717,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.832
+      },
+      "creator_archetypes": {
+        "Influencer": 0.357,
+        "Entertainer": 0.32,
+        "Artist": 0.237,
+        "Educator": 0.166
+      },
+      "regional_distribution": [
+        {
+          "code": "BR",
+          "country": "Brazil",
+          "percentage": 0.445,
+          "video_count": 38,
+          "avg_engagement_rate": 0.148
+        },
+        {
+          "code": "CA",
+          "country": "Canada",
+          "percentage": 0.222,
+          "video_count": 87,
+          "avg_engagement_rate": 0.101
+        },
+        {
+          "code": "UK",
+          "country": "United Kingdom",
+          "percentage": 0.121,
+          "video_count": 41,
+          "avg_engagement_rate": 0.093
+        },
+        {
+          "code": "FR",
+          "country": "France",
+          "percentage": 0.112,
+          "video_count": 73,
+          "avg_engagement_rate": 0.139
+        },
+        {
+          "code": "DE",
+          "country": "Germany",
+          "percentage": 0.1,
+          "video_count": 160,
+          "avg_engagement_rate": 0.097
+        }
+      ],
+      "type_of_content": [
+        "transformation",
+        "fashion",
+        "transition effects",
+        "outfit change"
+      ],
+      "content_type_confidence": 0.941,
+      "creative_analysis": "The key to virality is the surprise element and smooth transitions. High contrast between before/after states drives engagement. Timing transitions to musical cues and maintaining viewer anticipation through pacing are crucial.",
+      "creative_brief": {
+        "instructions": "Create a dramatic transformation synchronized to vampire's key moments. Use the audio cues to time your reveal perfectly - the 'before' state should build anticipation, and the transformation should hit exactly on the beat drop or emotional peak.",
+        "key_elements": [
+          "Time transformation to audio's dramatic moment",
+          "Keep 'before' state brief (2-3 seconds)",
+          "Use smooth transition techniques (spin, swipe, jump cut)",
+          "Ensure high contrast between before/after",
+          "Add context with on-screen text"
+        ]
+      },
+      "active_date_range": {
+        "start_date": "2025-06-20",
+        "end_date": "2025-09-04",
+        "days_active": 76,
+        "current_phase": "Fade-out"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-06-20",
+          "value": 175
+        },
+        {
+          "date": "2025-06-21",
+          "value": 198
+        },
+        {
+          "date": "2025-06-22",
+          "value": 182
+        },
+        {
+          "date": "2025-06-23",
+          "value": 173
+        },
+        {
+          "date": "2025-06-24",
+          "value": 159
+        },
+        {
+          "date": "2025-06-25",
+          "value": 252
+        },
+        {
+          "date": "2025-06-26",
+          "value": 257
+        },
+        {
+          "date": "2025-06-27",
+          "value": 269
+        },
+        {
+          "date": "2025-06-28",
+          "value": 308
+        },
+        {
+          "date": "2025-06-29",
+          "value": 400
+        },
+        {
+          "date": "2025-06-30",
+          "value": 346
+        },
+        {
+          "date": "2025-07-01",
+          "value": 475
+        },
+        {
+          "date": "2025-07-02",
+          "value": 570
+        },
+        {
+          "date": "2025-07-03",
+          "value": 637
+        },
+        {
+          "date": "2025-07-04",
+          "value": 1501
+        },
+        {
+          "date": "2025-07-05",
+          "value": 1356
+        },
+        {
+          "date": "2025-07-06",
+          "value": 1957
+        },
+        {
+          "date": "2025-07-07",
+          "value": 1732
+        },
+        {
+          "date": "2025-07-08",
+          "value": 1849
+        },
+        {
+          "date": "2025-07-09",
+          "value": 2229
+        },
+        {
+          "date": "2025-07-10",
+          "value": 2406
+        },
+        {
+          "date": "2025-07-11",
+          "value": 4433
+        },
+        {
+          "date": "2025-07-12",
+          "value": 4535
+        },
+        {
+          "date": "2025-07-13",
+          "value": 5725
+        },
+        {
+          "date": "2025-07-14",
+          "value": 3663
+        },
+        {
+          "date": "2025-07-15",
+          "value": 3419
+        },
+        {
+          "date": "2025-07-16",
+          "value": 3732
+        },
+        {
+          "date": "2025-07-17",
+          "value": 3637
+        },
+        {
+          "date": "2025-07-18",
+          "value": 3726
+        },
+        {
+          "date": "2025-07-19",
+          "value": 3693
+        },
+        {
+          "date": "2025-07-20",
+          "value": 5013
+        },
+        {
+          "date": "2025-07-21",
+          "value": 2818
+        },
+        {
+          "date": "2025-07-22",
+          "value": 3019
+        },
+        {
+          "date": "2025-07-23",
+          "value": 3392
+        },
+        {
+          "date": "2025-07-24",
+          "value": 2755
+        },
+        {
+          "date": "2025-07-25",
+          "value": 4152
+        },
+        {
+          "date": "2025-07-26",
+          "value": 4106
+        },
+        {
+          "date": "2025-07-27",
+          "value": 4519
+        },
+        {
+          "date": "2025-07-28",
+          "value": 2688
+        },
+        {
+          "date": "2025-07-29",
+          "value": 2716
+        },
+        {
+          "date": "2025-07-30",
+          "value": 2840
+        },
+        {
+          "date": "2025-07-31",
+          "value": 2944
+        },
+        {
+          "date": "2025-08-01",
+          "value": 3598
+        },
+        {
+          "date": "2025-08-02",
+          "value": 4039
+        },
+        {
+          "date": "2025-08-03",
+          "value": 3836
+        },
+        {
+          "date": "2025-08-04",
+          "value": 2308
+        },
+        {
+          "date": "2025-08-05",
+          "value": 2909
+        },
+        {
+          "date": "2025-08-06",
+          "value": 2009
+        },
+        {
+          "date": "2025-08-07",
+          "value": 2117
+        },
+        {
+          "date": "2025-08-08",
+          "value": 3323
+        },
+        {
+          "date": "2025-08-09",
+          "value": 2548
+        },
+        {
+          "date": "2025-08-10",
+          "value": 2600
+        },
+        {
+          "date": "2025-08-11",
+          "value": 2289
+        },
+        {
+          "date": "2025-08-12",
+          "value": 2328
+        },
+        {
+          "date": "2025-08-13",
+          "value": 1780
+        },
+        {
+          "date": "2025-08-14",
+          "value": 2038
+        },
+        {
+          "date": "2025-08-15",
+          "value": 2091
+        },
+        {
+          "date": "2025-08-16",
+          "value": 1854
+        },
+        {
+          "date": "2025-08-17",
+          "value": 2651
+        },
+        {
+          "date": "2025-08-18",
+          "value": 1923
+        },
+        {
+          "date": "2025-08-19",
+          "value": 1598
+        },
+        {
+          "date": "2025-08-20",
+          "value": 1184
+        },
+        {
+          "date": "2025-08-21",
+          "value": 1367
+        },
+        {
+          "date": "2025-08-22",
+          "value": 1912
+        },
+        {
+          "date": "2025-08-23",
+          "value": 1838
+        },
+        {
+          "date": "2025-08-24",
+          "value": 2012
+        },
+        {
+          "date": "2025-08-25",
+          "value": 1247
+        },
+        {
+          "date": "2025-08-26",
+          "value": 1128
+        },
+        {
+          "date": "2025-08-27",
+          "value": 1003
+        },
+        {
+          "date": "2025-08-28",
+          "value": 1178
+        },
+        {
+          "date": "2025-08-29",
+          "value": 1272
+        },
+        {
+          "date": "2025-08-30",
+          "value": 1102
+        },
+        {
+          "date": "2025-08-31",
+          "value": 1084
+        },
+        {
+          "date": "2025-09-01",
+          "value": 682
+        },
+        {
+          "date": "2025-09-02",
+          "value": 654
+        },
+        {
+          "date": "2025-09-03",
+          "value": 625
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-06-20",
+          "week_end": "2025-06-26",
+          "total_videos": 1396,
+          "avg_daily_videos": 199.4,
+          "peak_day_videos": 257,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-06-27",
+          "week_end": "2025-07-03",
+          "total_videos": 3005,
+          "avg_daily_videos": 429.3,
+          "peak_day_videos": 637,
+          "growth_rate": 115.3
+        },
+        {
+          "week_start": "2025-07-04",
+          "week_end": "2025-07-10",
+          "total_videos": 13030,
+          "avg_daily_videos": 1861.4,
+          "peak_day_videos": 2406,
+          "growth_rate": 333.6
+        },
+        {
+          "week_start": "2025-07-11",
+          "week_end": "2025-07-17",
+          "total_videos": 29144,
+          "avg_daily_videos": 4163.4,
+          "peak_day_videos": 5725,
+          "growth_rate": 123.7
+        },
+        {
+          "week_start": "2025-07-18",
+          "week_end": "2025-07-24",
+          "total_videos": 24416,
+          "avg_daily_videos": 3488.0,
+          "peak_day_videos": 5013,
+          "growth_rate": -16.2
+        },
+        {
+          "week_start": "2025-07-25",
+          "week_end": "2025-07-31",
+          "total_videos": 23965,
+          "avg_daily_videos": 3423.6,
+          "peak_day_videos": 4519,
+          "growth_rate": -1.8
+        },
+        {
+          "week_start": "2025-08-01",
+          "week_end": "2025-08-07",
+          "total_videos": 20816,
+          "avg_daily_videos": 2973.7,
+          "peak_day_videos": 4039,
+          "growth_rate": -13.1
+        },
+        {
+          "week_start": "2025-08-08",
+          "week_end": "2025-08-14",
+          "total_videos": 16906,
+          "avg_daily_videos": 2415.1,
+          "peak_day_videos": 3323,
+          "growth_rate": -18.8
+        },
+        {
+          "week_start": "2025-08-15",
+          "week_end": "2025-08-21",
+          "total_videos": 12668,
+          "avg_daily_videos": 1809.7,
+          "peak_day_videos": 2651,
+          "growth_rate": -25.1
+        },
+        {
+          "week_start": "2025-08-22",
+          "week_end": "2025-08-28",
+          "total_videos": 10318,
+          "avg_daily_videos": 1474.0,
+          "peak_day_videos": 2012,
+          "growth_rate": -18.6
+        },
+        {
+          "week_start": "2025-08-29",
+          "week_end": "2025-09-03",
+          "total_videos": 5419,
+          "avg_daily_videos": 903.2,
+          "peak_day_videos": 1272,
+          "growth_rate": -47.5
+        }
+      ],
+      "trending_hashtags": [
+        "#vampire",
+        "#OliviaRodrigo",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#transformation",
+        "#transition",
+        "#beforeandafter"
+      ],
+      "audio_features": {
+        "bpm": 160,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "emotional"
+      }
+    },
+    {
+      "name": "POV vampire Stories",
+      "summary": "Creative POV scenarios and relatable stories set to vampire's emotional moments.",
+      "description": "This narrative-driven trend uses vampire as a backdrop for relatable POV scenarios. Creators act out situations ranging from everyday experiences to fantastical scenarios, using facial expressions and gestures to bring stories to life.",
+      "virality_level": 3,
+      "momentum_status": "Dying",
+      "detected_videos": 4309,
+      "top_examples": [
+        {
+          "id": "7464189102052096171",
+          "author_uid": "7461585245984245936",
+          "music_id": "7426114969307896634",
+          "desc": "Wait for it... \ud83d\ude31 #vampire #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator0/video/7498990448511837383",
+          "create_time": 1756805894,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7430746781220187592.png",
+          "statistics": {
+            "play_count": 7640744,
+            "share_count": 6678,
+            "comment_count": 40915,
+            "like_count": 1731723
+          }
+        },
+        {
+          "id": "7583250624907912849",
+          "author_uid": "7457707474109425108",
+          "music_id": "7426114969307896634",
+          "desc": "vampire hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator1/video/7407835948415910994",
+          "create_time": 1755941894,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7461247846193652002.png",
+          "statistics": {
+            "play_count": 6433052,
+            "share_count": 7305,
+            "comment_count": 38816,
+            "like_count": 1045260
+          }
+        },
+        {
+          "id": "7452884993358122020",
+          "author_uid": "7518648272653407008",
+          "music_id": "7426114969307896634",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator2/video/7492829455905199846",
+          "create_time": 1755423494,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7555572885449689783.png",
+          "statistics": {
+            "play_count": 1003185,
+            "share_count": 95571,
+            "comment_count": 5158,
+            "like_count": 172799
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 7922.02,
+        "median_views": 5545.42,
+        "avg_likes": 950.64,
+        "avg_comments": 63.38,
+        "avg_shares": 198.05,
+        "avg_engagement_rate": 0.0952,
+        "total_views": 34136000,
+        "total_engagements": 5222808.0
+      },
+      "demographics": {
+        "age_range": "18-24",
+        "age_distribution": {
+          "13-17": 0.344,
+          "18-24": 0.393,
+          "25-34": 0.212,
+          "35-44": 0.04,
+          "45+": 0.011
+        },
+        "age_confidence": 0.745,
+        "gender": "Mixed",
+        "gender_split": {
+          "female": 0.517,
+          "male": 0.462,
+          "other": 0.02
+        },
+        "gender_confidence": 0.774,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.949
+      },
+      "creator_archetypes": {
+        "Entertainer": 0.583,
+        "Influencer": 0.273,
+        "Artist": 0.146,
+        "Educator": 0.067
+      },
+      "regional_distribution": [
+        {
+          "code": "MX",
+          "country": "Mexico",
+          "percentage": 0.39,
+          "video_count": 170,
+          "avg_engagement_rate": 0.143
+        },
+        {
+          "code": "BR",
+          "country": "Brazil",
+          "percentage": 0.244,
+          "video_count": 194,
+          "avg_engagement_rate": 0.129
+        },
+        {
+          "code": "DE",
+          "country": "Germany",
+          "percentage": 0.154,
+          "video_count": 164,
+          "avg_engagement_rate": 0.095
+        },
+        {
+          "code": "UK",
+          "country": "United Kingdom",
+          "percentage": 0.108,
+          "video_count": 137,
+          "avg_engagement_rate": 0.145
+        },
+        {
+          "code": "FR",
+          "country": "France",
+          "percentage": 0.104,
+          "video_count": 183,
+          "avg_engagement_rate": 0.084
+        }
+      ],
+      "type_of_content": [
+        "POV",
+        "comedy",
+        "storytelling",
+        "acting",
+        "skit"
+      ],
+      "content_type_confidence": 0.972,
+      "creative_analysis": "Relatability and comedic timing are paramount. The most successful videos feature universally understood scenarios with unexpected twists. Exaggerated expressions and well-timed gestures enhance narrative impact.",
+      "creative_brief": {
+        "instructions": "Lip sync to vampire while acting out a relatable POV scenario. Use facial expressions and gestures to convey emotion. The story should escalate with the song's intensity, creating a narrative arc that resonates with viewers.",
+        "key_elements": [
+          "Lip sync to the audio",
+          "Act out relatable scenarios",
+          "Use exaggerated facial expressions",
+          "Build story intensity with the music",
+          "Include text to set up the POV"
+        ]
+      },
+      "active_date_range": {
+        "start_date": "2025-06-21",
+        "end_date": "2025-08-31",
+        "days_active": 71,
+        "current_phase": "Fade-out"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-06-21",
+          "value": 87
+        },
+        {
+          "date": "2025-06-22",
+          "value": 98
+        },
+        {
+          "date": "2025-06-23",
+          "value": 86
+        },
+        {
+          "date": "2025-06-24",
+          "value": 79
+        },
+        {
+          "date": "2025-06-25",
+          "value": 118
+        },
+        {
+          "date": "2025-06-26",
+          "value": 109
+        },
+        {
+          "date": "2025-06-27",
+          "value": 118
+        },
+        {
+          "date": "2025-06-28",
+          "value": 151
+        },
+        {
+          "date": "2025-06-29",
+          "value": 158
+        },
+        {
+          "date": "2025-06-30",
+          "value": 146
+        },
+        {
+          "date": "2025-07-01",
+          "value": 131
+        },
+        {
+          "date": "2025-07-02",
+          "value": 117
+        },
+        {
+          "date": "2025-07-03",
+          "value": 157
+        },
+        {
+          "date": "2025-07-04",
+          "value": 219
+        },
+        {
+          "date": "2025-07-05",
+          "value": 246
+        },
+        {
+          "date": "2025-07-06",
+          "value": 335
+        },
+        {
+          "date": "2025-07-07",
+          "value": 343
+        },
+        {
+          "date": "2025-07-08",
+          "value": 362
+        },
+        {
+          "date": "2025-07-09",
+          "value": 427
+        },
+        {
+          "date": "2025-07-10",
+          "value": 535
+        },
+        {
+          "date": "2025-07-11",
+          "value": 814
+        },
+        {
+          "date": "2025-07-12",
+          "value": 859
+        },
+        {
+          "date": "2025-07-13",
+          "value": 1331
+        },
+        {
+          "date": "2025-07-14",
+          "value": 950
+        },
+        {
+          "date": "2025-07-15",
+          "value": 1254
+        },
+        {
+          "date": "2025-07-16",
+          "value": 1046
+        },
+        {
+          "date": "2025-07-17",
+          "value": 1353
+        },
+        {
+          "date": "2025-07-18",
+          "value": 1638
+        },
+        {
+          "date": "2025-07-19",
+          "value": 1827
+        },
+        {
+          "date": "2025-07-20",
+          "value": 2410
+        },
+        {
+          "date": "2025-07-21",
+          "value": 1302
+        },
+        {
+          "date": "2025-07-22",
+          "value": 1299
+        },
+        {
+          "date": "2025-07-23",
+          "value": 1357
+        },
+        {
+          "date": "2025-07-24",
+          "value": 1342
+        },
+        {
+          "date": "2025-07-25",
+          "value": 1754
+        },
+        {
+          "date": "2025-07-26",
+          "value": 1552
+        },
+        {
+          "date": "2025-07-27",
+          "value": 1702
+        },
+        {
+          "date": "2025-07-28",
+          "value": 1137
+        },
+        {
+          "date": "2025-07-29",
+          "value": 1372
+        },
+        {
+          "date": "2025-07-30",
+          "value": 1210
+        },
+        {
+          "date": "2025-07-31",
+          "value": 959
+        },
+        {
+          "date": "2025-08-01",
+          "value": 1377
+        },
+        {
+          "date": "2025-08-02",
+          "value": 1406
+        },
+        {
+          "date": "2025-08-03",
+          "value": 1924
+        },
+        {
+          "date": "2025-08-04",
+          "value": 992
+        },
+        {
+          "date": "2025-08-05",
+          "value": 856
+        },
+        {
+          "date": "2025-08-06",
+          "value": 895
+        },
+        {
+          "date": "2025-08-07",
+          "value": 797
+        },
+        {
+          "date": "2025-08-08",
+          "value": 1262
+        },
+        {
+          "date": "2025-08-09",
+          "value": 1325
+        },
+        {
+          "date": "2025-08-10",
+          "value": 1310
+        },
+        {
+          "date": "2025-08-11",
+          "value": 732
+        },
+        {
+          "date": "2025-08-12",
+          "value": 909
+        },
+        {
+          "date": "2025-08-13",
+          "value": 860
+        },
+        {
+          "date": "2025-08-14",
+          "value": 799
+        },
+        {
+          "date": "2025-08-15",
+          "value": 919
+        },
+        {
+          "date": "2025-08-16",
+          "value": 824
+        },
+        {
+          "date": "2025-08-17",
+          "value": 983
+        },
+        {
+          "date": "2025-08-18",
+          "value": 557
+        },
+        {
+          "date": "2025-08-19",
+          "value": 602
+        },
+        {
+          "date": "2025-08-20",
+          "value": 569
+        },
+        {
+          "date": "2025-08-21",
+          "value": 566
+        },
+        {
+          "date": "2025-08-22",
+          "value": 721
+        },
+        {
+          "date": "2025-08-23",
+          "value": 543
+        },
+        {
+          "date": "2025-08-24",
+          "value": 663
+        },
+        {
+          "date": "2025-08-25",
+          "value": 407
+        },
+        {
+          "date": "2025-08-26",
+          "value": 343
+        },
+        {
+          "date": "2025-08-27",
+          "value": 224
+        },
+        {
+          "date": "2025-08-28",
+          "value": 228
+        },
+        {
+          "date": "2025-08-29",
+          "value": 336
+        },
+        {
+          "date": "2025-08-30",
+          "value": 286
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-06-21",
+          "week_end": "2025-06-27",
+          "total_videos": 695,
+          "avg_daily_videos": 99.3,
+          "peak_day_videos": 118,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-06-28",
+          "week_end": "2025-07-04",
+          "total_videos": 1079,
+          "avg_daily_videos": 154.1,
+          "peak_day_videos": 219,
+          "growth_rate": 55.3
+        },
+        {
+          "week_start": "2025-07-05",
+          "week_end": "2025-07-11",
+          "total_videos": 3062,
+          "avg_daily_videos": 437.4,
+          "peak_day_videos": 814,
+          "growth_rate": 183.8
+        },
+        {
+          "week_start": "2025-07-12",
+          "week_end": "2025-07-18",
+          "total_videos": 8431,
+          "avg_daily_videos": 1204.4,
+          "peak_day_videos": 1638,
+          "growth_rate": 175.3
+        },
+        {
+          "week_start": "2025-07-19",
+          "week_end": "2025-07-25",
+          "total_videos": 11291,
+          "avg_daily_videos": 1613.0,
+          "peak_day_videos": 2410,
+          "growth_rate": 33.9
+        },
+        {
+          "week_start": "2025-07-26",
+          "week_end": "2025-08-01",
+          "total_videos": 9309,
+          "avg_daily_videos": 1329.9,
+          "peak_day_videos": 1702,
+          "growth_rate": -17.6
+        },
+        {
+          "week_start": "2025-08-02",
+          "week_end": "2025-08-08",
+          "total_videos": 8132,
+          "avg_daily_videos": 1161.7,
+          "peak_day_videos": 1924,
+          "growth_rate": -12.6
+        },
+        {
+          "week_start": "2025-08-09",
+          "week_end": "2025-08-15",
+          "total_videos": 6854,
+          "avg_daily_videos": 979.1,
+          "peak_day_videos": 1325,
+          "growth_rate": -15.7
+        },
+        {
+          "week_start": "2025-08-16",
+          "week_end": "2025-08-22",
+          "total_videos": 4822,
+          "avg_daily_videos": 688.9,
+          "peak_day_videos": 983,
+          "growth_rate": -29.6
+        },
+        {
+          "week_start": "2025-08-23",
+          "week_end": "2025-08-29",
+          "total_videos": 2744,
+          "avg_daily_videos": 392.0,
+          "peak_day_videos": 663,
+          "growth_rate": -43.1
+        },
+        {
+          "week_start": "2025-08-30",
+          "week_end": "2025-08-30",
+          "total_videos": 286,
+          "avg_daily_videos": 286.0,
+          "peak_day_videos": 286,
+          "growth_rate": -89.6
+        }
+      ],
+      "trending_hashtags": [
+        "#vampire",
+        "#OliviaRodrigo",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#pov",
+        "#storytime",
+        "#relatable"
+      ],
+      "audio_features": {
+        "bpm": 132,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "emotional"
+      }
+    }
+  ],
+  "aggregate_metrics": {
+    "total_trends": 3,
+    "total_videos": 32493,
+    "total_views": 508541185,
+    "avg_virality": 3.3,
+    "platform_reach": {
+      "tiktok": 508541185,
+      "instagram_reels": 203416474,
+      "youtube_shorts": 127135296,
+      "estimated_total": 839092955
+    },
+    "timeline_summary": {
+      "analysis_period": "3 months",
+      "start_date": "2025-06-06",
+      "end_date": "2025-09-04",
+      "peak_trend": "vampire Transformation Challenge",
+      "trend_phases": [
+        {
+          "name": "Synchronized vampire Dance",
+          "phase": "Fade-out"
+        },
+        {
+          "name": "vampire Transformation Challenge",
+          "phase": "Fade-out"
+        },
+        {
+          "name": "POV vampire Stories",
+          "phase": "Fade-out"
+        }
+      ]
+    }
+  },
+  "generated_at": "2025-09-04T02:38:14.935433",
+  "data_version": "2.0"
+}

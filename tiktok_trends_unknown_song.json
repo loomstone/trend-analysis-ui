@@ -1,0 +1,1661 @@
+{
+  "song_metadata": {
+    "title": "Unknown Song",
+    "artist": "Unknown Artist",
+    "music_id": "7537834182211842621",
+    "duration_ms": 230009,
+    "release_date": "2025-07-24",
+    "genre": "Indie"
+  },
+  "spotify_data": {
+    "spotify_id": "drQkw3r0KtEetPWhdO33Zn",
+    "total_streams": 290241104,
+    "daily_streams": 1560410,
+    "monthly_listeners": 8627201,
+    "playlist_adds": 346829,
+    "save_rate": 0.199,
+    "skip_rate": 0.237,
+    "replay_rate": 0.348,
+    "discovery_source": {
+      "algorithmic_playlists": 0.5,
+      "user_playlists": 0.18,
+      "search": 0.12,
+      "artist_profile": 0.15,
+      "other": 0.14
+    }
+  },
+  "trends": [
+    {
+      "name": "Synchronized Unknown Song Dance",
+      "summary": "Creators perform energetic choreography to Unknown Song, featuring signature moves and formations.",
+      "description": "This trend features creators performing synchronized choreography to Unknown Song. The dance includes signature moves that match the song's rhythm and energy. Groups and solo performers alike showcase their interpretation, often adding personal flair while maintaining core choreographic elements.",
+      "virality_level": 4,
+      "momentum_status": "Dying",
+      "detected_videos": 8595,
+      "top_examples": [
+        {
+          "id": "7403596358580802657",
+          "author_uid": "7406600436514182706",
+          "music_id": "7537834182211842621",
+          "desc": "Unknown Song hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator0/video/7508291277826786213",
+          "create_time": 1755682455,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7597475759850805510.png",
+          "statistics": {
+            "play_count": 6015929,
+            "share_count": 98221,
+            "comment_count": 20295,
+            "like_count": 1389436
+          }
+        },
+        {
+          "id": "7555213776014793837",
+          "author_uid": "7495658549622428552",
+          "music_id": "7537834182211842621",
+          "desc": "Wait for it... \ud83d\ude31 #UnknownSong #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator1/video/7514377996011758847",
+          "create_time": 1756200855,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7565820359062022051.png",
+          "statistics": {
+            "play_count": 6005968,
+            "share_count": 42690,
+            "comment_count": 16059,
+            "like_count": 82326
+          }
+        },
+        {
+          "id": "7492548177983148176",
+          "author_uid": "7573067814939202675",
+          "music_id": "7537834182211842621",
+          "desc": "Nobody: ... Me: *does this* \ud83d\udc80 #UnknownArtist",
+          "share_url": "https://www.tiktok.com/@creator2/video/7406083549851068332",
+          "create_time": 1756805655,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7591536739308968418.png",
+          "statistics": {
+            "play_count": 2531184,
+            "share_count": 5335,
+            "comment_count": 29543,
+            "like_count": 241065
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 6967.13,
+        "median_views": 4876.99,
+        "avg_likes": 836.06,
+        "avg_comments": 55.74,
+        "avg_shares": 174.18,
+        "avg_engagement_rate": 0.0893,
+        "total_views": 59882485,
+        "total_engagements": 9162020.0
+      },
+      "demographics": {
+        "age_range": "18-24",
+        "age_distribution": {
+          "13-17": 0.265,
+          "18-24": 0.357,
+          "25-34": 0.209,
+          "35-44": 0.094,
+          "45+": 0.026
+        },
+        "age_confidence": 0.821,
+        "gender": "Mixed",
+        "gender_split": {
+          "female": 0.531,
+          "male": 0.423,
+          "other": 0.06
+        },
+        "gender_confidence": 0.863,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.826
+      },
+      "creator_archetypes": {
+        "Entertainer": 0.48,
+        "Influencer": 0.257,
+        "Artist": 0.228,
+        "Educator": 0.072
+      },
+      "regional_distribution": [
+        {
+          "code": "FR",
+          "country": "France",
+          "percentage": 0.365,
+          "video_count": 70,
+          "avg_engagement_rate": 0.148
+        },
+        {
+          "code": "KR",
+          "country": "South Korea",
+          "percentage": 0.254,
+          "video_count": 117,
+          "avg_engagement_rate": 0.088
+        },
+        {
+          "code": "MX",
+          "country": "Mexico",
+          "percentage": 0.138,
+          "video_count": 41,
+          "avg_engagement_rate": 0.092
+        },
+        {
+          "code": "US",
+          "country": "United States",
+          "percentage": 0.138,
+          "video_count": 24,
+          "avg_engagement_rate": 0.121
+        },
+        {
+          "code": "AU",
+          "country": "Australia",
+          "percentage": 0.105,
+          "video_count": 114,
+          "avg_engagement_rate": 0.09
+        }
+      ],
+      "type_of_content": [
+        "dance",
+        "lip sync",
+        "music",
+        "choreography"
+      ],
+      "content_type_confidence": 0.926,
+      "creative_analysis": "Success factors include clean synchronization, creative formations, and engaging facial expressions. Videos filmed in interesting locations with good lighting consistently outperform. The hook is the opening move sequence that immediately captures attention.",
+      "creative_brief": "Learn the core choreography for Unknown Song, focusing on the signature moves at key moments. Film in good lighting with a clean background. Add your own style while maintaining recognizable elements. Consider collaborating with others for group performances.",
+      "active_date_range": {
+        "start_date": "2025-06-12",
+        "end_date": "2025-08-13",
+        "days_active": 62,
+        "current_phase": "Decline"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-06-12",
+          "value": 164
+        },
+        {
+          "date": "2025-06-13",
+          "value": 217
+        },
+        {
+          "date": "2025-06-14",
+          "value": 352
+        },
+        {
+          "date": "2025-06-15",
+          "value": 434
+        },
+        {
+          "date": "2025-06-16",
+          "value": 285
+        },
+        {
+          "date": "2025-06-17",
+          "value": 278
+        },
+        {
+          "date": "2025-06-18",
+          "value": 372
+        },
+        {
+          "date": "2025-06-19",
+          "value": 368
+        },
+        {
+          "date": "2025-06-20",
+          "value": 549
+        },
+        {
+          "date": "2025-06-21",
+          "value": 1196
+        },
+        {
+          "date": "2025-06-22",
+          "value": 1674
+        },
+        {
+          "date": "2025-06-23",
+          "value": 1355
+        },
+        {
+          "date": "2025-06-24",
+          "value": 1486
+        },
+        {
+          "date": "2025-06-25",
+          "value": 3107
+        },
+        {
+          "date": "2025-06-26",
+          "value": 3743
+        },
+        {
+          "date": "2025-06-27",
+          "value": 4284
+        },
+        {
+          "date": "2025-06-28",
+          "value": 6643
+        },
+        {
+          "date": "2025-06-29",
+          "value": 7610
+        },
+        {
+          "date": "2025-06-30",
+          "value": 6622
+        },
+        {
+          "date": "2025-07-01",
+          "value": 6537
+        },
+        {
+          "date": "2025-07-02",
+          "value": 8049
+        },
+        {
+          "date": "2025-07-03",
+          "value": 6883
+        },
+        {
+          "date": "2025-07-04",
+          "value": 6888
+        },
+        {
+          "date": "2025-07-05",
+          "value": 8492
+        },
+        {
+          "date": "2025-07-06",
+          "value": 10056
+        },
+        {
+          "date": "2025-07-07",
+          "value": 7168
+        },
+        {
+          "date": "2025-07-08",
+          "value": 5937
+        },
+        {
+          "date": "2025-07-09",
+          "value": 5810
+        },
+        {
+          "date": "2025-07-10",
+          "value": 4808
+        },
+        {
+          "date": "2025-07-11",
+          "value": 7506
+        },
+        {
+          "date": "2025-07-12",
+          "value": 7753
+        },
+        {
+          "date": "2025-07-13",
+          "value": 8000
+        },
+        {
+          "date": "2025-07-14",
+          "value": 5866
+        },
+        {
+          "date": "2025-07-15",
+          "value": 5774
+        },
+        {
+          "date": "2025-07-16",
+          "value": 5749
+        },
+        {
+          "date": "2025-07-17",
+          "value": 4834
+        },
+        {
+          "date": "2025-07-18",
+          "value": 5721
+        },
+        {
+          "date": "2025-07-19",
+          "value": 6198
+        },
+        {
+          "date": "2025-07-20",
+          "value": 7830
+        },
+        {
+          "date": "2025-07-21",
+          "value": 5112
+        },
+        {
+          "date": "2025-07-22",
+          "value": 3931
+        },
+        {
+          "date": "2025-07-23",
+          "value": 4263
+        },
+        {
+          "date": "2025-07-24",
+          "value": 4597
+        },
+        {
+          "date": "2025-07-25",
+          "value": 4839
+        },
+        {
+          "date": "2025-07-26",
+          "value": 5113
+        },
+        {
+          "date": "2025-07-27",
+          "value": 4628
+        },
+        {
+          "date": "2025-07-28",
+          "value": 2683
+        },
+        {
+          "date": "2025-07-29",
+          "value": 4000
+        },
+        {
+          "date": "2025-07-30",
+          "value": 3280
+        },
+        {
+          "date": "2025-07-31",
+          "value": 3266
+        },
+        {
+          "date": "2025-08-01",
+          "value": 3317
+        },
+        {
+          "date": "2025-08-02",
+          "value": 4974
+        },
+        {
+          "date": "2025-08-03",
+          "value": 3620
+        },
+        {
+          "date": "2025-08-04",
+          "value": 2405
+        },
+        {
+          "date": "2025-08-05",
+          "value": 2226
+        },
+        {
+          "date": "2025-08-06",
+          "value": 1866
+        },
+        {
+          "date": "2025-08-07",
+          "value": 1925
+        },
+        {
+          "date": "2025-08-08",
+          "value": 2970
+        },
+        {
+          "date": "2025-08-09",
+          "value": 2665
+        },
+        {
+          "date": "2025-08-10",
+          "value": 2607
+        },
+        {
+          "date": "2025-08-11",
+          "value": 1666
+        },
+        {
+          "date": "2025-08-12",
+          "value": 1623
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-06-12",
+          "week_end": "2025-06-18",
+          "total_videos": 2102,
+          "avg_daily_videos": 300.3,
+          "peak_day_videos": 434,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-06-19",
+          "week_end": "2025-06-25",
+          "total_videos": 9735,
+          "avg_daily_videos": 1390.7,
+          "peak_day_videos": 3107,
+          "growth_rate": 363.1
+        },
+        {
+          "week_start": "2025-06-26",
+          "week_end": "2025-07-02",
+          "total_videos": 43488,
+          "avg_daily_videos": 6212.6,
+          "peak_day_videos": 8049,
+          "growth_rate": 346.7
+        },
+        {
+          "week_start": "2025-07-03",
+          "week_end": "2025-07-09",
+          "total_videos": 51234,
+          "avg_daily_videos": 7319.1,
+          "peak_day_videos": 10056,
+          "growth_rate": 17.8
+        },
+        {
+          "week_start": "2025-07-10",
+          "week_end": "2025-07-16",
+          "total_videos": 45456,
+          "avg_daily_videos": 6493.7,
+          "peak_day_videos": 8000,
+          "growth_rate": -11.3
+        },
+        {
+          "week_start": "2025-07-17",
+          "week_end": "2025-07-23",
+          "total_videos": 37889,
+          "avg_daily_videos": 5412.7,
+          "peak_day_videos": 7830,
+          "growth_rate": -16.6
+        },
+        {
+          "week_start": "2025-07-24",
+          "week_end": "2025-07-30",
+          "total_videos": 29140,
+          "avg_daily_videos": 4162.9,
+          "peak_day_videos": 5113,
+          "growth_rate": -23.1
+        },
+        {
+          "week_start": "2025-07-31",
+          "week_end": "2025-08-06",
+          "total_videos": 21674,
+          "avg_daily_videos": 3096.3,
+          "peak_day_videos": 4974,
+          "growth_rate": -25.6
+        },
+        {
+          "week_start": "2025-08-07",
+          "week_end": "2025-08-12",
+          "total_videos": 13456,
+          "avg_daily_videos": 2242.7,
+          "peak_day_videos": 2970,
+          "growth_rate": -37.9
+        }
+      ],
+      "trending_hashtags": [
+        "#UnknownSong",
+        "#UnknownArtist",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#dance",
+        "#choreography",
+        "#dancechallenge"
+      ],
+      "audio_features": {
+        "bpm": 115,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "emotional"
+      },
+      "real_creative_example": {
+        "description": "Original dance created by @originalcreator",
+        "video_url": "https://www.tiktok.com/@originalcreator/video/123456",
+        "engagement": {
+          "views": 5000000,
+          "likes": 750000,
+          "shares": 100000
+        }
+      }
+    },
+    {
+      "name": "Unknown Song Transformation Challenge",
+      "summary": "Dramatic transformations and reveals synchronized to the beat drops in Unknown Song.",
+      "description": "Creators use Unknown Song to showcase dramatic transformations, typically synced to beat drops or emotional peaks in the music. Common themes include outfit changes, makeup transformations, room reveals, and before/after scenarios that surprise and delight viewers.",
+      "virality_level": 5,
+      "momentum_status": "Dying",
+      "detected_videos": 14230,
+      "top_examples": [
+        {
+          "id": "7477963189874748013",
+          "author_uid": "7504582068901687051",
+          "music_id": "7537834182211842621",
+          "desc": "Wait for it... \ud83d\ude31 #UnknownSong #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator1/video/7580450558854039695",
+          "create_time": 1756028055,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7417825684709931685.png",
+          "statistics": {
+            "play_count": 7631302,
+            "share_count": 85990,
+            "comment_count": 44777,
+            "like_count": 887997
+          }
+        },
+        {
+          "id": "7493467862310066821",
+          "author_uid": "7508511418500258449",
+          "music_id": "7537834182211842621",
+          "desc": "Wait for it... \ud83d\ude31 #UnknownSong #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator0/video/7435134325744349074",
+          "create_time": 1755250455,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7579628475404030300.png",
+          "statistics": {
+            "play_count": 7464220,
+            "share_count": 63177,
+            "comment_count": 27745,
+            "like_count": 670999
+          }
+        },
+        {
+          "id": "7430202984670079811",
+          "author_uid": "7541885384735646034",
+          "music_id": "7537834182211842621",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator2/video/7427987849587129532",
+          "create_time": 1756892055,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7592060176044245335.png",
+          "statistics": {
+            "play_count": 3453058,
+            "share_count": 69634,
+            "comment_count": 23946,
+            "like_count": 1484383
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 20668.79,
+        "median_views": 14468.15,
+        "avg_likes": 2480.25,
+        "avg_comments": 165.35,
+        "avg_shares": 516.72,
+        "avg_engagement_rate": 0.0869,
+        "total_views": 294116838,
+        "total_engagements": 44999876.0
+      },
+      "demographics": {
+        "age_range": "25-34",
+        "age_distribution": {
+          "13-17": 0.178,
+          "18-24": 0.312,
+          "25-34": 0.295,
+          "35-44": 0.18,
+          "45+": 0.076
+        },
+        "age_confidence": 0.833,
+        "gender": "Female",
+        "gender_split": {
+          "female": 0.818,
+          "male": 0.14,
+          "other": 0.06
+        },
+        "gender_confidence": 0.825,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.824
+      },
+      "creator_archetypes": {
+        "Influencer": 0.364,
+        "Entertainer": 0.265,
+        "Artist": 0.196,
+        "Educator": 0.117
+      },
+      "regional_distribution": [
+        {
+          "code": "AU",
+          "country": "Australia",
+          "percentage": 0.471,
+          "video_count": 85,
+          "avg_engagement_rate": 0.093
+        },
+        {
+          "code": "FR",
+          "country": "France",
+          "percentage": 0.167,
+          "video_count": 163,
+          "avg_engagement_rate": 0.09
+        },
+        {
+          "code": "UK",
+          "country": "United Kingdom",
+          "percentage": 0.136,
+          "video_count": 111,
+          "avg_engagement_rate": 0.114
+        },
+        {
+          "code": "US",
+          "country": "United States",
+          "percentage": 0.123,
+          "video_count": 185,
+          "avg_engagement_rate": 0.123
+        },
+        {
+          "code": "CA",
+          "country": "Canada",
+          "percentage": 0.103,
+          "video_count": 60,
+          "avg_engagement_rate": 0.097
+        }
+      ],
+      "type_of_content": [
+        "transformation",
+        "fashion",
+        "transition effects",
+        "outfit change"
+      ],
+      "content_type_confidence": 0.967,
+      "creative_analysis": "The key to virality is the surprise element and smooth transitions. High contrast between before/after states drives engagement. Timing transitions to musical cues and maintaining viewer anticipation through pacing are crucial.",
+      "creative_brief": "Plan your transformation to align with Unknown Song's dramatic moments. Keep the 'before' brief (2-3 seconds) to maintain attention. Use smooth transitions (spin, hand swipe, jump cut) and ensure dramatic contrast. Add text overlays for context.",
+      "active_date_range": {
+        "start_date": "2025-06-17",
+        "end_date": "2025-09-02",
+        "days_active": 77,
+        "current_phase": "Fade-out"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-06-17",
+          "value": 149
+        },
+        {
+          "date": "2025-06-18",
+          "value": 164
+        },
+        {
+          "date": "2025-06-19",
+          "value": 190
+        },
+        {
+          "date": "2025-06-20",
+          "value": 281
+        },
+        {
+          "date": "2025-06-21",
+          "value": 279
+        },
+        {
+          "date": "2025-06-22",
+          "value": 433
+        },
+        {
+          "date": "2025-06-23",
+          "value": 353
+        },
+        {
+          "date": "2025-06-24",
+          "value": 328
+        },
+        {
+          "date": "2025-06-25",
+          "value": 344
+        },
+        {
+          "date": "2025-06-26",
+          "value": 402
+        },
+        {
+          "date": "2025-06-27",
+          "value": 727
+        },
+        {
+          "date": "2025-06-28",
+          "value": 1210
+        },
+        {
+          "date": "2025-06-29",
+          "value": 1750
+        },
+        {
+          "date": "2025-06-30",
+          "value": 1690
+        },
+        {
+          "date": "2025-07-01",
+          "value": 1899
+        },
+        {
+          "date": "2025-07-02",
+          "value": 2848
+        },
+        {
+          "date": "2025-07-03",
+          "value": 2325
+        },
+        {
+          "date": "2025-07-04",
+          "value": 3733
+        },
+        {
+          "date": "2025-07-05",
+          "value": 6726
+        },
+        {
+          "date": "2025-07-06",
+          "value": 7142
+        },
+        {
+          "date": "2025-07-07",
+          "value": 4640
+        },
+        {
+          "date": "2025-07-08",
+          "value": 5145
+        },
+        {
+          "date": "2025-07-09",
+          "value": 7331
+        },
+        {
+          "date": "2025-07-10",
+          "value": 7993
+        },
+        {
+          "date": "2025-07-11",
+          "value": 9063
+        },
+        {
+          "date": "2025-07-12",
+          "value": 11636
+        },
+        {
+          "date": "2025-07-13",
+          "value": 10205
+        },
+        {
+          "date": "2025-07-14",
+          "value": 8650
+        },
+        {
+          "date": "2025-07-15",
+          "value": 7784
+        },
+        {
+          "date": "2025-07-16",
+          "value": 7272
+        },
+        {
+          "date": "2025-07-17",
+          "value": 5858
+        },
+        {
+          "date": "2025-07-18",
+          "value": 10670
+        },
+        {
+          "date": "2025-07-19",
+          "value": 9308
+        },
+        {
+          "date": "2025-07-20",
+          "value": 11557
+        },
+        {
+          "date": "2025-07-21",
+          "value": 5092
+        },
+        {
+          "date": "2025-07-22",
+          "value": 6810
+        },
+        {
+          "date": "2025-07-23",
+          "value": 5711
+        },
+        {
+          "date": "2025-07-24",
+          "value": 7389
+        },
+        {
+          "date": "2025-07-25",
+          "value": 8758
+        },
+        {
+          "date": "2025-07-26",
+          "value": 7824
+        },
+        {
+          "date": "2025-07-27",
+          "value": 9002
+        },
+        {
+          "date": "2025-07-28",
+          "value": 5984
+        },
+        {
+          "date": "2025-07-29",
+          "value": 6978
+        },
+        {
+          "date": "2025-07-30",
+          "value": 5713
+        },
+        {
+          "date": "2025-07-31",
+          "value": 5839
+        },
+        {
+          "date": "2025-08-01",
+          "value": 6861
+        },
+        {
+          "date": "2025-08-02",
+          "value": 8064
+        },
+        {
+          "date": "2025-08-03",
+          "value": 6374
+        },
+        {
+          "date": "2025-08-04",
+          "value": 4313
+        },
+        {
+          "date": "2025-08-05",
+          "value": 4087
+        },
+        {
+          "date": "2025-08-06",
+          "value": 4711
+        },
+        {
+          "date": "2025-08-07",
+          "value": 3928
+        },
+        {
+          "date": "2025-08-08",
+          "value": 5048
+        },
+        {
+          "date": "2025-08-09",
+          "value": 5590
+        },
+        {
+          "date": "2025-08-10",
+          "value": 5309
+        },
+        {
+          "date": "2025-08-11",
+          "value": 3505
+        },
+        {
+          "date": "2025-08-12",
+          "value": 3788
+        },
+        {
+          "date": "2025-08-13",
+          "value": 4625
+        },
+        {
+          "date": "2025-08-14",
+          "value": 3282
+        },
+        {
+          "date": "2025-08-15",
+          "value": 4812
+        },
+        {
+          "date": "2025-08-16",
+          "value": 3990
+        },
+        {
+          "date": "2025-08-17",
+          "value": 4995
+        },
+        {
+          "date": "2025-08-18",
+          "value": 3348
+        },
+        {
+          "date": "2025-08-19",
+          "value": 2733
+        },
+        {
+          "date": "2025-08-20",
+          "value": 3156
+        },
+        {
+          "date": "2025-08-21",
+          "value": 1986
+        },
+        {
+          "date": "2025-08-22",
+          "value": 2858
+        },
+        {
+          "date": "2025-08-23",
+          "value": 2947
+        },
+        {
+          "date": "2025-08-24",
+          "value": 3279
+        },
+        {
+          "date": "2025-08-25",
+          "value": 2010
+        },
+        {
+          "date": "2025-08-26",
+          "value": 2155
+        },
+        {
+          "date": "2025-08-27",
+          "value": 1874
+        },
+        {
+          "date": "2025-08-28",
+          "value": 1564
+        },
+        {
+          "date": "2025-08-29",
+          "value": 1953
+        },
+        {
+          "date": "2025-08-30",
+          "value": 2081
+        },
+        {
+          "date": "2025-08-31",
+          "value": 1851
+        },
+        {
+          "date": "2025-09-01",
+          "value": 866
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-06-17",
+          "week_end": "2025-06-23",
+          "total_videos": 1849,
+          "avg_daily_videos": 264.1,
+          "peak_day_videos": 433,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-06-24",
+          "week_end": "2025-06-30",
+          "total_videos": 6451,
+          "avg_daily_videos": 921.6,
+          "peak_day_videos": 1750,
+          "growth_rate": 248.9
+        },
+        {
+          "week_start": "2025-07-01",
+          "week_end": "2025-07-07",
+          "total_videos": 29313,
+          "avg_daily_videos": 4187.6,
+          "peak_day_videos": 7142,
+          "growth_rate": 354.4
+        },
+        {
+          "week_start": "2025-07-08",
+          "week_end": "2025-07-14",
+          "total_videos": 60023,
+          "avg_daily_videos": 8574.7,
+          "peak_day_videos": 11636,
+          "growth_rate": 104.8
+        },
+        {
+          "week_start": "2025-07-15",
+          "week_end": "2025-07-21",
+          "total_videos": 57541,
+          "avg_daily_videos": 8220.1,
+          "peak_day_videos": 11557,
+          "growth_rate": -4.1
+        },
+        {
+          "week_start": "2025-07-22",
+          "week_end": "2025-07-28",
+          "total_videos": 51478,
+          "avg_daily_videos": 7354.0,
+          "peak_day_videos": 9002,
+          "growth_rate": -10.5
+        },
+        {
+          "week_start": "2025-07-29",
+          "week_end": "2025-08-04",
+          "total_videos": 44142,
+          "avg_daily_videos": 6306.0,
+          "peak_day_videos": 8064,
+          "growth_rate": -14.3
+        },
+        {
+          "week_start": "2025-08-05",
+          "week_end": "2025-08-11",
+          "total_videos": 32178,
+          "avg_daily_videos": 4596.9,
+          "peak_day_videos": 5590,
+          "growth_rate": -27.1
+        },
+        {
+          "week_start": "2025-08-12",
+          "week_end": "2025-08-18",
+          "total_videos": 28840,
+          "avg_daily_videos": 4120.0,
+          "peak_day_videos": 4995,
+          "growth_rate": -10.4
+        },
+        {
+          "week_start": "2025-08-19",
+          "week_end": "2025-08-25",
+          "total_videos": 18969,
+          "avg_daily_videos": 2709.9,
+          "peak_day_videos": 3279,
+          "growth_rate": -34.2
+        },
+        {
+          "week_start": "2025-08-26",
+          "week_end": "2025-09-01",
+          "total_videos": 12344,
+          "avg_daily_videos": 1763.4,
+          "peak_day_videos": 2155,
+          "growth_rate": -34.9
+        }
+      ],
+      "trending_hashtags": [
+        "#UnknownSong",
+        "#UnknownArtist",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#transformation",
+        "#transition",
+        "#beforeandafter"
+      ],
+      "audio_features": {
+        "bpm": 168,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "upbeat"
+      }
+    },
+    {
+      "name": "POV Unknown Song Stories",
+      "summary": "Creative POV scenarios and relatable stories set to Unknown Song's emotional moments.",
+      "description": "This narrative-driven trend uses Unknown Song as a backdrop for relatable POV scenarios. Creators act out situations ranging from everyday experiences to fantastical scenarios, using facial expressions and gestures to bring stories to life.",
+      "virality_level": 2,
+      "momentum_status": "Dying",
+      "detected_videos": 499,
+      "top_examples": [
+        {
+          "id": "7452902286483034819",
+          "author_uid": "7452131584339114955",
+          "music_id": "7537834182211842621",
+          "desc": "Unknown Song hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator0/video/7583274753768282224",
+          "create_time": 1755423255,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7537011423814332675.png",
+          "statistics": {
+            "play_count": 9840518,
+            "share_count": 77077,
+            "comment_count": 42516,
+            "like_count": 1813946
+          }
+        },
+        {
+          "id": "7416594207751760569",
+          "author_uid": "7483667822601824352",
+          "music_id": "7537834182211842621",
+          "desc": "Wait for it... \ud83d\ude31 #UnknownSong #viral #fyp",
+          "share_url": "https://www.tiktok.com/@creator2/video/7572290780873885774",
+          "create_time": 1755596055,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7505624511335055631.png",
+          "statistics": {
+            "play_count": 6089098,
+            "share_count": 61751,
+            "comment_count": 46334,
+            "like_count": 175229
+          }
+        },
+        {
+          "id": "7493076712233449610",
+          "author_uid": "7551999974837222334",
+          "music_id": "7537834182211842621",
+          "desc": "POV: your friend says \u2728 #relatable",
+          "share_url": "https://www.tiktok.com/@creator1/video/7427457728660428693",
+          "create_time": 1756546455,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7406149901782957352.png",
+          "statistics": {
+            "play_count": 925932,
+            "share_count": 3964,
+            "comment_count": 1220,
+            "like_count": 1372590
+          }
+        }
+      ],
+      "engagement_stats": {
+        "avg_views": 9446.68,
+        "median_views": 6612.68,
+        "avg_likes": 1133.6,
+        "avg_comments": 75.57,
+        "avg_shares": 236.17,
+        "avg_engagement_rate": 0.0825,
+        "total_views": 4713893,
+        "total_engagements": 721226.0
+      },
+      "demographics": {
+        "age_range": "25-34",
+        "age_distribution": {
+          "13-17": 0.151,
+          "18-24": 0.354,
+          "25-34": 0.294,
+          "35-44": 0.173,
+          "45+": 0.094
+        },
+        "age_confidence": 0.755,
+        "gender": "Mixed",
+        "gender_split": {
+          "female": 0.464,
+          "male": 0.493,
+          "other": 0.067
+        },
+        "gender_confidence": 0.772,
+        "race_and_ethnicity": [
+          "White",
+          "Hispanic/Latino",
+          "Asian",
+          "Black",
+          "Other"
+        ],
+        "race_ethnicity_confidence": 0.935
+      },
+      "creator_archetypes": {
+        "Entertainer": 0.513,
+        "Influencer": 0.242,
+        "Artist": 0.118,
+        "Educator": 0.066
+      },
+      "regional_distribution": [
+        {
+          "code": "KR",
+          "country": "South Korea",
+          "percentage": 0.325,
+          "video_count": 153,
+          "avg_engagement_rate": 0.122
+        },
+        {
+          "code": "UK",
+          "country": "United Kingdom",
+          "percentage": 0.227,
+          "video_count": 157,
+          "avg_engagement_rate": 0.097
+        },
+        {
+          "code": "AU",
+          "country": "Australia",
+          "percentage": 0.211,
+          "video_count": 21,
+          "avg_engagement_rate": 0.102
+        },
+        {
+          "code": "MX",
+          "country": "Mexico",
+          "percentage": 0.123,
+          "video_count": 30,
+          "avg_engagement_rate": 0.137
+        },
+        {
+          "code": "CA",
+          "country": "Canada",
+          "percentage": 0.114,
+          "video_count": 63,
+          "avg_engagement_rate": 0.114
+        }
+      ],
+      "type_of_content": [
+        "POV",
+        "comedy",
+        "storytelling",
+        "acting",
+        "skit"
+      ],
+      "content_type_confidence": 0.851,
+      "creative_analysis": "Relatability and comedic timing are paramount. The most successful videos feature universally understood scenarios with unexpected twists. Exaggerated expressions and well-timed gestures enhance narrative impact.",
+      "creative_brief": "Choose a relatable scenario that fits Unknown Song's vibe. Start normal and escalate gradually. Use close-up shots for facial expressions. Add text to set up the scenario. Make it universally relatable while adding your unique perspective.",
+      "active_date_range": {
+        "start_date": "2025-06-30",
+        "end_date": "2025-09-04",
+        "days_active": 66,
+        "current_phase": "Fade-out"
+      },
+      "count_by_date": [
+        {
+          "date": "2025-06-30",
+          "value": 23
+        },
+        {
+          "date": "2025-07-01",
+          "value": 17
+        },
+        {
+          "date": "2025-07-02",
+          "value": 21
+        },
+        {
+          "date": "2025-07-03",
+          "value": 23
+        },
+        {
+          "date": "2025-07-04",
+          "value": 27
+        },
+        {
+          "date": "2025-07-05",
+          "value": 29
+        },
+        {
+          "date": "2025-07-06",
+          "value": 39
+        },
+        {
+          "date": "2025-07-07",
+          "value": 26
+        },
+        {
+          "date": "2025-07-08",
+          "value": 29
+        },
+        {
+          "date": "2025-07-09",
+          "value": 28
+        },
+        {
+          "date": "2025-07-10",
+          "value": 30
+        },
+        {
+          "date": "2025-07-11",
+          "value": 40
+        },
+        {
+          "date": "2025-07-12",
+          "value": 42
+        },
+        {
+          "date": "2025-07-13",
+          "value": 60
+        },
+        {
+          "date": "2025-07-14",
+          "value": 43
+        },
+        {
+          "date": "2025-07-15",
+          "value": 44
+        },
+        {
+          "date": "2025-07-16",
+          "value": 44
+        },
+        {
+          "date": "2025-07-17",
+          "value": 44
+        },
+        {
+          "date": "2025-07-18",
+          "value": 45
+        },
+        {
+          "date": "2025-07-19",
+          "value": 54
+        },
+        {
+          "date": "2025-07-20",
+          "value": 51
+        },
+        {
+          "date": "2025-07-21",
+          "value": 42
+        },
+        {
+          "date": "2025-07-22",
+          "value": 50
+        },
+        {
+          "date": "2025-07-23",
+          "value": 47
+        },
+        {
+          "date": "2025-07-24",
+          "value": 66
+        },
+        {
+          "date": "2025-07-25",
+          "value": 92
+        },
+        {
+          "date": "2025-07-26",
+          "value": 95
+        },
+        {
+          "date": "2025-07-27",
+          "value": 110
+        },
+        {
+          "date": "2025-07-28",
+          "value": 84
+        },
+        {
+          "date": "2025-07-29",
+          "value": 123
+        },
+        {
+          "date": "2025-07-30",
+          "value": 98
+        },
+        {
+          "date": "2025-07-31",
+          "value": 123
+        },
+        {
+          "date": "2025-08-01",
+          "value": 194
+        },
+        {
+          "date": "2025-08-02",
+          "value": 233
+        },
+        {
+          "date": "2025-08-03",
+          "value": 204
+        },
+        {
+          "date": "2025-08-04",
+          "value": 140
+        },
+        {
+          "date": "2025-08-05",
+          "value": 184
+        },
+        {
+          "date": "2025-08-06",
+          "value": 157
+        },
+        {
+          "date": "2025-08-07",
+          "value": 189
+        },
+        {
+          "date": "2025-08-08",
+          "value": 189
+        },
+        {
+          "date": "2025-08-09",
+          "value": 229
+        },
+        {
+          "date": "2025-08-10",
+          "value": 264
+        },
+        {
+          "date": "2025-08-11",
+          "value": 196
+        },
+        {
+          "date": "2025-08-12",
+          "value": 154
+        },
+        {
+          "date": "2025-08-13",
+          "value": 188
+        },
+        {
+          "date": "2025-08-14",
+          "value": 148
+        },
+        {
+          "date": "2025-08-15",
+          "value": 225
+        },
+        {
+          "date": "2025-08-16",
+          "value": 244
+        },
+        {
+          "date": "2025-08-17",
+          "value": 245
+        },
+        {
+          "date": "2025-08-18",
+          "value": 163
+        },
+        {
+          "date": "2025-08-19",
+          "value": 152
+        },
+        {
+          "date": "2025-08-20",
+          "value": 157
+        },
+        {
+          "date": "2025-08-21",
+          "value": 140
+        },
+        {
+          "date": "2025-08-22",
+          "value": 155
+        },
+        {
+          "date": "2025-08-23",
+          "value": 210
+        },
+        {
+          "date": "2025-08-24",
+          "value": 167
+        },
+        {
+          "date": "2025-08-25",
+          "value": 111
+        },
+        {
+          "date": "2025-08-26",
+          "value": 121
+        },
+        {
+          "date": "2025-08-27",
+          "value": 102
+        },
+        {
+          "date": "2025-08-28",
+          "value": 89
+        },
+        {
+          "date": "2025-08-29",
+          "value": 81
+        },
+        {
+          "date": "2025-08-30",
+          "value": 95
+        },
+        {
+          "date": "2025-08-31",
+          "value": 50
+        },
+        {
+          "date": "2025-09-01",
+          "value": 27
+        },
+        {
+          "date": "2025-09-02",
+          "value": 15
+        },
+        {
+          "date": "2025-09-03",
+          "value": 3
+        }
+      ],
+      "weekly_summary": [
+        {
+          "week_start": "2025-06-30",
+          "week_end": "2025-07-06",
+          "total_videos": 179,
+          "avg_daily_videos": 25.6,
+          "peak_day_videos": 39,
+          "growth_rate": 0.0
+        },
+        {
+          "week_start": "2025-07-07",
+          "week_end": "2025-07-13",
+          "total_videos": 255,
+          "avg_daily_videos": 36.4,
+          "peak_day_videos": 60,
+          "growth_rate": 42.5
+        },
+        {
+          "week_start": "2025-07-14",
+          "week_end": "2025-07-20",
+          "total_videos": 325,
+          "avg_daily_videos": 46.4,
+          "peak_day_videos": 54,
+          "growth_rate": 27.5
+        },
+        {
+          "week_start": "2025-07-21",
+          "week_end": "2025-07-27",
+          "total_videos": 502,
+          "avg_daily_videos": 71.7,
+          "peak_day_videos": 110,
+          "growth_rate": 54.5
+        },
+        {
+          "week_start": "2025-07-28",
+          "week_end": "2025-08-03",
+          "total_videos": 1059,
+          "avg_daily_videos": 151.3,
+          "peak_day_videos": 233,
+          "growth_rate": 111.0
+        },
+        {
+          "week_start": "2025-08-04",
+          "week_end": "2025-08-10",
+          "total_videos": 1352,
+          "avg_daily_videos": 193.1,
+          "peak_day_videos": 264,
+          "growth_rate": 27.7
+        },
+        {
+          "week_start": "2025-08-11",
+          "week_end": "2025-08-17",
+          "total_videos": 1400,
+          "avg_daily_videos": 200.0,
+          "peak_day_videos": 245,
+          "growth_rate": 3.6
+        },
+        {
+          "week_start": "2025-08-18",
+          "week_end": "2025-08-24",
+          "total_videos": 1144,
+          "avg_daily_videos": 163.4,
+          "peak_day_videos": 210,
+          "growth_rate": -18.3
+        },
+        {
+          "week_start": "2025-08-25",
+          "week_end": "2025-08-31",
+          "total_videos": 649,
+          "avg_daily_videos": 92.7,
+          "peak_day_videos": 121,
+          "growth_rate": -43.3
+        },
+        {
+          "week_start": "2025-09-01",
+          "week_end": "2025-09-03",
+          "total_videos": 45,
+          "avg_daily_videos": 15.0,
+          "peak_day_videos": 27,
+          "growth_rate": -93.1
+        }
+      ],
+      "trending_hashtags": [
+        "#UnknownSong",
+        "#UnknownArtist",
+        "#fyp",
+        "#foryoupage",
+        "#viral",
+        "#pov",
+        "#storytime",
+        "#relatable"
+      ],
+      "audio_features": {
+        "bpm": 111,
+        "key_moments": [
+          "0:15",
+          "0:32",
+          "0:45",
+          "1:02"
+        ],
+        "mood": "emotional"
+      }
+    }
+  ],
+  "aggregate_metrics": {
+    "total_trends": 3,
+    "total_videos": 23324,
+    "total_views": 358713216,
+    "avg_virality": 3.7,
+    "platform_reach": {
+      "tiktok": 358713216,
+      "instagram_reels": 143485286,
+      "youtube_shorts": 89678304,
+      "estimated_total": 591876806
+    },
+    "timeline_summary": {
+      "analysis_period": "3 months",
+      "start_date": "2025-06-06",
+      "end_date": "2025-09-04",
+      "peak_trend": "Unknown Song Transformation Challenge",
+      "trend_phases": [
+        {
+          "name": "Synchronized Unknown Song Dance",
+          "phase": "Decline"
+        },
+        {
+          "name": "Unknown Song Transformation Challenge",
+          "phase": "Fade-out"
+        },
+        {
+          "name": "POV Unknown Song Stories",
+          "phase": "Fade-out"
+        }
+      ]
+    }
+  },
+  "generated_at": "2025-09-04T02:34:15.378041",
+  "data_version": "2.0"
+}

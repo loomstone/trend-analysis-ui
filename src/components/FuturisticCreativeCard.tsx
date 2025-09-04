@@ -19,6 +19,18 @@ const FuturisticCreativeCard: React.FC<FuturisticCreativeCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const getMomentumConfig = () => {
+    // Check if this creative is recommended first
+    if (creative.recommended) {
+      return {
+        badge: "bg-purple-50 text-purple-600 border-purple-200",
+        hoverBorder: "border-purple-300",
+        glow: "bg-gradient-to-r from-purple-400/30 to-purple-500/30",
+        shadow: "shadow-[0_0_15px_rgba(147,51,234,0.3),0_0_30px_rgba(147,51,234,0.15)]",
+        icon: <Zap className="w-3 h-3" />,
+        label: "Recommended"
+      };
+    }
+    
     switch (creative.momentum) {
       case "rising":
         return {
@@ -30,23 +42,14 @@ const FuturisticCreativeCard: React.FC<FuturisticCreativeCardProps> = ({
           label: "Rising"
         };
       case "stable":
-        return creative.viralScore >= 8 
-          ? {
-              badge: "bg-purple-50 text-purple-600 border-purple-200",
-              hoverBorder: "border-purple-300",
-              glow: "bg-gradient-to-r from-purple-400/30 to-purple-500/30",
-              shadow: "shadow-[0_0_15px_rgba(147,51,234,0.3),0_0_30px_rgba(147,51,234,0.15)]",
-              icon: <Zap className="w-3 h-3" />,
-              label: "Recommended"
-            }
-          : {
-              badge: "bg-blue-50 text-blue-600 border-blue-200",
-              hoverBorder: "border-blue-300",
-              glow: "bg-gradient-to-r from-blue-400/30 to-blue-500/30",
-              shadow: "shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]",
-              icon: <Sparkles className="w-3 h-3" />,
-              label: "New"
-            };
+        return {
+          badge: "bg-blue-50 text-blue-600 border-blue-200",
+          hoverBorder: "border-blue-300",
+          glow: "bg-gradient-to-r from-blue-400/30 to-blue-500/30",
+          shadow: "shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]",
+          icon: <Sparkles className="w-3 h-3" />,
+          label: "Stable"
+        };
       case "declining":
         return {
           badge: "bg-red-50 text-red-600 border-red-200",
@@ -101,7 +104,7 @@ const FuturisticCreativeCard: React.FC<FuturisticCreativeCardProps> = ({
             <div className="relative group">
               <div className={`absolute -inset-1 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity ${momentumConfig.glow}`} />
               <div className={`
-                  relative px-3 py-1.5 rounded-full border text-xs font-medium flex items-center gap-2
+                  relative px-4 py-2 rounded-full border text-sm font-semibold flex items-center gap-2
                   ${momentumConfig.badge} ${momentumConfig.shadow}
                 `}>
                 {momentumConfig.icon}
@@ -111,25 +114,25 @@ const FuturisticCreativeCard: React.FC<FuturisticCreativeCardProps> = ({
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-4 text-center mt-6">
             <div>
-              <div className="text-slate-500 text-xs mb-1 font-medium">Detected Videos</div>
-              <div className="font-semibold text-slate-900 text-base">{creative.totalTrendVideos}</div>
+              <div className="text-slate-900 text-xs mb-2 font-medium uppercase tracking-wide">Detected Videos</div>
+              <div className="text-slate-900 text-lg font-medium">{creative.totalTrendVideos}</div>
             </div>
             <div>
-              <div className="text-slate-500 text-xs mb-1 font-medium">Total Views</div>
-              <div className="font-semibold text-slate-900 text-base">{creative.views}</div>
+              <div className="text-slate-900 text-xs mb-2 font-medium uppercase tracking-wide">Total Views</div>
+              <div className="text-slate-900 text-lg font-medium">{creative.views}</div>
             </div>
             <div>
-              <div className="text-slate-500 text-xs mb-1 font-medium">Dates Active</div>
-              <div className="font-semibold text-slate-900 text-base">{creative.datesActive}</div>
+              <div className="text-slate-900 text-xs mb-2 font-medium uppercase tracking-wide">Dates Active</div>
+              <div className="text-slate-900 text-base font-medium">{creative.datesActive}</div>
             </div>
           </div>
         </div>
 
         {/* Top Videos */}
         <div className="p-6">
-          <div className="text-slate-500 text-xs font-medium mb-3 uppercase tracking-wide">Top Videos</div>
+          <div className="text-blue-600 text-xs font-semibold mb-3 uppercase tracking-wide">Top Videos</div>
           <div className="grid grid-cols-3 gap-3">
             {[1, 2, 3].map((index) => (
               <div key={index} className="relative aspect-[9/16] rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center">

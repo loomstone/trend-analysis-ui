@@ -2,12 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import FuturisticCreativeCard from "@/components/FuturisticCreativeCard";
 import FuturisticCreativeHeader from "@/components/FuturisticCreativeHeader";
+import { transformTrendData } from "@/utils/dataTransformer";
 
 export interface Creative {
   id: number;
   name: string;
   description: string;
   datesActive: string;
+  recommended?: boolean;
   videos: Array<{
     thumbnail: string;
     views: string;
@@ -33,6 +35,24 @@ export interface Creative {
     date: string;
     streams: number;
   }>;
+  creativeAnalysis: {
+    description: string;
+    content_strategy: string;
+  };
+  creativeBrief: {
+    quick_steps: string[];
+    key_tips: string[];
+  };
+  engagement_stats?: {
+    total_views: number;
+    avg_engagement_rate: number;
+    avg_views?: number;
+    median_views?: number;
+    avg_likes?: number;
+    avg_comments?: number;
+    avg_shares?: number;
+    total_engagements?: number;
+  };
 }
 
 interface CreativeCardsGridProps {
@@ -40,7 +60,11 @@ interface CreativeCardsGridProps {
   selectedCreativeId?: number;
 }
 
-const creatives: Creative[] = [
+// Use transformed data from the generated JSON
+const creatives: Creative[] = transformTrendData();
+
+// Original hardcoded data kept for reference
+const hardcodedCreatives: Creative[] = [
   {
     id: 1,
     name: "Lip Sync with TOS",
@@ -204,6 +228,8 @@ const CreativeCardsGrid: React.FC<CreativeCardsGridProps> = ({ onCreativeSelect,
   return (
     <div className="relative">
       <div className="p-8">
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">Trending Creatives</h2>
+        <p className="text-gray-500 text-sm mb-6">Click a card to expand</p>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
