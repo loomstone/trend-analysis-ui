@@ -952,10 +952,10 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                   <div className="space-y-2">
                     {(() => {
                       const archetypes = currentDemographics.creatorArchetypes || [
-                      { type: "Influencer", percentage: 35 },
-                      { type: "Entertainer", percentage: 30 },
-                      { type: "Educator", percentage: 20 },
-                      { type: "Artist", percentage: 15 }
+                      { type: "Relationship", percentage: 35 },
+                      { type: "Dancer", percentage: 30 },
+                      { type: "Lifestyle", percentage: 20 },
+                      { type: "Beauty", percentage: 15 }
                       ];
                       const sortedArchetypes = [...archetypes].sort((a, b) => b.percentage - a.percentage);
                       const maxPercentage = sortedArchetypes[0].percentage;
@@ -1213,82 +1213,82 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                     Creator Type Performance
                   </h5>
                     <div className="space-y-3">
-                    {currentEngagementData.creators['Influencer'] && (
+                    {currentEngagementData.creators['Relationship'] && (
                     <div>
                       <div className="flex items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium mr-3">Influencer</span>
+                        <span className="text-sm text-gray-900 font-medium mr-3">Relationship</span>
                       </div>
                       <div className="flex items-center">
                         <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                           <motion.div 
                             className="bg-blue-600 h-full rounded-full"
                             initial={{ width: 0 }}
-                            animate={{ width: `${creatorRelativePercentages['Influencer'] || 0}%` }}
+                            animate={{ width: `${creatorRelativePercentages['Relationship'] || 0}%` }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            key={`creator-influencer-${engagementTimeFilter}-${engagementMetric}`}
+                            key={`creator-relationship-${engagementTimeFilter}-${engagementMetric}`}
                           />
                       </div>
-                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Influencer'].value)}</span>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Relationship'].value)}</span>
                     </div>
                       </div>
                     )}
-                    {currentEngagementData.creators['Entertainer'] && (
+                    {currentEngagementData.creators['Dancer'] && (
                     <div>
                       <div className="flex items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium mr-3">Entertainer</span>
+                        <span className="text-sm text-gray-900 font-medium mr-3">Dancer</span>
                       </div>
                       <div className="flex items-center">
                         <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
                             className="bg-blue-500 h-full rounded-full"
                             initial={{ width: 0 }}
-                            animate={{ width: `${creatorRelativePercentages['Entertainer'] || 0}%` }}
+                            animate={{ width: `${creatorRelativePercentages['Dancer'] || 0}%` }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                            key={`creator-entertainer-${engagementTimeFilter}-${engagementMetric}`}
+                            key={`creator-dancer-${engagementTimeFilter}-${engagementMetric}`}
                           />
                     </div>
-                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Entertainer'].value)}</span>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Dancer'].value)}</span>
                   </div>
                 </div>
                     )}
-                                              {currentEngagementData.creators['Educator'] && (
+                                              {currentEngagementData.creators['Lifestyle'] && (
                     <div>
                       <div className="flex items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium mr-3">Educator</span>
+                        <span className="text-sm text-gray-900 font-medium mr-3">Lifestyle</span>
                     </div>
                       <div className="flex items-center">
                         <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                            <motion.div 
+                          <motion.div 
                             className="bg-blue-400 h-full rounded-full"
-                              initial={{ width: 0 }}
-                            animate={{ width: `${creatorRelativePercentages['Educator'] || 0}%` }}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${creatorRelativePercentages['Lifestyle'] || 0}%` }}
                             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                            key={`creator-educator-${engagementTimeFilter}-${engagementMetric}`}
-                            />
-                      </div>
-                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Educator'].value)}</span>
+                            key={`creator-lifestyle-${engagementTimeFilter}-${engagementMetric}`}
+                          />
+                        </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Lifestyle'].value)}</span>
                       </div>
                     </div>
                     )}
-                    {currentEngagementData.creators['Artist'] && (
-                            <div>
-                      <div className="flex items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium mr-3">Artist</span>
-                  </div>
-                      <div className="flex items-center">
-                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div 
-                            className="bg-blue-300 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                            animate={{ width: `${creatorRelativePercentages['Artist'] || 0}%` }}
-                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                            key={`creator-artist-${engagementTimeFilter}-${engagementMetric}`}
-                                />
+                    {currentEngagementData.creators['Beauty'] && (
+                      <div>
+                        <div className="flex items-center mb-1">
+                          <span className="text-sm text-gray-900 font-medium mr-3">Beauty</span>
                         </div>
-                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Artist'].value)}</span>
+                        <div className="flex items-center">
+                          <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                            <motion.div 
+                              className="bg-blue-300 h-full rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: `${creatorRelativePercentages['Beauty'] || 0}%` }}
+                              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                              key={`creator-beauty-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                          </div>
+                          <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Beauty'].value)}</span>
+                        </div>
                       </div>
-                              </div>
-                          )}
+                    )}
                           </div>
                         </div>
                         

@@ -552,28 +552,40 @@ class TikTokTrendMockDataGenerator:
             "race_ethnicity_confidence": round(random.uniform(0.75, 0.95), 3)
         }
     
-    def _generate_creator_archetypes(self, trend_type: str) -> Dict:
+    def _generate_creator_archetypes(self, trend_type: str, trend_index: int = 0) -> Dict:
         """Generate creator archetype distribution"""
-        if "dance" in trend_type:
+        # Different archetypes based on specific trend
+        if self.input_context and "magnetic pull" in self.input_context.lower() and trend_index == 0:
+            # Couples Dance - Relationship creators dominate
             return {
-                "Entertainer": round(random.uniform(0.40, 0.50), 3),
-                "Influencer": round(random.uniform(0.25, 0.35), 3),
-                "Artist": round(random.uniform(0.15, 0.25), 3),
-                "Educator": round(random.uniform(0.05, 0.10), 3)
+                "Relationship": round(random.uniform(0.40, 0.45), 3),
+                "Dancer": round(random.uniform(0.25, 0.30), 3),
+                "Lifestyle": round(random.uniform(0.15, 0.20), 3),
+                "Beauty": round(random.uniform(0.08, 0.12), 3)
             }
-        elif "storytelling" in trend_type or "POV" in trend_type:
+        elif self.input_context and "magnetic pull" in self.input_context.lower() and trend_index == 1:
+            # Car Trend - Lifestyle creators dominate
             return {
-                "Entertainer": round(random.uniform(0.50, 0.60), 3),
-                "Influencer": round(random.uniform(0.20, 0.30), 3),
-                "Artist": round(random.uniform(0.10, 0.15), 3),
-                "Educator": round(random.uniform(0.05, 0.10), 3)
+                "Lifestyle": round(random.uniform(0.38, 0.43), 3),
+                "Relationship": round(random.uniform(0.25, 0.30), 3),
+                "Dancer": round(random.uniform(0.15, 0.20), 3),
+                "Beauty": round(random.uniform(0.10, 0.15), 3)
+            }
+        elif trend_index == 2:
+            # Glow Up - Beauty creators dominate
+            return {
+                "Beauty": round(random.uniform(0.45, 0.50), 3),
+                "Lifestyle": round(random.uniform(0.25, 0.30), 3),
+                "Dancer": round(random.uniform(0.12, 0.17), 3),
+                "Relationship": round(random.uniform(0.08, 0.12), 3)
             }
         else:
+            # Default distribution with new archetypes
             return {
-                "Influencer": round(random.uniform(0.35, 0.45), 3),
-                "Entertainer": round(random.uniform(0.25, 0.35), 3),
-                "Artist": round(random.uniform(0.15, 0.25), 3),
-                "Educator": round(random.uniform(0.10, 0.20), 3)
+                "Lifestyle": round(random.uniform(0.30, 0.35), 3),
+                "Beauty": round(random.uniform(0.25, 0.30), 3),
+                "Dancer": round(random.uniform(0.20, 0.25), 3),
+                "Relationship": round(random.uniform(0.15, 0.20), 3)
             }
     
     def _generate_regional_distribution(self, num_regions: int = 5) -> List[Dict]:
@@ -784,7 +796,7 @@ class TikTokTrendMockDataGenerator:
                 "total_engagements": round(base_views * 0.153, 0)
             },
             "demographics": self._generate_demographics(trend_type),
-            "creator_archetypes": self._generate_creator_archetypes(trend_type),
+            "creator_archetypes": self._generate_creator_archetypes(trend_type, trend_index),
             "regional_distribution": self._generate_regional_distribution(),
             "type_of_content": template["content_types"],
             "content_type_confidence": round(random.uniform(0.85, 0.98), 3),
