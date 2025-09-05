@@ -107,8 +107,10 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground m-0 p-0;
+    @apply bg-background text-foreground m-0 p-0 text-base;
     font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Ensure all elements inherit the font */
@@ -116,18 +118,85 @@ All colors MUST be HSL.
     font-family: inherit;
   }
   
-  /* Use SF Pro Display for larger headings */
-  h1, h2 {
+  /* Standardized heading sizes with SF Pro Display */
+  h1 {
+    @apply text-5xl font-semibold;
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   
-  /* Use SF Pro Text for all other headings and text */
-  h3, h4, h5, h6, p, span, div, button, input, select, textarea, label, a, li, td, th {
+  h2 {
+    @apply text-4xl font-semibold;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  h3 {
+    @apply text-3xl font-semibold;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  h4 {
+    @apply text-2xl font-semibold;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  h5 {
+    @apply text-xl font-semibold;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  h6 {
+    @apply text-lg font-semibold;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  /* Standard text elements */
+  p {
+    @apply text-base;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  /* Small text */
+  small {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  /* Labels and form elements */
+  label {
+    @apply text-sm font-medium;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  button {
+    @apply text-sm font-medium;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  input, select, textarea {
+    @apply text-base;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  /* Links */
+  a {
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  /* Lists */
+  li {
+    @apply text-base;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  
+  /* Tables */
+  td, th {
+    @apply text-sm;
     font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
   
   /* Ensure monospace elements use SF Mono */
   code, kbd, samp, pre {
+    @apply text-sm;
     font-family: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   }
 }

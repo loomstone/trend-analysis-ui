@@ -22,8 +22,18 @@ export default {
 				'sans': ['SF Pro Text', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
 				'display': ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
 				'mono': ['SF Mono', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-				'inter': ['Inter', 'system-ui', 'sans-serif'],
-				'satoshi': ['Satoshi', 'system-ui', 'sans-serif'],
+			},
+			fontSize: {
+				// Standardized text sizes following Apple's design system
+				'xs': ['12px', { lineHeight: '16px', letterSpacing: '0' }],
+				'sm': ['14px', { lineHeight: '20px', letterSpacing: '-0.006em' }],
+				'base': ['16px', { lineHeight: '24px', letterSpacing: '-0.011em' }],
+				'lg': ['18px', { lineHeight: '28px', letterSpacing: '-0.014em' }],
+				'xl': ['20px', { lineHeight: '28px', letterSpacing: '-0.017em' }],
+				'2xl': ['24px', { lineHeight: '32px', letterSpacing: '-0.019em' }],
+				'3xl': ['28px', { lineHeight: '36px', letterSpacing: '-0.021em' }],
+				'4xl': ['34px', { lineHeight: '40px', letterSpacing: '-0.022em' }],
+				'5xl': ['48px', { lineHeight: '56px', letterSpacing: '-0.022em' }],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

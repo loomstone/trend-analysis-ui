@@ -536,7 +536,9 @@ interface SimpleTrendGraphProps {
                     boxShadow: isSelected ? `0 0 10px ${trendColor}, 0 0 20px ${trendColor}80` : 'none',
                   }}
                 />
-                {creative.name}
+                {creative.name === "Magnetic Pull Me Jalo Dance" ? "Me Jalo 'Pull' Couples Dance" : 
+                 creative.name === "El Otro POV" ? "Me Jalo 'Pull' Car Trend" : 
+                 creative.name}
               </span>
               {/* Lamp glow effect when selected */}
               {isSelected && (

@@ -169,7 +169,6 @@ const IndexContent = () => {
                       </svg>
                       Back to All Creatives
                     </button>
-                    <h2 className="text-2xl font-bold text-slate-900">Creative Insights</h2>
                   </div>
                   <CreativeDetailsCard selectedCreative={selectedCreative} />
                 </motion.div>

@@ -2,114 +2,114 @@
   "song_metadata": {
     "title": "Me Jalo",
     "artist": "Fuerza Regida & Grupo Frontera",
-    "music_id": "7502320116890650550",
-    "duration_ms": 166549,
-    "release_date": "2024-10-10",
+    "music_id": "7586810735867214132",
+    "duration_ms": 227286,
+    "release_date": "2025-03-12",
     "genre": "Regional Mexican/Corridos Tumbados"
   },
   "spotify_data": {
-    "spotify_id": "yOvjOzuwrWt8A726TfYCXT",
-    "total_streams": 78743067,
-    "daily_streams": 1600220,
-    "monthly_listeners": 8200614,
-    "playlist_adds": 102403,
-    "save_rate": 0.172,
-    "skip_rate": 0.206,
-    "replay_rate": 0.368,
+    "spotify_id": "Mtmml4qPZp9yptQaafbd9A",
+    "total_streams": 434038680,
+    "daily_streams": 4251420,
+    "monthly_listeners": 10438472,
+    "playlist_adds": 317968,
+    "save_rate": 0.18,
+    "skip_rate": 0.266,
+    "replay_rate": 0.386,
     "discovery_source": {
-      "algorithmic_playlists": 0.46,
-      "user_playlists": 0.21,
-      "search": 0.19,
-      "artist_profile": 0.12,
-      "other": 0.17
+      "algorithmic_playlists": 0.42,
+      "user_playlists": 0.17,
+      "search": 0.2,
+      "artist_profile": 0.05,
+      "other": 0.16
     }
   },
   "trends": [
     {
-      "name": "Magnetic Pull Me Jalo Dance",
+      "name": "Me Jalo 'Pull' Couples Dance",
       "summary": "Couples recreate the iconic 'magnetic pull' gesture.",
       "description": "This trend features creators performing synchronized choreography to Me Jalo. The dance includes signature moves that match the song's rhythm and energy. Groups and solo performers alike showcase their interpretation, often adding personal flair while maintaining core choreographic elements.",
       "virality_level": 5,
       "momentum_status": "Dying",
       "recommended": true,
-      "detected_videos": 1089,
+      "detected_videos": 1080,
       "top_examples": [
         {
-          "id": "7407652672063456606",
-          "author_uid": "7523762843401071081",
-          "music_id": "7502320116890650550",
+          "id": "7563609372863016240",
+          "author_uid": "7586293304284147476",
+          "music_id": "7586810735867214132",
           "desc": "Nobody: ... Me: *does this* \ud83d\udc80 #FuerzaRegida&GrupoFrontera",
-          "share_url": "https://www.tiktok.com/@creator1/video/7405992961093775821",
-          "create_time": 1755092493,
+          "share_url": "https://www.tiktok.com/@creator2/video/7475405130375983641",
+          "create_time": 1755770858,
           "region": "US",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7501964947801553762.png",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7439137268393845737.png",
           "statistics": {
-            "play_count": 8374763,
-            "share_count": 93445,
-            "comment_count": 24634,
-            "like_count": 494793
+            "play_count": 7533847,
+            "share_count": 5528,
+            "comment_count": 28918,
+            "like_count": 1315330
           }
         },
         {
-          "id": "7523878036660243193",
-          "author_uid": "7449932395091876106",
-          "music_id": "7502320116890650550",
+          "id": "7422464745595478111",
+          "author_uid": "7509833703069937820",
+          "music_id": "7586810735867214132",
           "desc": "Me Jalo hits different \ud83d\udd25 #trend #foryou",
-          "share_url": "https://www.tiktok.com/@creator2/video/7478291578916524557",
-          "create_time": 1754574093,
-          "region": "CA",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7450169238315352406.png",
+          "share_url": "https://www.tiktok.com/@creator0/video/7579778658453234008",
+          "create_time": 1756289258,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7518207415102718399.png",
           "statistics": {
-            "play_count": 7353933,
-            "share_count": 26121,
-            "comment_count": 16296,
-            "like_count": 1064218
+            "play_count": 6740547,
+            "share_count": 20517,
+            "comment_count": 28752,
+            "like_count": 496447
           }
         },
         {
-          "id": "7459023677468562949",
-          "author_uid": "7582821561205342390",
-          "music_id": "7502320116890650550",
+          "id": "7479980575595057345",
+          "author_uid": "7538242960724245361",
+          "music_id": "7586810735867214132",
           "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
-          "share_url": "https://www.tiktok.com/@creator0/video/7598274036329265627",
-          "create_time": 1755006093,
-          "region": "US",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7562463410481465735.png",
+          "share_url": "https://www.tiktok.com/@creator1/video/7517058104501416637",
+          "create_time": 1756030058,
+          "region": "UK",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7515963764536034784.png",
           "statistics": {
-            "play_count": 5426105,
-            "share_count": 35186,
-            "comment_count": 17564,
-            "like_count": 1256604
+            "play_count": 2991058,
+            "share_count": 48058,
+            "comment_count": 3485,
+            "like_count": 1539547
           }
         }
       ],
       "engagement_stats": {
-        "avg_views": 43101.0,
-        "median_views": 30170.7,
-        "avg_likes": 5172.12,
-        "avg_comments": 344.81,
-        "avg_shares": 1077.53,
-        "avg_engagement_rate": 0.1035,
-        "total_views": 46936989,
-        "total_engagements": 7181359.0
+        "avg_views": 787037.04,
+        "median_views": 550925.93,
+        "avg_likes": 94444.44,
+        "avg_comments": 6296.3,
+        "avg_shares": 19675.93,
+        "avg_engagement_rate": 0.1184,
+        "total_views": 850000000,
+        "total_engagements": 130050000.0
       },
       "demographics": {
         "age_range": "18-24",
         "age_distribution": {
-          "13-17": 0.181,
-          "18-24": 0.378,
-          "25-34": 0.256,
-          "35-44": 0.126,
-          "45+": 0.06
+          "13-17": 0.194,
+          "18-24": 0.384,
+          "25-34": 0.254,
+          "35-44": 0.115,
+          "45+": 0.053
         },
-        "age_confidence": 0.826,
-        "gender": "Mixed",
+        "age_confidence": 0.736,
+        "gender": "Female",
         "gender_split": {
-          "female": 0.598,
-          "male": 0.392,
-          "other": 0.01
+          "female": 0.637,
+          "male": 0.352,
+          "other": 0.011
         },
-        "gender_confidence": 0.704,
+        "gender_confidence": 0.74,
         "race_and_ethnicity": [
           "White",
           "Hispanic/Latino",
@@ -117,49 +117,49 @@
           "Black",
           "Other"
         ],
-        "race_ethnicity_confidence": 0.948
+        "race_ethnicity_confidence": 0.771
       },
       "creator_archetypes": {
-        "Entertainer": 0.407,
-        "Influencer": 0.251,
-        "Artist": 0.18,
-        "Educator": 0.084
+        "Entertainer": 0.401,
+        "Influencer": 0.328,
+        "Artist": 0.195,
+        "Educator": 0.093
       },
       "regional_distribution": [
         {
           "code": "MX",
           "country": "Mexico",
-          "percentage": 0.461,
-          "video_count": 245,
-          "avg_engagement_rate": 0.122
+          "percentage": 0.432,
+          "video_count": 373,
+          "avg_engagement_rate": 0.124
         },
         {
           "code": "US",
           "country": "United States",
-          "percentage": 0.314,
-          "video_count": 454,
-          "avg_engagement_rate": 0.145
+          "percentage": 0.352,
+          "video_count": 123,
+          "avg_engagement_rate": 0.123
         },
         {
           "code": "BR",
           "country": "Brazil",
-          "percentage": 0.141,
-          "video_count": 36,
-          "avg_engagement_rate": 0.09
+          "percentage": 0.116,
+          "video_count": 57,
+          "avg_engagement_rate": 0.116
         },
         {
           "code": "CA",
           "country": "Canada",
-          "percentage": 0.052,
-          "video_count": 23,
-          "avg_engagement_rate": 0.109
+          "percentage": 0.058,
+          "video_count": 25,
+          "avg_engagement_rate": 0.092
         },
         {
           "code": "FR",
           "country": "France",
-          "percentage": 0.032,
-          "video_count": 69,
-          "avg_engagement_rate": 0.096
+          "percentage": 0.041,
+          "video_count": 63,
+          "avg_engagement_rate": 0.083
         }
       ],
       "type_of_content": [
@@ -168,7 +168,7 @@
         "music",
         "choreography"
       ],
-      "content_type_confidence": 0.854,
+      "content_type_confidence": 0.882,
       "creative_analysis": {
         "description": "This trend revolves around the iconic 'magnetic pull' gesture, where partners create a drawn-forward effect. It's a duo/couple format that dominates the trend, relying on synchronized movements and dramatic flair.",
         "content_strategy": "Peak performance comes from precise timing with the music: accordion intro (0:00-0:20) for setup, main chorus (0:45-1:15) for choreography, and the bridge (1:20-1:40) for spins/dips. Facial expressions conveying passion are crucial."
@@ -186,145 +186,137 @@
         ]
       },
       "active_date_range": {
-        "start_date": "2025-08-06",
-        "end_date": "2025-08-31",
-        "days_active": 25,
+        "start_date": "2025-08-07",
+        "end_date": "2025-08-30",
+        "days_active": 23,
         "current_phase": "Fade-out"
       },
       "count_by_date": [
         {
-          "date": "2025-08-06",
-          "value": 3
-        },
-        {
           "date": "2025-08-07",
-          "value": 5
+          "value": 4
         },
         {
           "date": "2025-08-08",
-          "value": 7
+          "value": 6
         },
         {
           "date": "2025-08-09",
-          "value": 11
+          "value": 9
         },
         {
           "date": "2025-08-10",
-          "value": 22
+          "value": 15
         },
         {
           "date": "2025-08-11",
-          "value": 33
+          "value": 26
         },
         {
           "date": "2025-08-12",
-          "value": 52
+          "value": 55
         },
         {
           "date": "2025-08-13",
-          "value": 79
+          "value": 82
         },
         {
           "date": "2025-08-14",
-          "value": 79
-        },
-        {
-          "date": "2025-08-15",
-          "value": 79
-        },
-        {
-          "date": "2025-08-16",
           "value": 83
         },
         {
+          "date": "2025-08-15",
+          "value": 85
+        },
+        {
+          "date": "2025-08-16",
+          "value": 93
+        },
+        {
           "date": "2025-08-17",
-          "value": 71
+          "value": 83
         },
         {
           "date": "2025-08-18",
-          "value": 63
+          "value": 73
         },
         {
           "date": "2025-08-19",
-          "value": 59
+          "value": 64
         },
         {
           "date": "2025-08-20",
-          "value": 54
+          "value": 59
         },
         {
           "date": "2025-08-21",
-          "value": 50
-        },
-        {
-          "date": "2025-08-22",
           "value": 52
         },
         {
+          "date": "2025-08-22",
+          "value": 55
+        },
+        {
           "date": "2025-08-23",
-          "value": 54
+          "value": 53
         },
         {
           "date": "2025-08-24",
-          "value": 48
+          "value": 49
         },
         {
           "date": "2025-08-25",
-          "value": 38
+          "value": 33
         },
         {
           "date": "2025-08-26",
-          "value": 34
+          "value": 30
         },
         {
           "date": "2025-08-27",
-          "value": 32
+          "value": 26
         },
         {
           "date": "2025-08-28",
-          "value": 25
+          "value": 20
         },
         {
           "date": "2025-08-29",
-          "value": 22
-        },
-        {
-          "date": "2025-08-30",
-          "value": 20
+          "value": 17
         }
       ],
       "weekly_summary": [
         {
-          "week_start": "2025-08-06",
-          "week_end": "2025-08-12",
-          "total_videos": 133,
-          "avg_daily_videos": 19.0,
-          "peak_day_videos": 52,
+          "week_start": "2025-08-07",
+          "week_end": "2025-08-13",
+          "total_videos": 197,
+          "avg_daily_videos": 28.1,
+          "peak_day_videos": 82,
           "growth_rate": 0.0
         },
         {
-          "week_start": "2025-08-13",
-          "week_end": "2025-08-19",
-          "total_videos": 513,
-          "avg_daily_videos": 73.3,
-          "peak_day_videos": 83,
-          "growth_rate": 285.7
+          "week_start": "2025-08-14",
+          "week_end": "2025-08-20",
+          "total_videos": 540,
+          "avg_daily_videos": 77.1,
+          "peak_day_videos": 93,
+          "growth_rate": 174.1
         },
         {
-          "week_start": "2025-08-20",
-          "week_end": "2025-08-26",
-          "total_videos": 330,
-          "avg_daily_videos": 47.1,
-          "peak_day_videos": 54,
-          "growth_rate": -35.7
+          "week_start": "2025-08-21",
+          "week_end": "2025-08-27",
+          "total_videos": 298,
+          "avg_daily_videos": 42.6,
+          "peak_day_videos": 55,
+          "growth_rate": -44.8
         },
         {
-          "week_start": "2025-08-27",
-          "week_end": "2025-08-30",
-          "total_videos": 99,
-          "avg_daily_videos": 24.8,
-          "peak_day_videos": 32,
-          "growth_rate": -70.0
+          "week_start": "2025-08-28",
+          "week_end": "2025-08-29",
+          "total_videos": 37,
+          "avg_daily_videos": 18.5,
+          "peak_day_videos": 20,
+          "growth_rate": -87.6
         }
       ],
       "trending_hashtags": [
@@ -341,18 +333,18 @@
         "#mexicanmusic",
         "#regionalmusic",
         "#dance",
-        "#choreography",
-        "#dancechallenge"
+        "#duo",
+        "#couples"
       ],
       "audio_features": {
-        "bpm": 120,
+        "bpm": 127,
         "key_moments": [
           "0:15",
           "0:32",
           "0:45",
           "1:02"
         ],
-        "mood": "emotional"
+        "mood": "romantic"
       },
       "real_creative_example": {
         "description": "Original dance created by @originalcreator",
@@ -365,90 +357,90 @@
       }
     },
     {
-      "name": "El Otro POV",
-      "summary": "POV: dropping everything for forbidden love.",
+      "name": "Me Jalo 'Pull' Car Trend",
+      "summary": "Creators recreate the viral 'pull' dance but with their cars.",
       "description": "This narrative-driven trend uses Me Jalo as a backdrop for relatable POV scenarios. Creators act out situations ranging from everyday experiences to fantastical scenarios, using facial expressions and gestures to bring stories to life.",
       "virality_level": 3,
       "momentum_status": "Dying",
       "recommended": false,
-      "detected_videos": 542,
+      "detected_videos": 558,
       "top_examples": [
         {
-          "id": "7481881482461955764",
-          "author_uid": "7437871676622189232",
-          "music_id": "7502320116890650550",
-          "desc": "Me Jalo hits different \ud83d\udd25 #trend #foryou",
-          "share_url": "https://www.tiktok.com/@creator2/video/7523835135477734492",
-          "create_time": 1756474893,
+          "id": "7526119647074375313",
+          "author_uid": "7450733964182761001",
+          "music_id": "7586810735867214132",
+          "desc": "POV: your friend says \u2728 #relatable",
+          "share_url": "https://www.tiktok.com/@creator2/video/7551459602453648377",
+          "create_time": 1756289258,
           "region": "CA",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7476534411050013421.png",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7453636520887142838.png",
           "statistics": {
-            "play_count": 5914075,
-            "share_count": 96238,
-            "comment_count": 8259,
-            "like_count": 1839022
+            "play_count": 9977479,
+            "share_count": 6005,
+            "comment_count": 2222,
+            "like_count": 1590621
           }
         },
         {
-          "id": "7410859126082968525",
-          "author_uid": "7492933825307711347",
-          "music_id": "7502320116890650550",
-          "desc": "Wait for it... \ud83d\ude31 #MeJalo #viral #fyp",
-          "share_url": "https://www.tiktok.com/@creator0/video/7440924643602608083",
-          "create_time": 1754919693,
+          "id": "7521688725047948849",
+          "author_uid": "7461144904901016302",
+          "music_id": "7586810735867214132",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator1/video/7554222008531456547",
+          "create_time": 1755943658,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7513500224584463835.png",
+          "statistics": {
+            "play_count": 1975160,
+            "share_count": 46910,
+            "comment_count": 28636,
+            "like_count": 219097
+          }
+        },
+        {
+          "id": "7462007041288675609",
+          "author_uid": "7546443113610316255",
+          "music_id": "7586810735867214132",
+          "desc": "Nobody: ... Me: *does this* \ud83d\udc80 #FuerzaRegida&GrupoFrontera",
+          "share_url": "https://www.tiktok.com/@creator0/video/7592026293151820117",
+          "create_time": 1756289258,
           "region": "US",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7427103565679434281.png",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7404298455912888445.png",
           "statistics": {
-            "play_count": 2614896,
-            "share_count": 54112,
-            "comment_count": 1839,
-            "like_count": 820329
-          }
-        },
-        {
-          "id": "7545205720452031457",
-          "author_uid": "7535367854423499934",
-          "music_id": "7502320116890650550",
-          "desc": "Me Jalo hits different \ud83d\udd25 #trend #foryou",
-          "share_url": "https://www.tiktok.com/@creator1/video/7407796645159607589",
-          "create_time": 1756647693,
-          "region": "CA",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7432021272090136697.png",
-          "statistics": {
-            "play_count": 730192,
-            "share_count": 84833,
-            "comment_count": 4871,
-            "like_count": 518625
+            "play_count": 1271152,
+            "share_count": 1858,
+            "comment_count": 44720,
+            "like_count": 1567841
           }
         }
       ],
       "engagement_stats": {
-        "avg_views": 15911.0,
-        "median_views": 11137.7,
-        "avg_likes": 1909.32,
-        "avg_comments": 127.29,
-        "avg_shares": 397.78,
-        "avg_engagement_rate": 0.1427,
-        "total_views": 8623762,
-        "total_engagements": 1319436.0
+        "avg_views": 761648.75,
+        "median_views": 533154.12,
+        "avg_likes": 91397.85,
+        "avg_comments": 6093.19,
+        "avg_shares": 19041.22,
+        "avg_engagement_rate": 0.1156,
+        "total_views": 425000000,
+        "total_engagements": 65025000.0
       },
       "demographics": {
         "age_range": "18-24",
         "age_distribution": {
-          "13-17": 0.164,
-          "18-24": 0.371,
-          "25-34": 0.281,
-          "35-44": 0.119,
-          "45+": 0.065
+          "13-17": 0.193,
+          "18-24": 0.406,
+          "25-34": 0.231,
+          "35-44": 0.114,
+          "45+": 0.056
         },
-        "age_confidence": 0.702,
+        "age_confidence": 0.758,
         "gender": "Female",
         "gender_split": {
-          "female": 0.605,
-          "male": 0.384,
-          "other": 0.01
+          "female": 0.601,
+          "male": 0.388,
+          "other": 0.011
         },
-        "gender_confidence": 0.889,
+        "gender_confidence": 0.829,
         "race_and_ethnicity": [
           "White",
           "Hispanic/Latino",
@@ -456,49 +448,49 @@
           "Black",
           "Other"
         ],
-        "race_ethnicity_confidence": 0.786
+        "race_ethnicity_confidence": 0.909
       },
       "creator_archetypes": {
-        "Entertainer": 0.506,
-        "Influencer": 0.237,
-        "Artist": 0.118,
-        "Educator": 0.058
+        "Entertainer": 0.537,
+        "Influencer": 0.225,
+        "Artist": 0.13,
+        "Educator": 0.053
       },
       "regional_distribution": [
         {
           "code": "MX",
           "country": "Mexico",
-          "percentage": 0.451,
-          "video_count": 476,
-          "avg_engagement_rate": 0.164
+          "percentage": 0.457,
+          "video_count": 236,
+          "avg_engagement_rate": 0.137
         },
         {
           "code": "US",
           "country": "United States",
-          "percentage": 0.335,
-          "video_count": 336,
-          "avg_engagement_rate": 0.149
+          "percentage": 0.359,
+          "video_count": 138,
+          "avg_engagement_rate": 0.124
         },
         {
           "code": "BR",
           "country": "Brazil",
-          "percentage": 0.128,
-          "video_count": 20,
-          "avg_engagement_rate": 0.093
+          "percentage": 0.12,
+          "video_count": 60,
+          "avg_engagement_rate": 0.084
         },
         {
           "code": "CA",
           "country": "Canada",
-          "percentage": 0.049,
-          "video_count": 43,
-          "avg_engagement_rate": 0.099
+          "percentage": 0.033,
+          "video_count": 86,
+          "avg_engagement_rate": 0.117
         },
         {
           "code": "FR",
           "country": "France",
-          "percentage": 0.036,
-          "video_count": 80,
-          "avg_engagement_rate": 0.099
+          "percentage": 0.031,
+          "video_count": 79,
+          "avg_engagement_rate": 0.109
         }
       ],
       "type_of_content": [
@@ -508,7 +500,7 @@
         "acting",
         "skit"
       ],
-      "content_type_confidence": 0.869,
+      "content_type_confidence": 0.911,
       "creative_analysis": {
         "description": "The trend thrives on the forbidden romance narrative of 'el otro' (the other man). Creators use the song's lyrics to act out scenarios of dropping everything for a secret lover, making it highly relatable.",
         "content_strategy": "The most successful videos use the 'Que yo me voy pa' all\u00e1' refrain (1:20-1:40) for the climax. The narrative arc should build with the song's intensity, using text overlays to clarify the secret relationship."
@@ -526,117 +518,121 @@
         ]
       },
       "active_date_range": {
-        "start_date": "2025-08-14",
-        "end_date": "2025-09-03",
-        "days_active": 20,
-        "current_phase": "Fade-out"
+        "start_date": "2025-08-06",
+        "end_date": "2025-08-27",
+        "days_active": 21,
+        "current_phase": "Decline"
       },
       "count_by_date": [
         {
-          "date": "2025-08-14",
+          "date": "2025-08-06",
+          "value": 4
+        },
+        {
+          "date": "2025-08-07",
           "value": 5
         },
         {
-          "date": "2025-08-15",
-          "value": 5
+          "date": "2025-08-08",
+          "value": 8
         },
         {
-          "date": "2025-08-16",
-          "value": 7
+          "date": "2025-08-09",
+          "value": 9
         },
         {
-          "date": "2025-08-17",
-          "value": 10
+          "date": "2025-08-10",
+          "value": 12
         },
         {
-          "date": "2025-08-18",
-          "value": 10
+          "date": "2025-08-11",
+          "value": 16
         },
         {
-          "date": "2025-08-19",
-          "value": 15
+          "date": "2025-08-12",
+          "value": 23
         },
         {
-          "date": "2025-08-20",
-          "value": 25
-        },
-        {
-          "date": "2025-08-21",
+          "date": "2025-08-13",
           "value": 35
         },
         {
-          "date": "2025-08-22",
-          "value": 57
+          "date": "2025-08-14",
+          "value": 53
         },
         {
-          "date": "2025-08-23",
-          "value": 55
+          "date": "2025-08-15",
+          "value": 53
         },
         {
-          "date": "2025-08-24",
+          "date": "2025-08-16",
+          "value": 53
+        },
+        {
+          "date": "2025-08-17",
           "value": 50
         },
         {
+          "date": "2025-08-18",
+          "value": 38
+        },
+        {
+          "date": "2025-08-19",
+          "value": 39
+        },
+        {
+          "date": "2025-08-20",
+          "value": 32
+        },
+        {
+          "date": "2025-08-21",
+          "value": 31
+        },
+        {
+          "date": "2025-08-22",
+          "value": 26
+        },
+        {
+          "date": "2025-08-23",
+          "value": 23
+        },
+        {
+          "date": "2025-08-24",
+          "value": 19
+        },
+        {
           "date": "2025-08-25",
-          "value": 42
+          "value": 12
         },
         {
           "date": "2025-08-26",
-          "value": 42
-        },
-        {
-          "date": "2025-08-27",
-          "value": 37
-        },
-        {
-          "date": "2025-08-28",
-          "value": 30
-        },
-        {
-          "date": "2025-08-29",
-          "value": 30
-        },
-        {
-          "date": "2025-08-30",
-          "value": 30
-        },
-        {
-          "date": "2025-08-31",
-          "value": 22
-        },
-        {
-          "date": "2025-09-01",
-          "value": 15
-        },
-        {
-          "date": "2025-09-02",
-          "value": 12
+          "value": 6
         }
       ],
       "weekly_summary": [
         {
-          "week_start": "2025-08-14",
-          "week_end": "2025-08-20",
+          "week_start": "2025-08-06",
+          "week_end": "2025-08-12",
           "total_videos": 77,
           "avg_daily_videos": 11.0,
-          "peak_day_videos": 25,
+          "peak_day_videos": 23,
           "growth_rate": 0.0
         },
         {
-          "week_start": "2025-08-21",
-          "week_end": "2025-08-27",
-          "total_videos": 318,
-          "avg_daily_videos": 45.4,
-          "peak_day_videos": 57,
-          "growth_rate": 313.0
+          "week_start": "2025-08-13",
+          "week_end": "2025-08-19",
+          "total_videos": 321,
+          "avg_daily_videos": 45.9,
+          "peak_day_videos": 53,
+          "growth_rate": 316.9
         },
         {
-          "week_start": "2025-08-28",
-          "week_end": "2025-09-02",
-          "total_videos": 139,
-          "avg_daily_videos": 23.2,
-          "peak_day_videos": 30,
-          "growth_rate": -56.3
+          "week_start": "2025-08-20",
+          "week_end": "2025-08-26",
+          "total_videos": 149,
+          "avg_daily_videos": 21.3,
+          "peak_day_videos": 32,
+          "growth_rate": -53.6
         }
       ],
       "trending_hashtags": [
@@ -653,18 +649,18 @@
         "#mexicanmusic",
         "#regionalmusic",
         "#pov",
-        "#storytime",
-        "#relatable"
+        "#elotro",
+        "#romance"
       ],
       "audio_features": {
-        "bpm": 138,
+        "bpm": 144,
         "key_moments": [
           "0:15",
           "0:32",
           "0:45",
           "1:02"
         ],
-        "mood": "emotional"
+        "mood": "romantic"
       }
     },
     {
@@ -674,84 +670,84 @@
       "virality_level": 2,
       "momentum_status": "Dying",
       "recommended": false,
-      "detected_videos": 383,
+      "detected_videos": 335,
       "top_examples": [
         {
-          "id": "7439128866764986671",
-          "author_uid": "7444329602524724211",
-          "music_id": "7502320116890650550",
-          "desc": "POV: you finally get it \u2728 #relatable",
-          "share_url": "https://www.tiktok.com/@creator0/video/7407144931464135509",
-          "create_time": 1755524493,
+          "id": "7566320171091710547",
+          "author_uid": "7439859688229271643",
+          "music_id": "7586810735867214132",
+          "desc": "Which one are you? \ud83d\udc40 #challenge #viral",
+          "share_url": "https://www.tiktok.com/@creator2/video/7479605676939588599",
+          "create_time": 1755166058,
+          "region": "CA",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7424168938011928393.png",
+          "statistics": {
+            "play_count": 9981169,
+            "share_count": 74169,
+            "comment_count": 25405,
+            "like_count": 770315
+          }
+        },
+        {
+          "id": "7401139744631577559",
+          "author_uid": "7572448261202346632",
+          "music_id": "7586810735867214132",
+          "desc": "Nobody: ... Me: *does this* \ud83d\udc80 #FuerzaRegida&GrupoFrontera",
+          "share_url": "https://www.tiktok.com/@creator1/video/7424511789677646763",
+          "create_time": 1754993258,
+          "region": "US",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7429109345276834292.png",
+          "statistics": {
+            "play_count": 5278225,
+            "share_count": 48364,
+            "comment_count": 36926,
+            "like_count": 1184822
+          }
+        },
+        {
+          "id": "7475620194903686566",
+          "author_uid": "7468009384519161814",
+          "music_id": "7586810735867214132",
+          "desc": "Me Jalo hits different \ud83d\udd25 #trend #foryou",
+          "share_url": "https://www.tiktok.com/@creator0/video/7463754551787569257",
+          "create_time": 1755252458,
           "region": "UK",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7511394667243625416.png",
+          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7489333891651706606.png",
           "statistics": {
-            "play_count": 9268717,
-            "share_count": 9466,
-            "comment_count": 32510,
-            "like_count": 73551
-          }
-        },
-        {
-          "id": "7571499506114516400",
-          "author_uid": "7467049332629081637",
-          "music_id": "7502320116890650550",
-          "desc": "POV: your friend says \u2728 #relatable",
-          "share_url": "https://www.tiktok.com/@creator1/video/7459120121305175239",
-          "create_time": 1756388493,
-          "region": "US",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7499877566091722954.png",
-          "statistics": {
-            "play_count": 4320058,
-            "share_count": 64405,
-            "comment_count": 47281,
-            "like_count": 1002144
-          }
-        },
-        {
-          "id": "7549895575285673504",
-          "author_uid": "7555234200057187864",
-          "music_id": "7502320116890650550",
-          "desc": "POV: you finally get it \u2728 #relatable",
-          "share_url": "https://www.tiktok.com/@creator2/video/7506717769330656957",
-          "create_time": 1756042893,
-          "region": "US",
-          "thumbnail": "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/thumb_7478762776027898285.png",
-          "statistics": {
-            "play_count": 1036453,
-            "share_count": 96737,
-            "comment_count": 36609,
-            "like_count": 1670020
+            "play_count": 1252794,
+            "share_count": 22557,
+            "comment_count": 9624,
+            "like_count": 799513
           }
         }
       ],
       "engagement_stats": {
-        "avg_views": 7358.0,
-        "median_views": 5150.6,
-        "avg_likes": 882.96,
-        "avg_comments": 58.86,
-        "avg_shares": 183.95,
-        "avg_engagement_rate": 0.1258,
-        "total_views": 2818114,
-        "total_engagements": 431171.0
+        "avg_views": 632835.82,
+        "median_views": 442985.07,
+        "avg_likes": 75940.3,
+        "avg_comments": 5062.69,
+        "avg_shares": 15820.9,
+        "avg_engagement_rate": 0.1415,
+        "total_views": 212000000,
+        "total_engagements": 32436000.0
       },
       "demographics": {
         "age_range": "18-24",
         "age_distribution": {
-          "13-17": 0.172,
-          "18-24": 0.395,
-          "25-34": 0.249,
-          "35-44": 0.125,
-          "45+": 0.059
+          "13-17": 0.18,
+          "18-24": 0.374,
+          "25-34": 0.266,
+          "35-44": 0.117,
+          "45+": 0.063
         },
-        "age_confidence": 0.831,
-        "gender": "Mixed",
+        "age_confidence": 0.731,
+        "gender": "Female",
         "gender_split": {
-          "female": 0.594,
-          "male": 0.396,
-          "other": 0.01
+          "female": 0.646,
+          "male": 0.343,
+          "other": 0.011
         },
-        "gender_confidence": 0.891,
+        "gender_confidence": 0.859,
         "race_and_ethnicity": [
           "White",
           "Hispanic/Latino",
@@ -759,49 +755,49 @@
           "Black",
           "Other"
         ],
-        "race_ethnicity_confidence": 0.809
+        "race_ethnicity_confidence": 0.804
       },
       "creator_archetypes": {
-        "Influencer": 0.449,
-        "Entertainer": 0.33,
-        "Artist": 0.163,
-        "Educator": 0.167
+        "Influencer": 0.402,
+        "Entertainer": 0.259,
+        "Artist": 0.175,
+        "Educator": 0.195
       },
       "regional_distribution": [
         {
           "code": "MX",
           "country": "Mexico",
-          "percentage": 0.463,
-          "video_count": 401,
-          "avg_engagement_rate": 0.177
+          "percentage": 0.434,
+          "video_count": 430,
+          "avg_engagement_rate": 0.162
         },
         {
           "code": "US",
           "country": "United States",
-          "percentage": 0.316,
-          "video_count": 127,
-          "avg_engagement_rate": 0.138
+          "percentage": 0.358,
+          "video_count": 180,
+          "avg_engagement_rate": 0.157
         },
         {
           "code": "BR",
           "country": "Brazil",
           "percentage": 0.121,
-          "video_count": 49,
-          "avg_engagement_rate": 0.109
+          "video_count": 41,
+          "avg_engagement_rate": 0.08
         },
         {
           "code": "CA",
           "country": "Canada",
-          "percentage": 0.054,
-          "video_count": 47,
-          "avg_engagement_rate": 0.084
+          "percentage": 0.05,
+          "video_count": 83,
+          "avg_engagement_rate": 0.117
         },
         {
           "code": "FR",
           "country": "France",
-          "percentage": 0.046,
-          "video_count": 43,
-          "avg_engagement_rate": 0.101
+          "percentage": 0.038,
+          "video_count": 96,
+          "avg_engagement_rate": 0.111
         }
       ],
       "type_of_content": [
@@ -810,7 +806,7 @@
         "transition effects",
         "outfit change"
       ],
-      "content_type_confidence": 0.933,
+      "content_type_confidence": 0.919,
       "creative_analysis": {
         "description": "Creators leverage the song's dramatic build from the accordion intro to the chorus drop for high-impact reveals. The theme of romantic rebellion inspires 'becoming who you really are' transformations.",
         "content_strategy": "High contrast between 'before' and 'after' states is essential. The reveal must be perfectly synced to the chorus drop at 0:45. A second transformation can be added at the 2:15 chorus for a multi-stage reveal."
@@ -828,149 +824,117 @@
         ]
       },
       "active_date_range": {
-        "start_date": "2025-08-05",
-        "end_date": "2025-08-31",
-        "days_active": 26,
+        "start_date": "2025-08-12",
+        "end_date": "2025-09-01",
+        "days_active": 20,
         "current_phase": "Fade-out"
       },
       "count_by_date": [
         {
-          "date": "2025-08-05",
-          "value": 4
-        },
-        {
-          "date": "2025-08-06",
-          "value": 4
-        },
-        {
-          "date": "2025-08-07",
-          "value": 4
-        },
-        {
-          "date": "2025-08-08",
-          "value": 6
-        },
-        {
-          "date": "2025-08-09",
-          "value": 6
-        },
-        {
-          "date": "2025-08-10",
-          "value": 8
-        },
-        {
-          "date": "2025-08-11",
-          "value": 8
-        },
-        {
           "date": "2025-08-12",
-          "value": 8
+          "value": 2
         },
         {
           "date": "2025-08-13",
-          "value": 8
+          "value": 2
         },
         {
           "date": "2025-08-14",
-          "value": 10
-        },
-        {
-          "date": "2025-08-15",
-          "value": 16
-        },
-        {
-          "date": "2025-08-16",
-          "value": 20
-        },
-        {
-          "date": "2025-08-17",
-          "value": 26
-        },
-        {
-          "date": "2025-08-18",
-          "value": 28
-        },
-        {
-          "date": "2025-08-19",
-          "value": 28
-        },
-        {
-          "date": "2025-08-20",
-          "value": 26
-        },
-        {
-          "date": "2025-08-21",
-          "value": 26
-        },
-        {
-          "date": "2025-08-22",
-          "value": 28
-        },
-        {
-          "date": "2025-08-23",
-          "value": 26
-        },
-        {
-          "date": "2025-08-24",
-          "value": 28
-        },
-        {
-          "date": "2025-08-25",
-          "value": 22
-        },
-        {
-          "date": "2025-08-26",
-          "value": 18
-        },
-        {
-          "date": "2025-08-27",
-          "value": 10
-        },
-        {
-          "date": "2025-08-28",
           "value": 4
         },
         {
+          "date": "2025-08-15",
+          "value": 4
+        },
+        {
+          "date": "2025-08-16",
+          "value": 6
+        },
+        {
+          "date": "2025-08-17",
+          "value": 6
+        },
+        {
+          "date": "2025-08-18",
+          "value": 6
+        },
+        {
+          "date": "2025-08-19",
+          "value": 8
+        },
+        {
+          "date": "2025-08-20",
+          "value": 11
+        },
+        {
+          "date": "2025-08-21",
+          "value": 15
+        },
+        {
+          "date": "2025-08-22",
+          "value": 24
+        },
+        {
+          "date": "2025-08-23",
+          "value": 37
+        },
+        {
+          "date": "2025-08-24",
+          "value": 33
+        },
+        {
+          "date": "2025-08-25",
+          "value": 28
+        },
+        {
+          "date": "2025-08-26",
+          "value": 26
+        },
+        {
+          "date": "2025-08-27",
+          "value": 28
+        },
+        {
+          "date": "2025-08-28",
+          "value": 26
+        },
+        {
           "date": "2025-08-29",
-          "value": 2
+          "value": 26
         },
         {
           "date": "2025-08-30",
-          "value": 2
+          "value": 19
+        },
+        {
+          "date": "2025-08-31",
+          "value": 13
         }
       ],
       "weekly_summary": [
         {
-          "week_start": "2025-08-05",
-          "week_end": "2025-08-11",
-          "total_videos": 40,
-          "avg_daily_videos": 5.7,
-          "peak_day_videos": 8,
-          "growth_rate": 0.0
-        },
-        {
           "week_start": "2025-08-12",
           "week_end": "2025-08-18",
-          "total_videos": 116,
-          "avg_daily_videos": 16.6,
-          "peak_day_videos": 28,
-          "growth_rate": 190.0
+          "total_videos": 30,
+          "avg_daily_videos": 4.3,
+          "peak_day_videos": 6,
+          "growth_rate": 0.0
         },
         {
           "week_start": "2025-08-19",
           "week_end": "2025-08-25",
-          "total_videos": 184,
-          "avg_daily_videos": 26.3,
-          "peak_day_videos": 28,
-          "growth_rate": 58.6
+          "total_videos": 156,
+          "avg_daily_videos": 22.3,
+          "peak_day_videos": 37,
+          "growth_rate": 420.0
         },
         {
           "week_start": "2025-08-26",
-          "week_end": "2025-08-30",
-          "total_videos": 36,
-          "avg_daily_videos": 7.2,
-          "peak_day_videos": 18,
-          "growth_rate": -80.4
+          "week_end": "2025-08-31",
+          "total_videos": 138,
+          "avg_daily_videos": 23.0,
+          "peak_day_videos": 28,
+          "growth_rate": -11.5
         }
       ],
       "trending_hashtags": [
@@ -987,45 +951,45 @@
         "#mexicanmusic",
         "#regionalmusic",
         "#transformation",
-        "#transition",
+        "#glowup",
         "#beforeandafter"
       ],
       "audio_features": {
-        "bpm": 153,
+        "bpm": 126,
         "key_moments": [
           "0:15",
           "0:32",
           "0:45",
           "1:02"
         ],
-        "mood": "emotional"
+        "mood": "romantic"
       }
     }
   ],
   "aggregate_metrics": {
     "total_trends": 3,
-    "total_videos": 2014,
-    "total_views": 58378865,
+    "total_videos": 1973,
+    "total_views": 1487000000,
     "avg_virality": 3.3,
     "platform_reach": {
-      "tiktok": 58378865,
-      "instagram_reels": 23351546,
-      "youtube_shorts": 14594716,
-      "estimated_total": 96325127
+      "tiktok": 1487000000,
+      "instagram_reels": 594800000,
+      "youtube_shorts": 371750000,
+      "estimated_total": 2453550000
     },
     "timeline_summary": {
       "analysis_period": "30 days",
-      "start_date": "2025-08-05",
-      "end_date": "2025-09-04",
-      "peak_trend": "Magnetic Pull Me Jalo Dance",
+      "start_date": "2025-08-06",
+      "end_date": "2025-09-05",
+      "peak_trend": "Me Jalo 'Pull' Couples Dance",
       "trend_phases": [
         {
-          "name": "Magnetic Pull Me Jalo Dance",
+          "name": "Me Jalo 'Pull' Couples Dance",
           "phase": "Fade-out"
         },
         {
-          "name": "El Otro POV",
-          "phase": "Fade-out"
+          "name": "Me Jalo 'Pull' Car Trend",
+          "phase": "Decline"
         },
         {
           "name": "Me Jalo Glow Up",
@@ -1034,6 +998,6 @@
       ]
     }
   },
-  "generated_at": "2025-09-04T06:41:33.029651",
+  "generated_at": "2025-09-05T03:07:38.641522",
   "data_version": "2.0"
 }

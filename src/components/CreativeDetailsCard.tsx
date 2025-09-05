@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Progress } from "@/components/ui/progress";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import {
@@ -31,7 +32,7 @@ import {
   TrendingUp, Rocket, 
   Lightbulb, Play,
   Zap, Flame, Clock, ChevronLeft, ChevronRight, Sparkles, TrendingDown, Video, X, Filter, Check,
-  Users, Calendar, Globe, Crown, BarChart3, Target, Eye, DollarSign
+  Users, Calendar, Globe, Crown, BarChart3, Target, Eye, DollarSign, ExternalLink
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Creative } from "./CreativeCardsGrid";
@@ -223,15 +224,115 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
   };
   
   // Enhanced video data with metadata for filtering
-  const allVideos = [
+  const allVideos = (displayCreative?.name === "Magnetic Pull Me Jalo Dance" || displayCreative?.name === "Me Jalo 'Pull' Couples Dance") ? [
+    // Fernanfloo for Couples Dance
     { 
       thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/fernanfloo_video_7479874076975074615.png", 
       profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/fernanfloo.png",
       videoUrl: "https://www.tiktok.com/@fernanfloo/video/7479874076975074615",
-      views: "3.1M", 
-      viewCount: 3100000, 
+      views: "88.7M", 
+      viewCount: 88700000, 
       creator: "@fernanfloo", 
       gender: "male", 
+      age: "25-34", 
+      region: "El Salvador", 
+      archetype: "Gaming", 
+      trending: true,
+      followers: "17M",
+      language: "Spanish"
+    },
+    // Crybaby_1001 for Couples Dance
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/crybaby_1001_video_7482343717865557255.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/crybaby_1001.png",
+      videoUrl: "https://www.tiktok.com/@crybaby_1001/video/7482343717865557255",
+      views: "43.4M", 
+      viewCount: 43400000, 
+      creator: "@crybaby_1001", 
+      gender: "female", 
+      age: "18-24", 
+      region: "Philippines", 
+      archetype: "Lifestyle", 
+      trending: true,
+      followers: "30.7K",
+      language: "Tagalog"
+    },
+  ] : (displayCreative?.name === "El Otro POV" || displayCreative?.name === "Me Jalo 'Pull' Car Trend") ? [
+    // Keziaivankaa for Car Trend
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/keziaivankaa_video_7500067705056202002.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/keziaivankaa.png",
+      videoUrl: "https://www.tiktok.com/@keziaivankaa/video/7500067705056202002",
+      views: "17.2M", 
+      viewCount: 17200000, 
+      creator: "@keziaivankaa", 
+      gender: "female", 
+      age: "18-24", 
+      region: "United States", 
+      archetype: "Lifestyle", 
+      trending: true,
+      followers: "35.4K",
+      language: "English"
+    },
+    // xqueenkalin for Car Trend
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/xqueenkalin_video_7493698734291815726.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/xqueenkalin.png",
+      videoUrl: "https://www.tiktok.com/@xqueenkalin/video/7493698734291815726",
+      views: "19.3M", 
+      viewCount: 19300000, 
+      creator: "@xqueenkalin", 
+      gender: "female", 
+      age: "18-24", 
+      region: "Brazil", 
+      archetype: "Lifestyle", 
+      trending: true,
+      followers: "1.6M",
+      language: "Portuguese"
+    },
+  ] : displayCreative?.name === "Me Jalo Glow Up" ? [
+    // Mirandita.leon for Glow Up Trend
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/mirandita.leon_video_7452525438070557957.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/mirandita.leon.png",
+      videoUrl: "https://www.tiktok.com/@mirandita.leon/video/7452525438070557957",
+      views: "7.3M", 
+      viewCount: 7300000, 
+      creator: "@mirandita.leon", 
+      gender: "female", 
+      age: "18-24", 
+      region: "Mexico", 
+      archetype: "Lifestyle", 
+      trending: true,
+      followers: "11.1M",
+      language: "Spanish"
+    },
+    // Luci_leoonn for Glow Up Trend
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/luci_leoonn_video_7454706216674282758.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/luci_leoonn.png",
+      videoUrl: "https://www.tiktok.com/@luci_leoonn/video/7454706216674282758",
+      views: "6.5M", 
+      viewCount: 6500000, 
+      creator: "@luci_leoonn", 
+      gender: "female", 
+      age: "18-24", 
+      region: "Mexico", 
+      archetype: "Beauty", 
+      trending: true,
+      followers: "2M",
+      language: "Spanish"
+    }
+  ] : [
+    // Default videos
+    { 
+      thumbnail: "https://tiktokthumbnails.s3.us-east-2.amazonaws.com/keziaivankaa_video_7500067705056202002.png", 
+      profilePic: "https://tiktokprofilepics.s3.us-east-2.amazonaws.com/keziaivankaa.png",
+      videoUrl: "https://www.tiktok.com/@keziaivankaa/video/7500067705056202002",
+      views: "3.1M", 
+      viewCount: 3100000, 
+      creator: "@keziaivankaa", 
+      gender: "female", 
       age: "18-24", 
       region: "USA", 
       archetype: "Influencer", 
@@ -540,48 +641,17 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
   
   // Helper function to format engagement metric labels
   const formatMetricLabel = (value: number) => {
-    switch(engagementMetric) {
-      case 'views':
-        if (value >= 1000000000) {
-          return `${(value / 1000000000).toFixed(1)}B views`;
-        } else if (value >= 1000000) {
-          return `${(value / 1000000).toFixed(1)}M views`;
-        } else if (value >= 1000) {
-          return `${(value / 1000).toFixed(1)}K views`;
-        }
-        return `${value} views`;
-      case 'comments':
-        if (value >= 1000000) {
-          return `${(value / 1000000).toFixed(1)}M comments`;
-        } else if (value >= 1000) {
-          return `${(value / 1000).toFixed(1)}K comments`;
-        }
-        return `${value} comments`;
-      case 'shares':
-        if (value >= 1000000) {
-          return `${(value / 1000000).toFixed(1)}M shares`;
-        } else if (value >= 1000) {
-          return `${(value / 1000).toFixed(1)}K shares`;
-        }
-        return `${value} shares`;
-      case 'engagement':
-        if (value >= 1000000000) {
-          return `${(value / 1000000000).toFixed(1)}B engagements`;
-        } else if (value >= 1000000) {
-          return `${(value / 1000000).toFixed(1)}M engagements`;
-        } else if (value >= 1000) {
-          return `${(value / 1000).toFixed(1)}K engagements`;
-        }
-        return `${value} engagements`;
-      default:
-        if (value >= 1000000) {
-          return `${(value / 1000000).toFixed(1)}M views`;
-        } else if (value >= 1000) {
-          return `${(value / 1000).toFixed(1)}K views`;
-        }
-        return `${value} views`;
+    // Just return the formatted number without the metric suffix
+    if (value >= 1000000000) {
+      return `${(value / 1000000000).toFixed(1)}B`;
+    } else if (value >= 1000000) {
+      return `${(value / 1000000).toFixed(1)}M`;
+    } else if (value >= 1000) {
+      return `${(value / 1000).toFixed(1)}K`;
     }
+    return `${value}`;
   };
+
 
   const renderViralScore = (score: number) => {
     const percentage = (score / 10) * 100;
@@ -627,18 +697,14 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
       <CardHeader className="pb-6">
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-4 mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">{displayCreative.name}</h2>
-              {displayCreative.momentum === "rising" && (
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
-                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.3),0_0_30px_rgba(34,197,94,0.15)]">
-                    <TrendingUp className="w-3.5 h-3.5 text-green-600" />
-                    <span className="text-xs font-semibold text-green-600">Rising</span>
-                  </div>
-                </div>
-              )}
-              {displayCreative.momentum === "stable" && displayCreative.viralScore >= 8 && (
+            <div>
+              <div className="flex items-center gap-4 mb-2">
+              <h2 className="text-2xl font-bold text-gray-900">
+                {displayCreative.name === "Magnetic Pull Me Jalo Dance" ? "Me Jalo 'Pull' Couples Dance" : 
+                 displayCreative.name === "El Otro POV" ? "Me Jalo 'Pull' Car Trend" : 
+                 displayCreative.name}
+              </h2>
+              {(displayCreative.name === "Magnetic Pull Me Jalo Dance" || displayCreative.name === "Me Jalo 'Pull' Couples Dance") ? (
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-purple-400/30 to-purple-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
                   <div className="relative flex items-center gap-1.5 px-3 py-1 bg-purple-50 border border-purple-200 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3),0_0_30px_rgba(147,51,234,0.15)]">
@@ -646,8 +712,23 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                     <span className="text-xs font-semibold text-purple-600">Recommended</span>
                   </div>
                 </div>
-              )}
-              {displayCreative.momentum === "stable" && displayCreative.viralScore < 8 && (
+              ) : displayCreative.momentum === "rising" ? (
+                <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.3),0_0_30px_rgba(34,197,94,0.15)]">
+                      <TrendingUp className="w-3.5 h-3.5 text-green-600" />
+                      <span className="text-xs font-semibold text-green-600">Rising</span>
+                  </div>
+                </div>
+              ) : displayCreative.momentum === "stable" && displayCreative.viralScore >= 8 ? (
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-400/30 to-purple-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative flex items-center gap-1.5 px-3 py-1 bg-purple-50 border border-purple-200 rounded-full shadow-[0_0_15px_rgba(147,51,234,0.3),0_0_30px_rgba(147,51,234,0.15)]">
+                    <Zap className="w-3.5 h-3.5 text-purple-600" />
+                    <span className="text-xs font-semibold text-purple-600">Recommended</span>
+                  </div>
+                </div>
+              ) : displayCreative.momentum === "stable" && displayCreative.viralScore < 8 ? (
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/30 to-blue-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
                   <div className="relative flex items-center gap-1.5 px-3 py-1 bg-blue-50 border border-blue-200 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.3),0_0_30px_rgba(59,130,246,0.15)]">
@@ -655,8 +736,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                     <span className="text-xs font-semibold text-blue-600">New</span>
                   </div>
                 </div>
-              )}
-              {displayCreative.momentum === "declining" && (
+              ) : displayCreative.momentum === "declining" ? (
                 <div className="relative group">
                   <div className="absolute -inset-1 bg-gradient-to-r from-red-400/30 to-red-500/30 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity" />
                   <div className="relative flex items-center gap-1.5 px-3 py-1 bg-red-50 border border-red-200 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.3),0_0_30px_rgba(239,68,68,0.15)]">
@@ -664,18 +744,17 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                     <span className="text-xs font-semibold text-red-600">Dying</span>
                   </div>
                 </div>
-              )}
+              ) : null}
             </div>
+              <p className="text-sm text-gray-500 mt-6 mb-4">This data is only from 2000 posts on this sound</p>
           </div>
-          <Button 
+          </div>
+          <button 
             onClick={() => setShowScaleModal(true)}
-            className="group relative flex items-center gap-2.5 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white border border-blue-600 hover:border-blue-700 rounded-full transition-all duration-300 overflow-hidden"
+            className="font-medium text-sm text-gray-600 hover:text-black active:text-gray-900 transition-colors duration-200"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-blue-700/0 group-hover:from-blue-600/20 group-hover:to-blue-700/20 transition-all duration-300" />
-            <Rocket className="w-4 h-4 text-white transition-colors relative z-10" />
-            <span className="font-medium text-sm text-white transition-colors relative z-10">Scale</span>
-            <div className="absolute -bottom-1 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Button>
+            Add Budget
+          </button>
         </div>
       </CardHeader>
 
@@ -730,7 +809,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             </AnimatePresence>
             
             {/* Tab Content with smooth fade transition */}
-            <TabsContent value="demographics" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
+            <TabsContent value="demographics" className="mt-4" tabIndex={-1}>
             <div className="space-y-6 pb-6">
               {/* Title */}
               <div>
@@ -953,7 +1032,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
             </div>
           </TabsContent>
 
-          <TabsContent value="engagement" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
+          <TabsContent value="engagement" className="mt-4" tabIndex={-1}>
             {/* Simplified Engagement - Best Performing Demographics */}
             <div className="space-y-6 pb-6">
                 <div className="flex items-center justify-between mb-6">
@@ -981,39 +1060,43 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Gender Performance */}
                   <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-slate-400" />
+                    <div className="w-2 h-2 rounded-full bg-blue-500" />
                     Gender Performance
                   </h5>
                   <div className="space-y-3">
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Female</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.female.value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Female</span>
                       </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div
-                          className="bg-slate-400 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${genderRelativePercentages.female}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          key={`gender-female-${engagementTimeFilter}-${engagementMetric}`}
-                        />
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div
+                            className="bg-blue-500 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${genderRelativePercentages.female}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            key={`gender-female-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                     </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.gender.female.value)}</span>
                     </div>
+                      </div>
                           <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Male</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.gender.male.value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Male</span>
                       </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                                <motion.div 
-                          className="bg-slate-300 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                          animate={{ width: `${genderRelativePercentages.male}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                          key={`gender-male-${engagementTimeFilter}-${engagementMetric}`}
-                                />
-                      </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-400 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${genderRelativePercentages.male}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                            key={`gender-male-${engagementTimeFilter}-${engagementMetric}`}
+                          />
+                    </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.gender.male.value)}</span>
+                  </div>
                       </div>
                     </div>
                   </div>
@@ -1021,259 +1104,285 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                 {/* Age Group Performance */}
                             <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-400/70" />
+                    <div className="w-2 h-2 rounded-full bg-blue-600" />
                     Age Group Performance
                   </h5>
                     <div className="space-y-3">
                     {currentEngagementData.age['13-17'] && (
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">13-17</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['13-17'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">13-17</span>
                       </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                                <motion.div 
-                          className="bg-blue-400/70 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                          animate={{ width: `${ageRelativePercentages['13-17'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          key={`age-13-17-${engagementTimeFilter}-${engagementMetric}`}
-                                />
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-600 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${ageRelativePercentages['13-17'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            key={`age-13-17-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                     </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.age['13-17'].value)}</span>
                     </div>
+                      </div>
                       )}
                           {currentEngagementData.age['18-24'] && (
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">18-24</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['18-24'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">18-24</span>
                       </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div 
-                          className="bg-blue-400/60 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${ageRelativePercentages['18-24'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                          key={`age-18-24-${engagementTimeFilter}-${engagementMetric}`}
-                            />
-                      </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-500 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${ageRelativePercentages['18-24'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                            key={`age-18-24-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                     </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.age['18-24'].value)}</span>
+                  </div>
+                      </div>
                           )}
                     {currentEngagementData.age['25-34'] && (
                   <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">25-34</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['25-34'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">25-34</span>
                   </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div
-                          className="bg-sky-300/70 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${ageRelativePercentages['25-34'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                          key={`age-25-34-${engagementTimeFilter}-${engagementMetric}`}
-                            />
+                            className="bg-blue-400 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${ageRelativePercentages['25-34'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                            key={`age-25-34-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                           </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.age['25-34'].value)}</span>
+                        </div>
                         </div>
                       )}
                           {currentEngagementData.age['35-44'] && (
                           <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">35-44</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['35-44'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">35-44</span>
                               </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div 
-                          className="bg-sky-300/60 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${ageRelativePercentages['35-44'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                          key={`age-35-44-${engagementTimeFilter}-${engagementMetric}`}
-                        />
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-300 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${ageRelativePercentages['35-44'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                            key={`age-35-44-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                             </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.age['35-44'].value)}</span>
                               </div>
-                          )}
-                          {currentEngagementData.age['45+'] && (
+                            </div>
+                      )}
+                                              {currentEngagementData.age['45+'] && (
                             <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">45+</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.age['45+'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">45+</span>
                             </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                                 <motion.div 
-                          className="bg-sky-300/50 h-full rounded-full"
+                            className="bg-blue-200 h-full rounded-full"
                                   initial={{ width: 0 }}
-                          animate={{ width: `${ageRelativePercentages['45+'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                          key={`age-45+-${engagementTimeFilter}-${engagementMetric}`}
+                            animate={{ width: `${ageRelativePercentages['45+'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                            key={`age-45+-${engagementTimeFilter}-${engagementMetric}`}
                                 />
                               </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.age['45+'].value)}</span>
                             </div>
-                          )}
                           </div>
+                      )}
+                        </div>
                 </div>
                 
                 {/* Creator Type Performance */}
-                <div>
+                          <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-indigo-400/70" />
+                        <div className="w-2 h-2 rounded-full bg-blue-600" />
                     Creator Type Performance
                   </h5>
                     <div className="space-y-3">
                     {currentEngagementData.creators['Influencer'] && (
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Influencer</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Influencer'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Influencer</span>
                       </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div 
-                          className="bg-indigo-400/70 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${creatorRelativePercentages['Influencer'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          key={`creator-influencer-${engagementTimeFilter}-${engagementMetric}`}
-                            />
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-600 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${creatorRelativePercentages['Influencer'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            key={`creator-influencer-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                       </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Influencer'].value)}</span>
                     </div>
+                      </div>
                     )}
                     {currentEngagementData.creators['Entertainer'] && (
-                          <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Entertainer</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Entertainer'].value)}</span>
-                      </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                            <motion.div 
-                          className="bg-indigo-400/60 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${creatorRelativePercentages['Entertainer'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                          key={`creator-entertainer-${engagementTimeFilter}-${engagementMetric}`}
-                            />
-                      </div>
-                    </div>
-                          )}
-                          {currentEngagementData.creators['Educator'] && (
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Educator</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Educator'].value)}</span>
-                    </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                    <motion.div 
-                          className="bg-violet-300/70 h-full rounded-full"
-                              initial={{ width: 0 }}
-                          animate={{ width: `${creatorRelativePercentages['Educator'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                          key={`creator-educator-${engagementTimeFilter}-${engagementMetric}`}
-                            />
-                        </div>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Entertainer</span>
                       </div>
-                          )}
-                    {currentEngagementData.creators['Artist'] && (
-                          <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Artist</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.creators['Artist'].value)}</span>
-                              </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                                <motion.div 
-                          className="bg-violet-300/60 h-full rounded-full"
-                                  initial={{ width: 0 }}
-                          animate={{ width: `${creatorRelativePercentages['Artist'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                          key={`creator-artist-${engagementTimeFilter}-${engagementMetric}`}
-                                />
-                            </div>
-                              </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                            className="bg-blue-500 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${creatorRelativePercentages['Entertainer'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                            key={`creator-entertainer-${engagementTimeFilter}-${engagementMetric}`}
+                          />
+                    </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Entertainer'].value)}</span>
+                  </div>
+                </div>
                     )}
+                                              {currentEngagementData.creators['Educator'] && (
+                    <div>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Educator</span>
+                    </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                            <motion.div 
+                            className="bg-blue-400 h-full rounded-full"
+                              initial={{ width: 0 }}
+                            animate={{ width: `${creatorRelativePercentages['Educator'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                            key={`creator-educator-${engagementTimeFilter}-${engagementMetric}`}
+                            />
+                      </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Educator'].value)}</span>
+                      </div>
+                    </div>
+                    )}
+                    {currentEngagementData.creators['Artist'] && (
+                            <div>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Artist</span>
+                  </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                            className="bg-blue-300 h-full rounded-full"
+                                  initial={{ width: 0 }}
+                            animate={{ width: `${creatorRelativePercentages['Artist'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                            key={`creator-artist-${engagementTimeFilter}-${engagementMetric}`}
+                                />
+                        </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.creators['Artist'].value)}</span>
+                      </div>
+                              </div>
+                          )}
                           </div>
                         </div>
                         
                 {/* Region Performance */}
                               <div>
                   <h5 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-teal-400/70" />
+                        <div className="w-2 h-2 rounded-full bg-blue-600" />
                     Region Performance
                   </h5>
                         <div className="space-y-3">
                     {(currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']) && (
-                      <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">USA</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel((currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']).value)}</span>
+                    <div>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">USA</span>
                               </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                          className="bg-teal-400/70 h-full rounded-full"
+                            className="bg-blue-600 h-full rounded-full"
                               initial={{ width: 0 }}
-                          animate={{ width: `${regionRelativePercentages['USA'] || regionRelativePercentages['United States'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          key={`region-usa-${engagementTimeFilter}-${engagementMetric}`}
+                            animate={{ width: `${regionRelativePercentages['USA'] || regionRelativePercentages['United States'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            key={`region-usa-${engagementTimeFilter}-${engagementMetric}`}
                             />
                           </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel((currentEngagementData.regions['USA'] || currentEngagementData.regions['United States']).value)}</span>
                           </div>
+                        </div>
                       )}
                                 {currentEngagementData.regions['Mexico'] && (
                     <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Mexico</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Mexico'].value)}</span>
-                        </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
-                      <motion.div
-                          className="bg-teal-400/60 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${regionRelativePercentages['Mexico'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                          key={`region-mexico-${engagementTimeFilter}-${engagementMetric}`}
-                        />
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Mexico</span>
                               </div>
-                          </div>
-                          )}
-                          {currentEngagementData.regions['Brazil'] && (
-                              <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Brazil</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Brazil'].value)}</span>
-                        </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
-                          className="bg-emerald-300/70 h-full rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${regionRelativePercentages['Brazil'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                          key={`region-brazil-${engagementTimeFilter}-${engagementMetric}`}
-                        />
+                            className="bg-blue-500 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${regionRelativePercentages['Mexico'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+                            key={`region-mexico-${engagementTimeFilter}-${engagementMetric}`}
+                          />
                         </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.regions['Mexico'].value)}</span>
                       </div>
+                            </div>
                           )}
-                            {currentEngagementData.regions['Indonesia'] && (
+                                              {currentEngagementData.regions['Brazil'] && (
                           <div>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm text-gray-900 font-medium">Indonesia</span>
-                        <span className="text-sm font-bold text-gray-900">{formatMetricLabel(currentEngagementData.regions['Indonesia'].value)}</span>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Brazil</span>
                               </div>
-                      <div className="w-full bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
+                          <motion.div 
+                            className="bg-blue-400 h-full rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${regionRelativePercentages['Brazil'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                            key={`region-brazil-${engagementTimeFilter}-${engagementMetric}`}
+                          />
+                            </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.regions['Brazil'].value)}</span>
+                              </div>
+                            </div>
+                    )}
+                                                {currentEngagementData.regions['Indonesia'] && (
+                    <div>
+                      <div className="flex items-center mb-1">
+                        <span className="text-sm text-gray-900 font-medium mr-3">Indonesia</span>
+                          </div>
+                      <div className="flex items-center">
+                        <div className="flex-1 bg-gray-50 rounded-full h-2.5 overflow-hidden">
                             <motion.div 
-                          className="bg-emerald-300/60 h-full rounded-full"
+                            className="bg-blue-300 h-full rounded-full"
                               initial={{ width: 0 }}
-                          animate={{ width: `${regionRelativePercentages['Indonesia'] || 0}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                          key={`region-indonesia-${engagementTimeFilter}-${engagementMetric}`}
+                            animate={{ width: `${regionRelativePercentages['Indonesia'] || 0}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                            key={`region-indonesia-${engagementTimeFilter}-${engagementMetric}`}
                             />
                           </div>
+                        <span className="text-sm font-bold text-gray-900 ml-3 min-w-[80px] text-right">{formatMetricLabel(currentEngagementData.regions['Indonesia'].value)}</span>
                           </div>
-                            )}
                         </div>
+                          )}
                               </div>
                           </div>
                         </div>
+                      </div>
           </TabsContent>
 
           {/* Examples Tab */}
-          <TabsContent value="examples" className="mt-4 h-full overflow-y-auto" tabIndex={-1}>
+          <TabsContent value="examples" className="mt-4 h-full" tabIndex={-1}>
             <div className="space-y-6 pb-6">
               {/* Header */}
               <div className="flex items-center justify-between">
@@ -1284,7 +1393,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                   
               {/* Creator Cards Grid */}
               <div>
-                <div className="grid grid-cols-2 gap-6">
+                                  <div className="grid grid-cols-2 gap-6">
                   {getFilteredVideos().slice(0, visibleCards).map((video, idx) => (
                       <motion.div
                       key={`${video.creator}-${idx}`}
@@ -1308,18 +1417,21 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                             ) : (
                               <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-semibold text-xl">
                                 {video.creator.slice(1, 3).toUpperCase()}
-                            </div>
+                              </div>
                           )}
-                              <div>
-                                      <div className="flex items-center gap-2">
-                                <h4 className="font-semibold text-gray-900 text-xl">{video.creator}</h4>
+                                <div className="flex-1">
+                                      <div className="flex items-center justify-between">
+                                <button className="flex items-center gap-1.5 font-semibold text-gray-900 text-xl hover:text-black transition-colors duration-200">
+                                  {video.creator.replace('@', '')}
+                                  <ExternalLink className="w-4 h-4" />
+                                </button>
                                 <span className={`px-3 py-1 text-sm rounded-full font-medium ${
-                                  idx % 4 === 0 ? 'bg-purple-100 text-purple-700' :
-                                  idx % 4 === 1 ? 'bg-pink-100 text-pink-700' :
-                                  idx % 4 === 2 ? 'bg-orange-100 text-orange-700' :
+                                  video.archetype === 'Gaming' ? 'bg-purple-100 text-purple-700' :
+                                  video.archetype === 'Fashion' || video.archetype === 'Lifestyle' ? 'bg-pink-100 text-pink-700' :
+                                  video.archetype === 'Beauty' ? 'bg-orange-100 text-orange-700' :
                                   'bg-green-100 text-green-700'
                                 }`}>
-                                  {['Lifestyle Influencer', 'Fashion Creator', 'Beauty Guru', 'Content Creator'][idx % 4]}
+                                  {video.archetype || 'Content'}
                                   </span>
                                 </div>
                               </div>
@@ -1329,35 +1441,49 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                           <div className="grid grid-cols-2 gap-8 mb-8">
                             <div>
                               <p className="text-base text-gray-700 font-medium">FOLLOWERS</p>
-                              <p className="font-semibold text-gray-900 text-xl">{Math.floor(Math.random() * 200 + 50)}K</p>
+                              <p className="font-semibold text-gray-900 text-xl">{video.followers || `${Math.floor(Math.random() * 200 + 50)}K`}</p>
                                   </div>
                             <div>
                               <p className="text-base text-gray-700 font-medium">GENDER</p>
-                              <p className="font-semibold text-gray-900 text-xl">{['Female', 'Male', 'Female', 'Female'][idx % 4]}</p>
+                              <p className="font-semibold text-gray-900 text-xl">{video.gender === 'male' ? 'Male' : 'Female'}</p>
                                 </div>
                             <div>
                               <p className="text-base text-gray-700 font-medium">REGION</p>
-                              <p className="font-semibold text-gray-900 text-xl">{['USA', 'Europe', 'Asia', 'LATAM'][idx % 4]}</p>
-                              </div>
+                              <p className="font-semibold text-gray-900 text-xl">{video.region}</p>
+                                </div>
                             <div>
                               <p className="text-base text-gray-700 font-medium">LANGUAGE</p>
-                              <p className="font-semibold text-gray-900 text-xl">English</p>
+                              <p className="font-semibold text-gray-900 text-xl">{video.language || 'English'}</p>
                                 </div>
                               </div>
                               
                           {/* Creator Analysis */}
                           <div className="mt-8">
                             <p className="text-base font-semibold text-gray-600 mb-3">CREATOR ANALYSIS</p>
-                            <p className="text-lg text-gray-700 leading-relaxed">
-                              {idx === 0 ? 
-                                "Lifestyle creator with strong beauty/fashion engagement. Posts 3-4x weekly with peak evening performance. Authentic style and engaged audience make them perfect for this trend." :
-                              idx === 1 ? 
-                                "Fashion specialist in trend adoption. Strong European presence with high OOTD completion rates. Content consistently performs above average with strong viewer retention." :
-                              idx === 2 ?
-                                "Beauty influencer focused on skincare/makeup. Engaged 16-24 demographic with authentic reviews. Proven track record with similar campaigns indicates high potential." :
-                                "Versatile lifestyle creator with 8% comment rate. Excels at storytelling for Gen Z audiences. Strong aesthetic alignment with brand values and campaign goals."
-                              }
-                            </p>
+                            <div className="text-gray-700 leading-relaxed" style={{ fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif" }}>
+                              <p className="text-base" style={{ textAlign: 'justify', textIndent: '0', lineHeight: '1.6' }}>
+                                {video.creator === "@fernanfloo" ? 
+                                  "Luis Fernando Flores, a 32-year-old Salvadoran content creator who transitioned from being one of YouTube's biggest Spanish-speaking stars (49 million subscribers) to a self-described \"retired YouTuber and streamer\" now focusing on TikTok with 17 million followers. He built his empire through gaming content and comedy videos starting in 2011, becoming the first Spanish-speaking YouTuber to reach 10 million subscribers before stepping back from regular content creation in 2018. Now he creates TikTok content featuring dance videos, comedic skits, and lifestyle content while maintaining his signature humor that originally made him famous." :
+                                video.creator === "@crybaby_1001" ?
+                                  "This Filipina micro creator, aged 18-25, occasionally shares ice skating clips but mainly features lip syncs, trendy outfits, and fun TikTok dances with her friends and family. Her casual, relatable content taps into viral dance and fashion trends popular in the Philippines, giving her posts a broad appeal among Gen Z viewers. With playful energy and authentic moments, she's poised to catch the algorithm and boost engagement as her style and personality connect with the local youth culture." :
+                                video.creator === "@xqueenkalin" ?
+                                  "This Brazilian creator, aged 18-22, loves showing off her stylish outfits in front of her BMWs, alongside fun TikTok dance videos filmed at home. Most of her content highlights her fashion choices and playful moments, mixing car culture with trending social vibes." :
+                                video.creator === "@keziaivankaa" ?
+                                  "This creator shares a mix of casual lifestyle, food, and personal vlogs on TikTok, reflecting her \"just a girl\" bio. Her feed features selfie videos, cooking clips, stylish portraits, and moments with her car—content that feels approachable and polished. With over 35k followers and 4.6M likes, she stands out for her consistent, relatable presence and aesthetically pleasing visuals." :
+                                video.creator === "@mirandita.leon" ?
+                                  "Miranda León is a Mexican lifestyle and beauty creator with 11.1M followers who specializes in dramatic transformation content. Known for her stunning glow-up videos that showcase makeup artistry and outfit changes, she consistently delivers high-production value content with perfect lighting and smooth transitions. Her videos regularly achieve viral status, with her signature style combining Y2K fashion trends with modern beauty techniques. Her authentic personality and relatable humor have made her a favorite among Gen Z audiences." :
+                                video.creator === "@luci_leoonn" ?
+                                  "Lucía León is a Mexican beauty and fashion influencer with 2M followers who has mastered the art of viral transformation videos. She creates content that seamlessly blends fashion sensibilities with global TikTok trends. Her glow-up videos are characterized by flawless execution, creative transitions, and an aspirational yet attainable aesthetic. Known for her ability to set trends rather than follow them, she's become a go-to source for Gen Z fashion inspiration." :
+                                idx === 0 ? 
+                                  "Lifestyle creator with strong beauty/fashion engagement. Posts 3-4x weekly with peak evening performance. Authentic style and engaged audience make them perfect for this trend." :
+                                idx === 1 ? 
+                                  "Fashion specialist in trend adoption. Strong European presence with high OOTD completion rates. Content consistently performs above average with strong viewer retention." :
+                                idx === 2 ?
+                                  "Beauty influencer focused on skincare/makeup. Engaged 16-24 demographic with authentic reviews. Proven track record with similar campaigns indicates high potential." :
+                                  "Versatile lifestyle creator with 8% comment rate. Excels at storytelling for Gen Z audiences. Strong aesthetic alignment with brand values and campaign goals."
+                                }
+                              </p>
+                                  </div>
                                 </div>
                               </div>
                               
@@ -1383,7 +1509,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                                   </div>
                                 </div>
                                 </a>
-                              </div>
+                            </div>
 
                               {/* Other Recent Content - Removed */}
                               {false && [1, 2, 3, 4].map((item) => (
@@ -1402,7 +1528,7 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                                   </div>
                                 </div>
                               </div>
-                          
+                        
                       </motion.div>
                     ))}
                   </div>
@@ -1410,24 +1536,39 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                         </div>
           </TabsContent>
 
-          <TabsContent value="creative-analysis" className="mt-6 h-full overflow-y-auto" tabIndex={-1}>
+          <TabsContent value="creative-analysis" className="mt-6" tabIndex={-1}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Creative Analysis Section */}
-              <div className="space-y-8">
-                <h4 className="text-2xl font-bold text-gray-900">CREATIVE ANALYSIS</h4>
+                          <div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-12">CREATIVE ANALYSIS</h4>
                 
-                        <div className="space-y-8">
-                  <div>
-                    <h5 className="text-base font-semibold text-blue-600 mb-4">DESCRIPTION</h5>
-                    <p className="text-gray-700 leading-loose text-base">
-                      {displayCreative.creativeAnalysis?.description || "This trend revolves around comedic timing and relatable scenarios using trending audio."}
+                <div className="space-y-12">
+                  <div className="text-gray-700 leading-loose text-base space-y-6">
+                    <p className="mb-6">
+                      {(displayCreative.name === "Magnetic Pull Me Jalo Dance" || displayCreative.name === "Me Jalo 'Pull' Couples Dance") ? 
+                        "The \"Me Jalo\" dance trend has become hugely popular across Mexico and the USA, with couple creators driving most of the viral momentum through their synchronized \"pull\" choreography. The trend performs exceptionally well with partner content, particularly among young Latino communities who've made it a staple for date night and relationship posts." :
+                        (displayCreative.creativeAnalysis?.description || "This trend revolves around the iconic 'magnetic pull' gesture, where partners create a drawn-forward effect. It's a duo/couple format that dominates the trend, relying on synchronized movements and dramatic flair.")
+                      }
+                    </p>
+                    <p className="mb-8">
+                      {(displayCreative.name === "Magnetic Pull Me Jalo Dance" || displayCreative.name === "Me Jalo 'Pull' Couples Dance") ?
+                        "The trend leverages the viral audio's dramatic build-up, with creators timing their movements to match the beat drop at precisely 0:45-1:15. Peak engagement occurs when creators add their unique spin while maintaining the core elements: the magnetic hand gesture, synchronized backward steps, and expressive facial reactions." :
+                        "The trend leverages the viral audio's dramatic build-up, with creators timing their movements to match the beat drop at precisely 0:45-1:15. Peak engagement occurs when creators add their unique spin while maintaining the core elements: the magnetic hand gesture, synchronized backward steps, and expressive facial reactions."
+                      }
                     </p>
                           </div>
-                          <div>
-                    <h5 className="text-base font-semibold text-blue-600 mb-4">CONTENT STRATEGY</h5>
-                    <p className="text-gray-700 leading-loose text-base">
-                      {displayCreative.creativeAnalysis?.content_strategy || "The trend thrives on relatability and perfect comedic timing."}
-                    </p>
+                          
+                  {/* Chat Bar */}
+                  <div className="mt-12 pt-8 border-t border-gray-200">
+                    <div className="w-full space-y-4">
+                      <Label htmlFor="message" className="text-sm font-medium text-gray-700 block mb-2">Chat with your data</Label>
+                      <Textarea 
+                        placeholder="Spencer what country would this trend perform best in?" 
+                        id="message"
+                        className="min-h-[80px] w-full resize-none border border-gray-300 focus:border-black focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 outline-none"
+                        style={{ boxShadow: 'none' }}
+                      />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1442,7 +1583,13 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                               <div>
                   <h5 className="text-base font-semibold text-blue-600 mb-5">QUICK STEPS</h5>
                   <ol className="space-y-4">
-                    {(displayCreative.creativeBrief?.quick_steps || ["Set up phone at eye level", "Practice timing", "Build intensity"]).map((step, index) => (
+                    {((displayCreative.name === "Magnetic Pull Me Jalo Dance" || displayCreative.name === "Me Jalo 'Pull' Couples Dance") ? [
+                        "Partner with someone for the duo format",
+                        "Position camera to capture both performers in frame",
+                        "Execute the signature 'pull' gesture at the chorus drop (0:45)"
+                      ] : 
+                      (displayCreative.creativeBrief?.quick_steps || ["Set up phone at eye level", "Practice timing", "Build intensity"])
+                    ).map((step, index) => (
                       <li key={index} className="flex items-center gap-3">
                         <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-700 text-sm font-bold">{index + 1}</span>
                         <span className="text-gray-800 text-base">{step}</span>
@@ -1455,7 +1602,13 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
                             <div>
                   <h5 className="text-base font-semibold text-blue-600 mb-5">KEY TIPS</h5>
                   <ul className="space-y-4">
-                    {(displayCreative.creativeBrief?.key_tips || ["Natural lighting works best", "Film in 1080p minimum", "Post 8-10 PM for best reach"]).map((tip, index) => (
+                    {((displayCreative.name === "Magnetic Pull Me Jalo Dance" || displayCreative.name === "Me Jalo 'Pull' Couples Dance") ? [
+                        "Duo/couple format works best",
+                        "Use dramatic spins and dips at the bridge (1:20)",
+                        "Express passion through facial expressions"
+                      ] : 
+                      (displayCreative.creativeBrief?.key_tips || ["Natural lighting works best", "Film in 1080p minimum", "Post 8-10 PM for best reach"])
+                    ).map((tip, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <span className="text-blue-500 mt-1">&#8226;</span>
                         <span className="text-gray-800 text-base">{tip}</span>
@@ -1477,20 +1630,8 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
     <Dialog open={showScaleModal} onOpenChange={setShowScaleModal}>
       <DialogContent className="sm:max-w-[500px] bg-white">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-gray-900">
-            Scale <span 
-              className="text-orange-500"
-              style={{
-                color: '#FF6B00',
-                textShadow: '0 0 2px rgba(255, 107, 0, 0.5), 0 0 4px rgba(255, 107, 0, 0.3)',
-                filter: 'brightness(1.1)',
-                fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif",
-                fontWeight: 400,
-                fontSize: '1.125rem'
-              }}
-            >
-              Trend
-                            </span>
+          <DialogTitle className="text-xl font-bold text-black">
+            Add Budget
           </DialogTitle>
         </DialogHeader>
         
@@ -1624,20 +1765,9 @@ const CreativeDetailsCard: React.FC<CreativeDetailsCardProps> = ({ selectedCreat
               selectedRegions.length === 0 || 
               Object.values(regionBudgets).reduce((sum, val) => sum + val, 0) !== 100
             }
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300"
+            className="px-4 py-2 bg-black hover:bg-gray-900 text-white border border-gray-300 disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300"
           >
-            Launch <span 
-              style={{
-                color: '#FF6B00',
-                textShadow: '0 0 2px rgba(255, 107, 0, 0.5), 0 0 4px rgba(255, 107, 0, 0.3)',
-                filter: 'brightness(1.1)',
-                fontFamily: "'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif",
-                fontWeight: 400,
-                fontSize: '0.875rem'
-              }}
-            >
-              Trend
-                                </span>
+            Launch
           </Button>
                               </div>
       </DialogContent>

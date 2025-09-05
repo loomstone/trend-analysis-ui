@@ -649,7 +649,7 @@ class TikTokTrendMockDataGenerator:
     
     def _generate_trend(self, trend_index: int) -> Dict:
         """Generate a complete trend object"""
-        # Force first trend to be dance (Magnetic Pull Me Jalo Dance)
+        # Force first trend to be dance (Me Jalo "Pull" Couples Dance)
         if trend_index == 0:
             trend_type = "dance"
             template = next((t for t in self.config["trend_templates"] if t["type"] == "dance"), 
@@ -663,21 +663,38 @@ class TikTokTrendMockDataGenerator:
         else:
             # Select trend template normally
             template = self.config["trend_templates"][trend_index % len(self.config["trend_templates"])]
-        trend_type = template["type"]
+            trend_type = template["type"]
         
         # Generate trend names based on context
         if self.input_context and "magnetic pull" in self.input_context.lower():
-            trend_names = {
-                "dance": f"Magnetic Pull Me Jalo Dance",
-                "transformation": f"Me Jalo Glow Up",
-                "storytelling": f"El Otro POV",
-                "lifestyle": f"Me Jalo Golden Hour Aesthetic",
-                "challenge": f"Me Jalo Challenge"
-            }
+            # Ensure specific order: Couples Dance first, Car Trend second, Glow Up third
+            if trend_index == 0:
+                trend_names = {"dance": f"Me Jalo 'Pull' Couples Dance"}
+                trend_type = "dance"
+                template = next((t for t in self.config["trend_templates"] if t["type"] == "dance"), 
+                              self.config["trend_templates"][0])
+            elif trend_index == 1:
+                trend_names = {"storytelling": f"Me Jalo 'Pull' Car Trend"}
+                trend_type = "storytelling"
+                template = next((t for t in self.config["trend_templates"] if t["type"] == "storytelling"), 
+                              self.config["trend_templates"][0])
+            elif trend_index == 2:
+                trend_names = {"transformation": f"Me Jalo Glow Up"}
+                trend_type = "transformation"
+                template = next((t for t in self.config["trend_templates"] if t["type"] == "transformation"), 
+                              self.config["trend_templates"][0])
+            else:
+                trend_names = {
+                    "dance": f"Me Jalo 'Pull' Couples Dance",
+                    "transformation": f"Me Jalo Glow Up",
+                    "storytelling": f"Me Jalo 'Pull' Car Trend",
+                    "lifestyle": f"Me Jalo Golden Hour Aesthetic",
+                    "challenge": f"Me Jalo Challenge"
+                }
             trend_summaries = {
                 "dance": f"Couples recreate the iconic 'magnetic pull' gesture.",
                 "transformation": f"Dramatic outfit reveals synced to chorus drops.",
-                "storytelling": f"POV: dropping everything for forbidden love.",
+                "storytelling": f"Creators recreate the viral 'pull' dance but with their cars.",
                 "lifestyle": f"Golden hour couple content showcasing romantic aesthetics.",
                 "challenge": f"The viral magnetic pull dance move challenge."
             }
@@ -727,16 +744,25 @@ class TikTokTrendMockDataGenerator:
                 day["value"] = max(1, int(day["value"] * scale_factor))
         
         # Calculate engagement stats proportional to video count
-        # Views per video should be consistent with virality level
-        if virality_level >= 4:
+        # Special handling for specific trends based on real thumbnail data
+        if self.input_context and "magnetic pull" in self.input_context.lower() and trend_index == 0:
+            # Me Jalo 'Pull' Couples Dance - most viral with actual high views
+            base_views = 850000000  # 850M total views - biggest trend
+        elif self.input_context and "magnetic pull" in self.input_context.lower() and trend_index == 1:
+            # Me Jalo 'Pull' Car Trend - moderate viral
+            base_views = 425000000  # 425M total views - second biggest
+        elif trend_index == 2:
+            # Me Jalo Glow Up - smaller trend but still significant
+            base_views = 212000000  # 212M total views - third biggest
+        elif virality_level >= 4:
             avg_views_per_video = random.randint(30000, 50000)  # 30-50K per video for viral
+            base_views = detected_videos * avg_views_per_video
         elif virality_level == 3:
             avg_views_per_video = random.randint(10000, 25000)  # 10-25K per video for moderate
+            base_views = detected_videos * avg_views_per_video
         else:
             avg_views_per_video = random.randint(2000, 8000)    # 2-8K per video for niche
-        
-        # Calculate total views based on actual video count
-        base_views = detected_videos * avg_views_per_video
+            base_views = detected_videos * avg_views_per_video
         
         trend = {
             "name": trend_names.get(trend_type, f"{self.song_title} Trend"),
@@ -980,20 +1006,20 @@ class TikTokTrendMockDataGenerator:
         else:
             # Fallback to generic tags
             base_tags = [
-            f"#{self.song_title.replace(' ', '')}",
-            f"#{self.artist.replace(' ', '')}",
-            "#fyp",
-            "#foryoupage",
-            "#viral"
-        ]
-        
-        type_tags = {
-            "dance": ["#dance", "#choreography", "#dancechallenge"],
-            "transformation": ["#transformation", "#transition", "#beforeandafter"],
-            "storytelling": ["#pov", "#storytime", "#relatable"],
-            "lifestyle": ["#aesthetic", "#vibes", "#lifestyle"],
-            "challenge": ["#challenge", "#trend", "#attempt"]
-        }
+                f"#{self.song_title.replace(' ', '')}",
+                f"#{self.artist.replace(' ', '')}",
+                "#fyp",
+                "#foryoupage",
+                "#viral"
+            ]
+            
+            type_tags = {
+                "dance": ["#dance", "#choreography", "#dancechallenge"],
+                "transformation": ["#transformation", "#transition", "#beforeandafter"],
+                "storytelling": ["#pov", "#storytime", "#relatable"],
+                "lifestyle": ["#aesthetic", "#vibes", "#lifestyle"],
+                "challenge": ["#challenge", "#trend", "#attempt"]
+            }
         
         return base_tags + type_tags.get(trend_type, [])
     
